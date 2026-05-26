@@ -78,6 +78,12 @@
       <img src="gifs/reimu-touhou.gif" alt="[gif]" width="130" height="100"><br>
       <br>
       <img src="gifs/touhou-remilia-scarlet.gif" alt="[gif]" width="130" height="100"><br>
+
+      <audio id="bgm" loop>
+	      <source src="bgm.mp3" type="audio/mpeg">
+      </audio>
+      <b>BGM</b><br>
+      <a href="#" id="bgm-btn" onclick="toggleBGM()">[play]</a>
     </td>
 
   </tr>
@@ -105,7 +111,7 @@
 <!-- hitwebcounter Code END --></small>
   <br><br>
 
-  <small>aakarsh kashyap &mdash; made with notepad and spite</small>
+  <small>aakarsh kashyap ; made with vim and spite</small>
 
 </center>
 
@@ -148,6 +154,14 @@
     }
   })
   .catch(function(){});
+
+  function toggleBGM() {
+    var a = document.getElementById('bgm');
+    var btn = document.getElementById('bgm-btn');
+    if (a.paused) { a.play(); btn.textContent = '[stop]'; }
+    else { a.pause(); a.currentTime = 0; btn.textContent = '[play]'; }
+    return false;
+  }
 </script>
 
 </body>
