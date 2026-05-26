@@ -18,7 +18,6 @@ function parseFrontmatter(raw) {
     const key = line.slice(0, colon).trim();
     let val = line.slice(colon + 1).trim();
 
-    // parse tags array: [tag1, tag2]
     if (val.startsWith('[') && val.endsWith(']')) {
       val = val.slice(1, -1).split(',').map(t => t.trim()).filter(Boolean);
     } else if (val === 'null') {
@@ -42,12 +41,10 @@ function slugFromFile(filename) {
 
 // ── template ─────────────────────────────────────────────────────────────────
 
-function buildPostHtml({ slug, title, date, tags, series, fragment, guestbookMod }) {
+function buildPostHtml({ slug, title, date, tags, series, fragment }) {
   const tagStr = tags && tags.length ? ` &mdash; ${tagsToHtml(tags)}` : '';
   const seriesStr = series ? `<br><small>series: ${series}</small>` : '';
-
-  // guestbook mod key — keep from template if passed, else use placeholder
-  const mod = guestbookMod || '%241%24wq1rdBcg%24DvIUhUm9n4dxM9p9T8jNY0';
+  const mod = '%241%24wq1rdBcg%24DvIUhUm9n4dxM9p9T8jNY0';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -55,6 +52,8 @@ function buildPostHtml({ slug, title, date, tags, series, fragment, guestbookMod
   <title>${title} - Aakarsh Kashyap</title>
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
+<marquee>welcome to my site</marquee>
+<hr>
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
   <tr>
     <td width="150" valign="top" style="border-right: 1px solid black;">
@@ -69,8 +68,8 @@ function buildPostHtml({ slug, title, date, tags, series, fragment, guestbookMod
       <a href="../misc.html">Misc</a><br>
       <hr>
       <b>Friends</b><br>
-      <a href="https://shashwatagrawal.com">[ shashwat ]</a><br>
-      <a href="https://seivarya.in">[ sei ]</a><br>
+      <a href="https://shashwatagrawal20.github.io/portfolio/">[ Shashwat ]</a><br>
+      <a href="https://www.seivarya.in/">[ Shivang ]</a><br>
       <hr>
       <b>Status</b><br>
       <small>&#x2713; site is up</small><br>
@@ -95,20 +94,16 @@ function buildPostHtml({ slug, title, date, tags, series, fragment, guestbookMod
 ${fragment}
       <!-- FRAGMENT END -->
       <hr>
+      <b>Comments</b><br>
       <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Widget</a> is loading comments...</div>
       <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
-      <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=${mod}"+"&opts=16798&num=10&ts=1779738216783");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+      <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=${mod}"+"&opts=16798&num=10&ts=1779738216783");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ <\/script>
       <hr>
       <small><a href="../blog.html">&larr; back to blog</a></small>
     </td>
     <td width="140" valign="top" style="border-left: 1px solid black; padding: 4px;">
       <b>Stuff</b><br>
       <hr>
-      <audio id="bgm" loop>
-        <source src="../bgm.mp3" type="audio/mpeg">
-      </audio>
-      <a href="#" id="bgm-btn">[play]</a><br>
-      <br>
       <img src="../gifs/ozua-ozuai.gif" alt="[gif]" width="130" height="100"><br>
       <br>
       <img src="../gifs/flandre-scarlet-cheering.gif" alt="[gif]" width="130" height="100"><br>
@@ -116,6 +111,11 @@ ${fragment}
       <img src="../gifs/reimu-touhou.gif" alt="[gif]" width="130" height="100"><br>
       <br>
       <img src="../gifs/touhou-remilia-scarlet.gif" alt="[gif]" width="130" height="100"><br>
+      <audio id="bgm" loop>
+        <source src="../bgm.mp3" type="audio/mpeg">
+      </audio>
+      <b>BGM</b><br>
+      <a href="#" id="bgm-btn" onclick="toggleBGM()">[play]</a>
     </td>
   </tr>
 </table>
@@ -126,12 +126,12 @@ ${fragment}
   <img src="../buttons/underconstruction.gif" alt="under construction" width="88" height="31">
   <br><br>
   <small>
-    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; webring &mdash; <a href="#">next &raquo;</a>
+    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; webring &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
   </small>
   <br><br>
-  <small>[visitor counter]</small>
+  <small id="visit-count">...</small>
   <br><br>
-  <small>aakarsh kashyap &mdash; made with notepad and spite</small>
+  <small>aakarsh kashyap ; made with vim and spite</small>
 </center>
 <script>
   fetch('../nowplaying.json')
@@ -142,12 +142,20 @@ ${fragment}
     })
     .catch(function(){});
 
-  document.getElementById('bgm-btn').addEventListener('click', function(e) {
-    e.preventDefault();
+  function toggleBGM() {
     var a = document.getElementById('bgm');
-    if (a.paused) { a.play(); this.textContent = '[stop]'; }
-    else { a.pause(); a.currentTime = 0; this.textContent = '[play]'; }
-  });
+    var btn = document.getElementById('bgm-btn');
+    if (a.paused) { a.play(); btn.textContent = '[stop]'; }
+    else { a.pause(); a.currentTime = 0; btn.textContent = '[play]'; }
+    return false;
+  }
+
+  fetch('https://visit-counter-kohl.vercel.app/api/count')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      document.getElementById('visit-count').textContent = 'visitors: ' + d.count;
+    })
+    .catch(function(){});
 </script>
 </body>
 </html>`;
