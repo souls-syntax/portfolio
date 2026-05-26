@@ -63,26 +63,7 @@
       <br><br>
 
       <table width="100%" border="0" cellpadding="2" id="post-list">
-        <tr class="post-row" data-tags="programming linux">
-          <td><small>2026-05-20</small></td>
-          <td><a href="posts/post1.html">setting up my first server</a></td>
-          <td><small>[programming] [linux]</small></td>
-        </tr>
-        <tr class="post-row" data-tags="touhou">
-          <td><small>2026-05-10</small></td>
-          <td><a href="posts/touhou-post.html">why embodiment of scarlet devil is perfect</a></td>
-          <td><small>[touhou]</small></td>
-        </tr>
-        <tr class="post-row" data-tags="programming">
-          <td><small>2026-04-28</small></td>
-          <td><a href="posts/another-post.html">notes on x11 window management</a></td>
-          <td><small>[programming]</small></td>
-        </tr>
-        <tr class="post-row" data-tags="linux">
-          <td><small>2026-04-10</small></td>
-          <td><a href="posts/linux-post.html">my current dotfiles setup</a></td>
-          <td><small>[linux]</small></td>
-        </tr>
+	      <!-- posts injected by JS -->
       </table>
 
     </td>
@@ -147,6 +128,26 @@
       document.getElementById('np-track').textContent = d.track || '---';
     })
     .catch(function(){});
+
+  fetch('posts.json')
+  .then(function(r){ return r.json(); })
+  .then(function(posts){
+    var list = document.getElementById('post-list');
+    list.innerHTML = '';
+    for (var i = 0; i < posts.length; i++) {
+      var p = posts[i];
+      var tagStr = p.tags.map(function(t){ return '['+t+']'; }).join(' ');
+      var row = document.createElement('tr');
+      row.className = 'post-row';
+      row.setAttribute('data-tags', p.tags.join(' '));
+      row.innerHTML =
+        '<td><small>' + p.date + '</small></td>' +
+        '<td><a href="' + p.url + '">' + p.title + '</a></td>' +
+        '<td><small>' + tagStr + '</small></td>';
+      list.appendChild(row);
+    }
+  })
+  .catch(function(){});
 </script>
 
 </body>

@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "my-post",
+    "title": "My Post",
+    "date": "2026-05-26",
+    "tags": ["programming", "linux"],
+    "series": null,
+    "url": "posts/post1.html"
+  }
+]
