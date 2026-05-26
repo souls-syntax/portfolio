@@ -3,9 +3,6 @@
 <head>
   <title>Aakarsh Kashyap</title>
 
-<script data-goatcounter="https://souls-syntax.goatcounter.com/count"
-        async src="https//gc.zgo.at/count.js"></script>
-
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
 
@@ -99,7 +96,7 @@
   </small>
   <br><br>
 
-<img src="https://souls-syntax.goatcounter.com/counter/$.svg" alt="visitor count">
+  <small id="visit-count">...</small>
   <br><br>
 
   <small>aakarsh kashyap ; made with vim and spite</small>
@@ -121,12 +118,13 @@
     else { a.pause(); a.currentTime = 0; btn.textContent = '[play]'; }
     return false;
   }
-  fetch('https://souls-syntax.goatcounter.com/api/v0/stats/total')
-	  .then(function(r){ return r.json(); })
-	  .then(function(d){
-		  document.getElementById('visit-count').textContent = d.total;
-	  })
-	  .catch(function(){});
+
+fetch('https://visit-counter-kohl.vercel.app/api/count')
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    document.getElementById('visit-count').textContent = 'visitors: ' + d.count;
+  })
+  .catch(function(){});
 </script>
 
 </body>

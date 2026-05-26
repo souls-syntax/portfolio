@@ -139,13 +139,7 @@
   </small>
   <br><br>
 
-  <small><!-- hitwebcounter Code START -->
-<a href="https://www.hitwebcounter.com/compress-pdf" target="_blank" rel="noopener" title="Reduce">
-<img src="https://www.hitwebcounter.com/counter/counter.php?page=21500293&amp;style=0001&amp;nbdigits=5&amp;type=page" alt="Reduce" decoding="async" style="border:0;max-width:100%;height:auto;" />
-</a>
-<br />
-<a href="https://www.hitwebcounter.com/" target="_blank" rel="noopener" style="font-family:Arial, Helvetica, sans-serif;font-size:10px;color:#6E6A68;text-decoration:none;font-weight:em;">Count-Stats Visits</a>
-<!-- hitwebcounter Code END --></small>
+  <small id="visit-count">...</small>
   <br><br>
 
   <small>aakarsh kashyap ; made with vim and spite</small>
@@ -185,6 +179,13 @@
     else { a.pause(); a.currentTime = 0; btn.textContent = '[play]'; }
     return false;
   }
+
+fetch('https://visit-counter-kohl.vercel.app/api/count')
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    document.getElementById('visit-count').textContent = 'visitors: ' + d.count;
+  })
+  .catch(function(){});
 </script>
 
 </body>
