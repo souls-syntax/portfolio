@@ -1,5 +1,16 @@
 [
   {
+    "slug": "test-post2",
+    "title": "My Test Post second",
+    "date": "2026-05-26",
+    "tags": [
+      "programming",
+      "linux"
+    ],
+    "series": null,
+    "url": "posts/test-post2.html"
+  },
+  {
     "slug": "test-post",
     "title": "My Test Post",
     "date": "2026-05-26",
