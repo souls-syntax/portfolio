@@ -1,10 +1,13 @@
 [
   {
-    "slug": "my-post",
-    "title": "My Post",
+    "slug": "test-post",
+    "title": "My Test Post",
     "date": "2026-05-26",
-    "tags": ["programming", "linux"],
+    "tags": [
+      "programming",
+      "linux"
+    ],
     "series": null,
-    "url": "posts/post1.html"
+    "url": "posts/test-post.html"
   }
 ]
