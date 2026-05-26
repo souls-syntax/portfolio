@@ -5,7 +5,7 @@
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
 
-<marquee>welcome to my site</marquee>
+<marquee>Projects I am proud of. You better appreciate them.</marquee>
 <hr>
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
   <tr>
@@ -21,7 +21,7 @@
       <a href="blog.html">Blog</a><br>
       <a href="projects.html"><b>Projects</b></a><br>
       <a href="social.html">Social</a><br>
-      <a href="misc.html">Misc</a><br>
+      <a href="guestbook.html">GuestBook</a><br>
 
       <hr>
 
@@ -78,30 +78,70 @@
       </table>
       <hr style="margin-top:0;">
 
-      <div id="proj-p1">
-        <b>Project One</b><br>
-        <small>lang/stack &mdash; year</small>
-        <p>placeholder description.</p>
-        <a href="#">[ source ]</a> &nbsp; <a href="#">[ live ]</a>
-      </div>
-      <div id="proj-p2" style="display:none;">
-        <b>Project Two</b><br>
-        <small>lang/stack &mdash; year</small>
-        <p>placeholder description.</p>
-        <a href="#">[ source ]</a> &nbsp; <a href="#">[ live ]</a>
-      </div>
-      <div id="proj-p3" style="display:none;">
-        <b>Project Three</b><br>
-        <small>lang/stack &mdash; year</small>
-        <p>placeholder description.</p>
-        <a href="#">[ source ]</a> &nbsp; <a href="#">[ live ]</a>
-      </div>
-      <div id="proj-p4" style="display:none;">
-        <b>Project Four</b><br>
-        <small>lang/stack &mdash; year</small>
-        <p>placeholder description.</p>
-        <a href="#">[ source ]</a> &nbsp; <a href="#">[ live ]</a>
-      </div>
+	<div id="proj-p1">
+	  <b>sauceOS</b><br>
+	  <small>C, x86-64 ASM, Make, Limine &mdash; 2026-present</small>
+
+	  <p>
+	    64-bit hobby operating system written from scratch.
+	    currently implements paging, interrupt handling,
+	    keyboard input, memory allocation, syscall layer,
+	    and basic process infrastructure. suffering included
+	    free of cost.
+	  </p>
+
+	  <a href="https://github.com/souls-syntax/sauceOS">
+	    [ source ]
+	  </a>
+	</div>
+
+	<div id="proj-p2" style="display:none;">
+	  <b>soft-cuda</b><br>
+	  <small>C++, CUDA, cuBLAS, cuDNN &mdash; 2026-present</small>
+
+	  <p>
+	    hybrid cpu/gpu tensor runtime with lazy DAG execution,
+	    custom bump allocator, and profile-guided backend scheduling.
+	    includes custom CUDA kernels and achieved ~35% throughput
+	    improvement over gpu-only dispatch in benchmarks.
+	  </p>
+
+	  <a href="https://github.com/builders-lab/soft-cuda">
+	    [ source ]
+	  </a>
+	</div>
+
+	<div id="proj-p3" style="display:none;">
+	  <b>sush</b><br>
+	  <small>C++, POSIX API &mdash; 2026</small>
+
+	  <p>
+	    unix shell written from scratch using fork, exec, pipe,
+	    and dup2 directly. supports piping chains, variable expansion,
+	    command history, and custom parsing logic because apparently
+	    existing shells were too emotionally stable.
+	  </p>
+
+	  <a href="https://github.com/souls-syntax/sush">
+	    [ source ]
+	  </a>
+	</div>
+
+	<div id="proj-p4" style="display:none;">
+	  <b>tsundere-runtime</b><br>
+	  <b>[ WIP ]</b><br>
+	  <small>Zig, C, C++, rendering systems, runtime experiment &mdash; 2026-present</small>
+	  <p>
+	    experimental browser/runtime/sdk thing attempting to rethink
+	    web rendering through a game-loop style architecture instead
+	    of traditional document pipelines. started as a joke.
+	    unfortunately became real.
+	  </p>
+
+	  <a href="https://github.com/souls-syntax/tsundere-runtime">
+	    [ source ]
+	  </a>
+	</div>
 
     </td>
 

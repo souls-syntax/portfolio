@@ -70,6 +70,8 @@ function buildPostHtml({ slug, title, date, tags, series, fragment }) {
       <b>Friends</b><br>
       <a href="https://shashwatagrawal20.github.io/portfolio/">[ Shashwat ]</a><br>
       <a href="https://www.seivarya.in/">[ Shivang ]</a><br>
+      <a href="https://sodakeyeatsmush.vercel.app/">[ Saad ]</a><br>
+      <a href="https://www.shobhitnagpal.com/">[ Saar ]</a><br>
       <hr>
       <b>Status</b><br>
       <small>&#x2713; site is up</small><br>
