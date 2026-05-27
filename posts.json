@@ -1,24 +1,15 @@
 [
   {
-    "slug": "test-post2",
-    "title": "My Test Post second",
-    "date": "2026-05-26",
+    "slug": "tsun_0",
+    "title": "tsundere-runtime, Episode - 0 : What I am trying to do with this project, why and how.",
+    "date": "2026-05-25",
     "tags": [
       "programming",
+      "zig",
+      "c",
       "linux"
     ],
-    "series": null,
-    "url": "posts/tsun_1.html"
-  },
-  {
-    "slug": "test-post",
-    "title": "My Test Post",
-    "date": "2026-05-26",
-    "tags": [
-      "programming",
-      "linux"
-    ],
-    "series": null,
-    "url": "posts/test-post.html"
+    "series": "tsundere",
+    "url": "posts/tsun_0.html"
   }
 ]
