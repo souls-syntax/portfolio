@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakarsh Kashyap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Aakarsh Kashyap — systems programmer, GPU compute, compiler infrastructure.">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <span class="nav-name">aakarsh kashyap</span>
+            <ul>
+                <li><a href="#about">about</a></li>
+                <li><a href="#projects">projects</a></li>
+                <li><a href="#experience">experience</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section id="hero">
+            <div class="hero-content">
+                <p class="hero-label">// systems programmer</p>
+                <h1>Aakarsh Kashyap</h1>
+                <p class="hero-sub">GPU compute · compiler infrastructure · OS internals</p>
+                <p class="hero-desc">
+                    B.Tech CSE @ GLA University · B.S. Data Science & AI @ IIT Madras.<br>
+                    I build things close to the metal — cuda kernels, bootloaders, runtimes.<br>
+                    Long-term goal: GPU compute or compiler work in Germany.
+                </p>
+                <div class="hero-links">
+                    <a href="SystemsRoleResumeOG.pdf" download class="btn-primary">resume (systems)</a>
+                    <a href="backendSWE.pdf" download class="btn-secondary">resume (backend)</a>
+                    <a href="https://github.com/souls-syntax" target="_blank" class="btn-ghost">github</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <h2><span class="accent">//</span> about</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        Systems developer. My niche is GPU compute and compiler infrastructure - currently a noob in both, working to fix that.
+                    </p>
+                    <p>
+                        I build things close to the metal: cuda kernels, bootloaders, runtimes, and the occasional kernel from scratch. sauceOS is my x86-64 hobby OS, currently implementing four-level paging and process infrastructure.
+                    </p>
+                    <p>
+                        I maintain soft-cuda — a hybrid CPU/GPU AOT deep learning framework with a custom 3-pass compiler, bump allocator, and lazy DAG. The hybrid model achieves ~35% throughput improvement over GPU-only dispatch.
+                    </p>
+                    <p>
+                        I use no LSP. I don't need syntax highlighting. I do this for fun.
+                    </p>
+                </div>
+                <div class="about-skills">
+                    <div class="skill-group">
+                        <span class="skill-label">languages</span>
+                        <p>C/C++, Go, Python, x86-64 ASM, CUDA, SQL</p>
+                    </div>
+                    <div class="skill-group">
+                        <span class="skill-label">systems</span>
+                        <p>OS internals, memory allocators, POSIX APIs, IPC, syscall interface</p>
+                    </div>
+                    <div class="skill-group">
+                        <span class="skill-label">GPU / HPC</span>
+                        <p>CUDA kernel programming, CUDA streams, cuBLAS, cuDNN, SGEMM, double buffering</p>
+                    </div>
+                    <div class="skill-group">
+                        <span class="skill-label">backend</span>
+                        <p>REST, scatter-gather, write-through cache, JWT, Argon2id, RBAC, webhook verification</p>
+                    </div>
+                    <div class="skill-group">
+                        <span class="skill-label">tooling</span>
+                        <p>Git, Docker, CMake, Make, GDB, Neovim, Arch Linux</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <h2><span class="accent">//</span> projects</h2>
+
+            <div class="tab-bar">
+                <button class="tab active" data-tab="sauceos">sauceOS</button>
+                <button class="tab" data-tab="softcuda">soft-cuda</button>
+                <button class="tab" data-tab="sush">sush</button>
+                <button class="tab" data-tab="custodian">Custodian</button>
+                <button class="tab" data-tab="slopgen">SlopGen</button>
+                <button class="tab" data-tab="chirpy">Chirpy</button>
+            </div>
+
+            <div class="tab-content">
+
+                <div class="tab-panel active" id="tab-sauceos">
+                    <h3>sauceOS</h3>
+                    <p class="proj-meta">C, x86-64 ASM, Make, Limine — Jan 2026 – present</p>
+                    <p>
+                        64-bit hobby operating system written from scratch, booting via the Limine bootloader. Implements the Global Descriptor Table, Interrupt Descriptor Table, ISR and IRQ dispatch routines, and Task State Segment in C and x86-64 assembly. Buddy memory allocator for kernel heap management in the higher-half virtual address space, handling block splitting, coalescing, and alignment constraints. Four-level paging with independent per-process virtual address space mapping. PS/2 keyboard driver with interrupt-driven input handling wired through the IDT. Minimal libc and syscall interface establishing the kernel-user boundary for future userspace programs.
+                    </p>
+                    <a href="https://github.com/souls-syntax/SauceOS" target="_blank" class="proj-link">[ source ]</a>
+                </div>
+
+                <div class="tab-panel" id="tab-softcuda">
+                    <h3>soft-cuda</h3>
+                    <p class="proj-meta">C++, CUDA, cuBLAS, cuDNN — Mar 2026 – present</p>
+                    <p>
+                        Hybrid CPU/GPU tensor execution engine featuring a bump allocator memory pool, lazy evaluation DAG, and a three-pass AOT compiler with profile-guided backend assignment between CPU and GPU operators. Double-buffered SGEMM kernel overlapping memory transfers with compute using CUDA streams — benchmarked at 0.94 ms/step against GPU-only dispatch at 1.44 ms/step, a 35% throughput improvement, with cuBLAS as the reference backend. Full forward and backward pass with MSE, cross-entropy loss, and SGD. Trained XOR to convergence at loss ≈ 3.5 × 10⁻¹⁴.
+                    </p>
+                    <a href="https://github.com/builders-lab/soft-cuda" target="_blank" class="proj-link">[ source ]</a>
+                </div>
+
+                <div class="tab-panel" id="tab-sush">
+                    <h3>sush</h3>
+                    <p class="proj-meta">C++, POSIX API — Feb 2026 – Mar 2026</p>
+                    <p>
+                        Unix shell from scratch in C++ supporting piping chains, command history, and variable expansion without relying on any system shell utility. Uses fork, exec, pipe, and dup2 directly for process creation, file descriptor wiring, and IPC. Custom lexer and token expander for command parsing, tokenization, and variable resolution.
+                    </p>
+                    <a href="https://github.com/souls-syntax/sush" target="_blank" class="proj-link">[ source ]</a>
+                </div>
+
+                <div class="tab-panel" id="tab-custodian">
+                    <h3>Custodian</h3>
+                    <p class="proj-meta">Go, Python, Redis, PostgreSQL, DistilBERT, Docker Compose — Dec 2025 – Jan 2026</p>
+                    <p>
+                        High-concurrency Go orchestrator implementing a scatter-gather pattern on every incoming query, fanning out simultaneously to PostgreSQL for audit logging and a Python BERT service for inference, with results joined before response. Three-tier degradation chain: Redis cache under 1ms for known claims, local DistilBERT at 50ms for high-volume filtering, and async LLM escalation via a Redis job queue for ambiguous cases. Write-through cache consistency: background worker LLM verdicts atomically overwrite both the Redis cache and the PostgreSQL record. LLM is upto date with current situation by having a harness for internet access.
+                    </p>
+                    <a href="https://github.com/souls-syntax/Custodian" target="_blank" class="proj-link">[ source ]</a>
+                </div>
+
+                <div class="tab-panel" id="tab-slopgen">
+                    <h3>SlopGen</h3>
+                    <p class="proj-meta">Go, OpenAI SDK, Ollama, JSON Schema — Feb 2026 – Mar 2026</p>
+                    <p>
+                        ReAct-style agentic loop in Go: the LLM reasons over tool call results iteratively (read, write, execute) until the task is resolved, with full conversation history passed on every inference request. All tool interfaces defined via strict JSON schemas. Human-in-the-loop confirmation gate for shell execution. Model-agnostic: local Ollama (qwen2.5:7b) and remote cloud endpoints (GPT-OSS 20B hosted on Kaggle via Ngrok) switchable via a single CLI flag.
+                    </p>
+                    <a href="https://github.com/souls-syntax/SlopGen" target="_blank" class="proj-link">[ source ]</a>
+                </div>
+
+                <div class="tab-panel" id="tab-chirpy">
+                    <h3>Chirpy</h3>
+                    <p class="proj-meta">Go, PostgreSQL, JWT, Argon2id, REST — Jan 2026 – Mar 2026</p>
+                    <p>
+                        Production-style RESTful API in Go with zero external web frameworks. Covers user registration, chirp CRUD, stateless JWT authentication, refresh token issuance and revocation, webhook ingestion, and admin observability metrics. Auth layer with short-lived JWT access tokens and revocable refresh tokens persisted in PostgreSQL. Argon2id for password hashing, shared-secret webhook verification for secure third-party event ingestion.
+                    </p>
+                    <a href="https://github.com/souls-syntax/Chirpy" target="_blank" class="proj-link">[ source ]</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+            <h2><span class="accent">//</span> experience</h2>
+
+            <div class="exp-entry">
+                <div class="exp-header">
+                    <span class="exp-role">Technical Contributor</span>
+                    <span class="exp-org">GigaVector (Open Source)</span>
+                    <span class="exp-date">Apr 2026 – present</span>
+                </div>
+                <ul class="exp-list">
+                    <li>Diagnosed and fixed a non-portable compile flag causing SIGILL crashes on WSL2 targets in a vector database with 500+ active users; traced the failure to ABI assumptions that did not hold across toolchain configurations and submitted a patch accepted upstream.</li>
+                    <li>Resolved a daemon thread lifecycle bug paired with an <code>is_running</code> liveness race that allowed silent data corruption on shutdown; required reasoning about memory visibility across thread boundaries and correct teardown ordering.</li>
+                    <li>Debugged cross-platform DLL dependency failures on Windows involving libcurl linkage, MinGW runtime mismatches, and CFFI symbol resolution errors, restoring build reproducibility across Linux and Windows targets for all downstream contributors.</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <h2><span class="accent">//</span> contact</h2>
+            <p>Available for internships and freelance work — high-performance backend architecture, systems programming, infrastructure.</p>
+            <div class="contact-links">
+                <a href="mailto:souls.syntax@gmail.com">souls.syntax@gmail.com</a>
+                <a href="https://github.com/souls-syntax" target="_blank">github.com/souls-syntax</a>
+                <a href="https://linkedin.com/in/souls-syntax" target="_blank">linkedin.com/in/souls-syntax</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>aakarsh kashyap · 2026 · built with vanilla js</p>
+    </footer>
+
+    <script>
+        // Tab switcher
+        const tabs = document.querySelectorAll('.tab');
+        const panels = document.querySelectorAll('.tab-panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>

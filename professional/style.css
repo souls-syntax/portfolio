@@ -1,0 +1,454 @@
+/* ============================================================
+   Catppuccin Mocha — sharp, dense, terminal-coded
+   ============================================================ */
+
+:root {
+    --base:    #1e1e2e;
+    --mantle:  #181825;
+    --crust:   #11111b;
+    --surface0: #313244;
+    --surface1: #45475a;
+    --surface2: #585b70;
+    --overlay0: #6c7086;
+    --overlay1: #7f849c;
+    --text:    #cdd6f4;
+    --subtext0: #a6adc8;
+    --subtext1: #bac2de;
+    --pink:    #f38ba8;
+    --mauve:   #cba6f7;
+    --blue:    #89b4fa;
+    --sapphire:#74c7ec;
+    --green:   #a6e3a1;
+    --yellow:  #f9e2af;
+    --peach:   #fab387;
+
+    --accent:  var(--pink);
+    --accent2: var(--mauve);
+
+    --font: 'Fira Code', monospace;
+    --max-width: 860px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--base);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--mantle); }
+::-webkit-scrollbar-thumb { background: var(--surface1); }
+::-webkit-scrollbar-thumb:hover { background: var(--surface2); }
+
+/* ── SELECTION ── */
+::selection {
+    background: var(--accent);
+    color: var(--crust);
+}
+
+/* ── LINKS ── */
+a {
+    color: var(--blue);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--accent);
+}
+
+/* ── NAV ── */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--mantle);
+    border-bottom: 1px solid var(--surface0);
+}
+
+nav {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-name {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    color: var(--subtext0);
+    font-size: 13px;
+    transition: color 0.15s;
+}
+
+nav ul li a:hover {
+    color: var(--text);
+}
+
+/* ── MAIN CONTAINER ── */
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ── SECTIONS ── */
+section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--surface0);
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--subtext0);
+    margin-bottom: 2.5rem;
+}
+
+.accent {
+    color: var(--accent);
+    margin-right: 0.5rem;
+}
+
+/* ── HERO ── */
+#hero {
+    padding: 7rem 0 5rem;
+    border-bottom: 1px solid var(--surface0);
+}
+
+.hero-label {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+}
+
+#hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+}
+
+.hero-sub {
+    font-size: 13px;
+    color: var(--mauve);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
+}
+
+.hero-desc {
+    color: var(--subtext0);
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+    max-width: 580px;
+}
+
+.hero-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-ghost {
+    font-family: var(--font);
+    font-size: 12px;
+    padding: 0.5rem 1.1rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    letter-spacing: 0.04em;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--crust);
+    border-color: var(--accent);
+    font-weight: 600;
+}
+.btn-primary:hover {
+    background: transparent;
+    color: var(--accent);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--mauve);
+    border-color: var(--mauve);
+}
+.btn-secondary:hover {
+    background: var(--mauve);
+    color: var(--crust);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--subtext0);
+    border-color: var(--surface1);
+}
+.btn-ghost:hover {
+    color: var(--text);
+    border-color: var(--surface2);
+}
+
+/* ── ABOUT ── */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.about-text p {
+    color: var(--subtext1);
+    margin-bottom: 1rem;
+    font-size: 13px;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.skill-group {
+    margin-bottom: 1.2rem;
+}
+
+.skill-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.skill-group p {
+    color: var(--subtext0);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ── PROJECTS — TAB STYLE ── */
+.tab-bar {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--surface0);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+}
+
+.tab {
+    font-family: var(--font);
+    font-size: 12px;
+    background: transparent;
+    color: var(--subtext0);
+    border: 1px solid var(--surface0);
+    border-bottom: none;
+    padding: 0.45rem 1rem;
+    cursor: pointer;
+    margin-right: -1px;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+}
+
+.tab:hover {
+    color: var(--text);
+    background: var(--surface0);
+}
+
+.tab.active {
+    background: var(--base);
+    color: var(--text);
+    border-color: var(--surface0);
+    border-bottom-color: var(--base);
+    position: relative;
+    z-index: 1;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+.tab-panel h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+}
+
+.proj-meta {
+    font-size: 11px;
+    color: var(--mauve);
+    margin-bottom: 1rem;
+    letter-spacing: 0.03em;
+}
+
+.tab-panel p {
+    color: var(--subtext1);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+.proj-link {
+    font-size: 12px;
+    color: var(--blue);
+}
+.proj-link:hover {
+    color: var(--accent);
+}
+
+/* ── EXPERIENCE ── */
+.exp-entry {
+    margin-bottom: 2.5rem;
+}
+
+.exp-entry:last-child {
+    margin-bottom: 0;
+}
+
+.exp-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.exp-role {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.exp-org {
+    font-size: 13px;
+    color: var(--mauve);
+}
+
+.exp-date {
+    font-size: 11px;
+    color: var(--overlay1);
+    margin-left: auto;
+}
+
+.exp-list {
+    list-style: none;
+    padding: 0;
+}
+
+.exp-list li {
+    color: var(--subtext1);
+    font-size: 13px;
+    line-height: 1.8;
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+}
+
+.exp-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.exp-list li code {
+    color: var(--green);
+    font-family: var(--font);
+    font-size: 12px;
+    background: var(--surface0);
+    padding: 0.1em 0.3em;
+}
+
+/* ── CONTACT ── */
+#contact p {
+    color: var(--subtext1);
+    font-size: 13px;
+    margin-bottom: 1.5rem;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-links a {
+    font-size: 13px;
+    color: var(--blue);
+}
+
+.contact-links a:hover {
+    color: var(--accent);
+}
+
+/* ── FOOTER ── */
+footer {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--surface0);
+}
+
+footer p {
+    font-size: 11px;
+    color: var(--overlay0);
+    letter-spacing: 0.05em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+    nav { padding: 0 1rem; }
+    main { padding: 0 1rem; }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .exp-date { margin-left: 0; }
+
+    .hero-links { flex-direction: column; }
+    .btn-primary, .btn-secondary, .btn-ghost { text-align: center; }
+}
