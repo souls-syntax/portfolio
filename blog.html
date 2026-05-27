@@ -63,10 +63,16 @@ a:visited {
       <hr>
 
       <small>filter by series:</small><br>
-      <input type="button" value="all" onclick="filterPosts('all')">
-      <input type="button" value="touhou" onclick="filterPosts('touhou')">
-      <input type="button" value="programming" onclick="filterPosts('programming')">
-      <input type="button" value="linux" onclick="filterPosts('linux')">
+      <input type="button" value="all" onclick="filterPosts('all', 'series')">
+      <input type="button" value="tsundere" onclick="filterPosts('tsundere', 'series')">
+      <br>
+      <small>filter by tag:</small><br>
+      <input type="button" value="all" onclick="filterPosts('all', 'tag')">
+      <input type="button" value="touhou" onclick="filterPosts('touhou', 'tag')">
+      <input type="button" value="programming" onclick="filterPosts('programming', 'tag')">
+      <input type="button" value="linux" onclick="filterPosts('linux', 'tag')">
+      <input type="button" value="zig" onclick="filterPosts('zig', 'tag')">
+      <input type="button" value="c" onclick="filterPosts('c', 'tag')">
       <br><br>
 
       <table width="100%" border="0" cellpadding="2" id="post-list">
@@ -116,16 +122,18 @@ a:visited {
 </center>
 
 <script>
-  function filterPosts(tag) {
-    var rows = document.querySelectorAll('.post-row');
-    for (var i = 0; i < rows.length; i++) {
-      if (tag === 'all' || rows[i].getAttribute('data-tags').indexOf(tag) !== -1) {
-        rows[i].style.display = '';
-      } else {
-        rows[i].style.display = 'none';
-      }
+function filterPosts(val, by) {
+  var rows = document.querySelectorAll('.post-row');
+  for (var i = 0; i < rows.length; i++) {
+    if (val === 'all') {
+      rows[i].style.display = '';
+    } else if (by === 'tag') {
+      rows[i].style.display = rows[i].getAttribute('data-tags').indexOf(val) !== -1 ? '' : 'none';
+    } else if (by === 'series') {
+      rows[i].style.display = rows[i].getAttribute('data-series') === val ? '' : 'none';
     }
   }
+}
 
   fetch('nowplaying.json')
     .then(function(r){ return r.json(); })
@@ -146,6 +154,7 @@ a:visited {
       var row = document.createElement('tr');
       row.className = 'post-row';
       row.setAttribute('data-tags', p.tags.join(' '));
+      row.setAttribute('data-series', p.series || '');
       row.innerHTML =
         '<td><small>' + p.date + '</small></td>' +
         '<td><a href="' + p.url + '">' + p.title + '</a></td>' +
