@@ -50,6 +50,11 @@ function buildPostHtml({ slug, title, date, tags, series, fragment }) {
 <html lang="en">
 <head>
   <title>${title} - Aakarsh Kashyap</title>
+<style>
+a:visited {
+  color: #0000EE;
+}
+</style>
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
 <marquee>welcome to my site</marquee>

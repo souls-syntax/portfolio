@@ -47,9 +47,9 @@ I think I have clearified why part by now.
 
 Have you seen the website they make today??. It's not what was imagined 20 years ago what websites would look like. Modern websites have
 
-shifted to SPAs, increasinly complex logic, way too many moving parts and trying to do things web was never designed to do. take modern
+shifted to SPAs, increasingly complex logic, way too many moving parts and trying to do things web was never designed to do. take modern
 
-frameworks for example, they have state management, event driven, tree like structure and work being offloaded to host compute capacity more 
+frameworks for example, they have state management, are event driven, have tree like structure and work being offloaded to host compute capacity more 
 
 and more. *`(I think if someone from 90s saw today's websites they would have a crisis about how we can get here from HTML .)`* As you can see
 
