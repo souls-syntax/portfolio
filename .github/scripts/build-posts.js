@@ -70,7 +70,7 @@ a:visited {
       <a href="../blog.html"><b>Blog</b></a><br>
       <a href="../projects.html">Projects</a><br>
       <a href="../social.html">Social</a><br>
-      <a href="../misc.html">Misc</a><br>
+      <a href="../guestbook.html">GuestBook</a><br>
       <hr>
       <b>Friends</b><br>
       <a href="https://shashwatagrawal20.github.io/portfolio/">[ Shashwat ]</a><br>
