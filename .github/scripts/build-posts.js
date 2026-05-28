@@ -54,6 +54,20 @@ function buildPostHtml({ slug, title, date, tags, series, fragment }) {
 a:visited {
   color: #0000EE;
 }
+.post-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+.post-content pre, .post-content code {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+@media (max-width: 600px) {
+  .sidebar-right {
+    display: none;
+  }
+}
 </style>
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
@@ -98,7 +112,9 @@ a:visited {
       <small>${date}${tagStr}</small>${seriesStr}
       <hr>
       <!-- FRAGMENT START -->
+      <div class="post-content">
 ${fragment}
+      </div>
       <!-- FRAGMENT END -->
       <hr>
       <b>Comments</b><br>
@@ -108,7 +124,7 @@ ${fragment}
       <hr>
       <small><a href="../blog.html">&larr; back to blog</a></small>
     </td>
-    <td width="140" valign="top" style="border-left: 1px solid black; padding: 4px;">
+    <td width="140" valign="top" class="sidebar-right" style="border-left: 1px solid black; padding: 4px;">
       <b>Stuff</b><br>
       <hr>
       <img src="../gifs/ozua-ozuai.gif" alt="[gif]" width="130" height="100"><br>
