@@ -6,6 +6,20 @@
 a:visited {
   color: #0000EE;
 }
+.post-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+.post-content pre, .post-content code {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+@media (max-width: 600px) {
+  .sidebar-right {
+    display: none;
+  }
+}
 </style>
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
@@ -50,6 +64,7 @@ a:visited {
       <small>2026-05-25 &mdash; [programming] [zig] [c] [linux]</small><br><small>series: tsundere</small>
       <hr>
       <!-- FRAGMENT START -->
+      <div class="post-content">
 <h1>tsundere-runtime</h1>
 <p>Me trying to do something out of my league. And recording it&#39;s journey</p>
 <img src="../weird/shrine/francesca.gif" width="150" height="100"><h3>Why</h3>
@@ -353,6 +368,7 @@ as something like <code>PresentationTransitionScalar</code> teheheheh you would 
 <h6>This is light for now cause it&#39;s mostly me rambling about things that have not been fully finalized it.</h6>
 <h6>It may contain unrealistic ideas, dumb things i still think may work or challenges I have not encountered so can&#39;t see it&#39;s scope</h6>
 <h6>Alternatively I go complete bonkers and totally go off the rails in what i implement.</h6>
+      </div>
       <!-- FRAGMENT END -->
       <hr>
       <b>Comments</b><br>
@@ -362,7 +378,7 @@ as something like <code>PresentationTransitionScalar</code> teheheheh you would 
       <hr>
       <small><a href="../blog.html">&larr; back to blog</a></small>
     </td>
-    <td width="140" valign="top" style="border-left: 1px solid black; padding: 4px;">
+    <td width="140" valign="top" class="sidebar-right" style="border-left: 1px solid black; padding: 4px;">
       <b>Stuff</b><br>
       <hr>
       <img src="../gifs/ozua-ozuai.gif" alt="[gif]" width="130" height="100"><br>
