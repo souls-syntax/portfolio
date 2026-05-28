@@ -158,7 +158,8 @@ typedef struct {
     u32    post_count;
     
     // input state - raw, no synthetic events
-    // I want artists to be just able to draw how app will behave and it just works. Kinda like anime, cause i want that miHoYo style bakas.
+    // I want artists to be just able to draw how app will behave and it just works.
+    // Kinda like anime, cause i want that miHoYo style bakas.
     f32    pen_pressure;
     f32    pen_x, pen_y;
     bool   pen_touching;

@@ -129,7 +129,7 @@ ${fragment}
       <hr>
       <small><a href="../blog.html">&larr; back to blog</a></small>
     </td>
-    <td width="140" valign="top" class="sidebar-right" style="border-left: 1px solid black; padding: 4px;">
+    <td width="140" valign="top"  style="border-left: 1px solid black; padding: 4px;">
       <b>Stuff</b><br>
       <hr>
       <img src="../gifs/ozua-ozuai.gif" alt="[gif]" width="130" height="100"><br>
