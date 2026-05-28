@@ -11,8 +11,13 @@ a:visited {
   overflow-wrap: break-word;
   max-width: 100%;
 }
-.post-content pre, .post-content code {
-  white-space: pre-wrap;
+.post-content pre {
+  overflow-x: auto;
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;
+}
+.post-content code {
   word-break: break-all;
 }
 @media (max-width: 600px) {
