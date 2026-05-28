@@ -69,18 +69,21 @@ a:visited {
   word-break: break-all;
 }
 @media (max-width: 600px) {
-  .sidebar-right {
-    display: none;
-  }
+  .side-panel { display: none; }
+  table { width: 100% !important; }
+  td:not(.side-panel) { width: 100% !important; display: block; }
+}
 }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
 <marquee>welcome to my site</marquee>
 <hr>
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
   <tr>
-    <td width="150" valign="top" style="border-right: 1px solid black;">
+    <td width="150" valign="top" class="side-panel" style="border-right: 1px solid black;">
       <img src="../gifs/banner.gif" alt="[banner gif]" width="140" height="50"><br>
       <br>
       <b>Menu</b><br>
@@ -129,7 +132,7 @@ ${fragment}
       <hr>
       <small><a href="../blog.html">&larr; back to blog</a></small>
     </td>
-    <td width="140" valign="top"  style="border-left: 1px solid black; padding: 4px;">
+    <td width="140" valign="top"  class="side-panel" style="border-left: 1px solid black; padding: 4px;">
       <b>Stuff</b><br>
       <hr>
       <img src="../gifs/ozua-ozuai.gif" alt="[gif]" width="130" height="100"><br>
@@ -185,6 +188,8 @@ ${fragment}
     })
     .catch(function(){});
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 </body>
 </html>`;
 }
