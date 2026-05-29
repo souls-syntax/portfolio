@@ -15,23 +15,15 @@ Me trying to do something out of my league. And recording it's journey
 ### Why
 
 
-Hmm so as usual we were talking on discord and it was bought up how js is like bandage of web. Tbh I agree with this point. It was made in rush
+Hmm so as usual we were talking on discord and it was bought up how js is like bandage of web. Tbh I agree with this point. It was made in rush have lots of obvious holes and is not really very nice to code with.
 
-have lots of obvious holes and is not really very nice to code with.
-
-So saar suggested that if there can be a browser which doesn't need JS. And I like the dumbass that I am was like sure lemme try that, cause 
-
-maybe then my C rotted brain would be able to design a website teheheheh. that would be nice actually. Also cause it would scratch my 
-
-`build from scratch` itch. *`( you are supposed to laugh here )`*
+So saar suggested that if there can be a browser which doesn't need JS. And I like the dumbass that I am was like sure lemme try that, cause maybe then my C rotted brain would be able to design a website teheheheh. that would be nice actually. Also cause it would scratch my `build from scratch` itch. *`( you are supposed to laugh here )`*
 
 And hence started the project `tsundere-runtime` i know very nice name. you can stop and praise my amazing naming skills here.
 
 ...
 
-Now you may ask, "But, Aakarsh WASM exists, why do this." To that my response is, wasm still internally uses js as glue to manipulate DOM,
-
-which breaks the rule of the challenge.
+Now you may ask, "But, Aakarsh WASM exists, why do this." To that my response is, wasm still internally uses js as glue to manipulate DOM, which breaks the rule of the challenge.
 
 **So the idea is to not have JS at all. Anywhere.**
 
@@ -39,33 +31,15 @@ Now that presents the obvious challenge cause there is no refrence for something
 
 *`(Let me know if something like that exists btw)`*
 
-I think I have clearified why part by now.
-
-
-
 ### What
 
-Have you seen the website they make today??. It's not what was imagined 20 years ago what websites would look like. Modern websites have
-
-shifted to SPAs, increasingly complex logic, way too many moving parts and trying to do things web was never designed to do. take modern
-
-frameworks for example, they have state management, are event driven, have tree like structure and work being offloaded to host compute capacity more 
-
-and more. *`(I think if someone from 90s saw today's websites they would have a crisis about how we can get here from HTML .)`* As you can see
-
-these features sound less and less about documents doesn't it.
+Have you seen the websites they make today??. It's not what was imagined 20 years ago what websites would look like. Modern websites have shifted to SPAs, increasingly complex logic, way too many moving parts and trying to do things web was never designed to do. Take modern frameworks for example, they have state management, are event driven, have tree like structure and work being offloaded to host compute capacity more and more. *`(I think if someone from 90s saw today's websites they would have a crisis about how we can get here from HTML .)`* As you can see these features sound less and less about documents doesn't it.
 
 <img src="../weird/shrine/tohsaka27.gif" width="150" height="100">
 
-The website on which I am writing this blog is likely what went through the minds of people when they imagined web. Now I am in no way 
+The website on which I am writing this blog is likely what went through the minds of people when they imagined web. Now I am in no way critisizing the direction the web is taking. But we are currently trying to do things using wrong tool imo.
 
-critisizing the direction the web is taking. But we are currently trying to do things using wrong tool imo.
-
-So when I thought if current modern web is less of document and more of an application then i need to invent a stack which supports that
-
-ideology. And the best kind of application which represents web, I would say is a **game**. from too many moving parts, 
-
-to being very fault tolerant and ability to handle increasingly complex logic.
+So I thought if current modern web is less of document and more of an application then i need to invent a stack which supports that ideology. And the best kind of application which represents web, I would say is a **game**. from too many moving parts, to being very fault tolerant and ability to handle increasingly complex logic.
 
 <!-- // Talk about game loop, the code shared with saad and somewhat about the future vision, like parent child, server it's own protocol  -->
 <!-- // and stuff like that -->
@@ -83,17 +57,11 @@ Lemme first define some terms so we are on same page.
 5. **baka-loop** : Baka being executed.
 6. **baka-server** : Server used to host your baka.
 
-To start with what makes a game different from normal application is a **game-loop**. Your game is generally in an infinite loop,
+What makes a game different from a normal application is a game-loop. Your game is generally in an infinite loop, where it communicates with other components by reading a snapshot of everything happening right now -- its state. The game loop was built exactly for that: handling complex state, managing all kinds of weird input (looking at you, VR) and still pushing through.
 
-where it communicates with other components by reading some high level record of all the things happening right now.
+If you have used modern web frameworks you would come in contact with such concept relatively commonly like state mgmt, event queues, component trees. Sounds familiar right?
 
-And the game loop was built for that only, handling complex state, managing all kinds of weird input(looking at VR) and still pushing through.
-
-If you have used modern web frameworks you would come in contact with such concept relatively commonly.
-
-So with that as a one of the pillars behind this project, what I am implementing in this is something very similar. I will just show the vision
-
-for now cause I don't know how this would be done for now ;).
+So with that as one of the pillars behind this project, what I am implementing in this is something very similar. I will just show the vision for now cause I don't know how this would be done for now I am still learning you know ;).
 
 The flow would be something like 
 
@@ -374,3 +342,6 @@ Tell me in the comments what you thought of this whole idea, where I am lacking 
 ###### This is light for now cause it's mostly me rambling about things that have not been fully finalized it.
 ###### It may contain unrealistic ideas, dumb things i still think may work or challenges I have not encountered so can't see it's scope
 ###### Alternatively I go complete bonkers and totally go off the rails in what i implement.
+
+
+[ EDITED : 2026-05-30 ]
