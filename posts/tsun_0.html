@@ -76,30 +76,18 @@ a:visited {
 <h1>tsundere-runtime</h1>
 <p>Me trying to do something out of my league. And recording it&#39;s journey</p>
 <img src="../weird/shrine/francesca.gif" width="150" height="100"><h3>Why</h3>
-<p>Hmm so as usual we were talking on discord and it was bought up how js is like bandage of web. Tbh I agree with this point. It was made in rush</p>
-<p>have lots of obvious holes and is not really very nice to code with.</p>
-<p>So saar suggested that if there can be a browser which doesn&#39;t need JS. And I like the dumbass that I am was like sure lemme try that, cause </p>
-<p>maybe then my C rotted brain would be able to design a website teheheheh. that would be nice actually. Also cause it would scratch my </p>
-<p><code>build from scratch</code> itch. <em><code>( you are supposed to laugh here )</code></em></p>
+<p>Hmm so as usual we were talking on discord and it was bought up how js is like bandage of web. Tbh I agree with this point. It was made in rush have lots of obvious holes and is not really very nice to code with.</p>
+<p>So saar suggested that if there can be a browser which doesn&#39;t need JS. And I like the dumbass that I am was like sure lemme try that, cause maybe then my C rotted brain would be able to design a website teheheheh. that would be nice actually. Also cause it would scratch my <code>build from scratch</code> itch. <em><code>( you are supposed to laugh here )</code></em></p>
 <p>And hence started the project <code>tsundere-runtime</code> i know very nice name. you can stop and praise my amazing naming skills here.</p>
 <p>...</p>
-<p>Now you may ask, &quot;But, Aakarsh WASM exists, why do this.&quot; To that my response is, wasm still internally uses js as glue to manipulate DOM,</p>
-<p>which breaks the rule of the challenge.</p>
+<p>Now you may ask, &quot;But, Aakarsh WASM exists, why do this.&quot; To that my response is, wasm still internally uses js as glue to manipulate DOM, which breaks the rule of the challenge.</p>
 <p><strong>So the idea is to not have JS at all. Anywhere.</strong></p>
 <p>Now that presents the obvious challenge cause there is no refrence for something like this atleast i didn&#39;t find it. </p>
 <p><em><code>(Let me know if something like that exists btw)</code></em></p>
-<p>I think I have clearified why part by now.</p>
 <h3>What</h3>
-<p>Have you seen the website they make today??. It&#39;s not what was imagined 20 years ago what websites would look like. Modern websites have</p>
-<p>shifted to SPAs, increasingly complex logic, way too many moving parts and trying to do things web was never designed to do. take modern</p>
-<p>frameworks for example, they have state management, are event driven, have tree like structure and work being offloaded to host compute capacity more </p>
-<p>and more. <em><code>(I think if someone from 90s saw today&#39;s websites they would have a crisis about how we can get here from HTML .)</code></em> As you can see</p>
-<p>these features sound less and less about documents doesn&#39;t it.</p>
-<img src="../weird/shrine/tohsaka27.gif" width="150" height="100"><p>The website on which I am writing this blog is likely what went through the minds of people when they imagined web. Now I am in no way </p>
-<p>critisizing the direction the web is taking. But we are currently trying to do things using wrong tool imo.</p>
-<p>So when I thought if current modern web is less of document and more of an application then i need to invent a stack which supports that</p>
-<p>ideology. And the best kind of application which represents web, I would say is a <strong>game</strong>. from too many moving parts, </p>
-<p>to being very fault tolerant and ability to handle increasingly complex logic.</p>
+<p>Have you seen the websites they make today??. It&#39;s not what was imagined 20 years ago what websites would look like. Modern websites have shifted to SPAs, increasingly complex logic, way too many moving parts and trying to do things web was never designed to do. Take modern frameworks for example, they have state management, are event driven, have tree like structure and work being offloaded to host compute capacity more and more. <em><code>(I think if someone from 90s saw today&#39;s websites they would have a crisis about how we can get here from HTML .)</code></em> As you can see these features sound less and less about documents doesn&#39;t it.</p>
+<img src="../weird/shrine/tohsaka27.gif" width="150" height="100"><p>The website on which I am writing this blog is likely what went through the minds of people when they imagined web. Now I am in no way critisizing the direction the web is taking. But we are currently trying to do things using wrong tool imo.</p>
+<p>So I thought if current modern web is less of document and more of an application then i need to invent a stack which supports that ideology. And the best kind of application which represents web, I would say is a <strong>game</strong>. from too many moving parts, to being very fault tolerant and ability to handle increasingly complex logic.</p>
 <!-- // Talk about game loop, the code shared with saad and somewhat about the future vision, like parent child, server it's own protocol  -->
 <!-- // and stuff like that --><h3>How</h3>
 <p>Lemme first define some terms so we are on same page.</p>
@@ -111,12 +99,9 @@ a:visited {
 <li><strong>baka-loop</strong> : Baka being executed.</li>
 <li><strong>baka-server</strong> : Server used to host your baka.</li>
 </ol>
-<p>To start with what makes a game different from normal application is a <strong>game-loop</strong>. Your game is generally in an infinite loop,</p>
-<p>where it communicates with other components by reading some high level record of all the things happening right now.</p>
-<p>And the game loop was built for that only, handling complex state, managing all kinds of weird input(looking at VR) and still pushing through.</p>
-<p>If you have used modern web frameworks you would come in contact with such concept relatively commonly.</p>
-<p>So with that as a one of the pillars behind this project, what I am implementing in this is something very similar. I will just show the vision</p>
-<p>for now cause I don&#39;t know how this would be done for now ;).</p>
+<p>What makes a game different from a normal application is a game-loop. Your game is generally in an infinite loop, where it communicates with other components by reading a snapshot of everything happening right now -- its state. The game loop was built exactly for that: handling complex state, managing all kinds of weird input (looking at you, VR) and still pushing through.</p>
+<p>If you have used modern web frameworks you would come in contact with such concept relatively commonly like state mgmt, event queues, component trees. Sounds familiar right?</p>
+<p>So with that as one of the pillars behind this project, what I am implementing in this is something very similar. I will just show the vision for now cause I don&#39;t know how this would be done for now I am still learning you know ;).</p>
 <p>The flow would be something like </p>
 <ol>
 <li>You write your <strong>baka</strong>(B).</li>
@@ -377,6 +362,7 @@ as something like <code>PresentationTransitionScalar</code> teheheheh you would 
 <h6>This is light for now cause it&#39;s mostly me rambling about things that have not been fully finalized it.</h6>
 <h6>It may contain unrealistic ideas, dumb things i still think may work or challenges I have not encountered so can&#39;t see it&#39;s scope</h6>
 <h6>Alternatively I go complete bonkers and totally go off the rails in what i implement.</h6>
+<p>[ EDITED : 2026-05-30 ]</p>
       </div>
       <!-- FRAGMENT END -->
       <hr>
