@@ -54,6 +54,7 @@ function buildPostHtml({ slug, title, date, tags, series, fragment }) {
 a:visited {
   color: #0000EE;
 }
+img { max-width: 100%; height: auto; }
 .post-content {
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -70,9 +71,12 @@ a:visited {
 }
 @media (max-width: 600px) {
   .side-panel { display: none; }
-  table { width: 100% !important; }
-  td:not(.side-panel) { width: 100% !important; display: block; }
-}
+  table[width="100%"] > tbody > tr > td:not(.side-panel),
+  table[width="100%"] > tr > td:not(.side-panel) {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
@@ -157,7 +161,7 @@ ${fragment}
   <img src="../buttons/underconstruction.gif" alt="under construction" width="88" height="31">
   <br><br>
   <small>
-    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; webring &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
+    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; <a href="../webring.html">webring</a> &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
   </small>
   <br><br>
   <small id="visit-count">...</small>

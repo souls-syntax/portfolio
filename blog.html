@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
   <title>Blog - Aakarsh Kashyap</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 a:visited {
   color: #0000EE;
+}
+img { max-width: 100%; height: auto; }
+@media (max-width: 600px) {
+  table[width="100%"] > tbody > tr {
+    display: block;
+  }
+  table[width="100%"] > tbody > tr > td,
+  table[width="100%"] > tr > td {
+    display: block;
+    width: 100% !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+  }
 }
 </style>
 </head>
@@ -111,7 +128,7 @@ a:visited {
   <br><br>
 
   <small>
-    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; webring &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
+    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; <a href="webring.html">webring</a> &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
   </small>
   <br><br>
   <small id="visit-count">...</small>

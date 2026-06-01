@@ -3,9 +3,11 @@
 <head>
   <title>tsundere-runtime, Episode - 0 : What I am trying to do with this project, why and how. - Aakarsh Kashyap</title>
 <style>
+html, body { overflow-x: hidden; }
 a:visited {
   color: #0000EE;
 }
+img { max-width: 100%; height: auto; }
 .post-content {
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -16,15 +18,23 @@ a:visited {
   white-space: pre;
   word-break: normal;
   word-wrap: normal;
+  max-width: 100%;
 }
 .post-content code {
   word-break: break-all;
 }
 @media (max-width: 600px) {
   .side-panel { display: none; }
-  table { width: 100% !important; }
-  td:not(.side-panel) { width: 100% !important; display: block; }
-}
+  table[width="100%"],
+  table[width="100%"] > tbody,
+  table[width="100%"] > tbody > tr,
+  table[width="100%"] > tr { display: block; width: 100%; }
+  table[width="100%"] > tbody > tr > td:not(.side-panel),
+  table[width="100%"] > tr > td:not(.side-panel) {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
@@ -398,7 +408,7 @@ as something like <code>PresentationTransitionScalar</code> teheheheh you would 
   <img src="../buttons/underconstruction.gif" alt="under construction" width="88" height="31">
   <br><br>
   <small>
-    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; webring &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
+    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; <a href="../webring.html">webring</a> &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
   </small>
   <br><br>
   <small id="visit-count">...</small>
