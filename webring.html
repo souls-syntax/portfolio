@@ -98,27 +98,23 @@ img { max-width: 100%; height: auto; }
       <b>Ring Members</b><br>
       <small>the full ring. all good people.</small>
       <br><br>
-
-	  1. <a href="https://datavorous.github.io/">[ datavorous ]</a><br>
-	  2. <a href="https://ni5arga.com/">[ nisarga ]</a><br>
-	  3. <a href="https://0xmukesh.github.io/">[ mukesh ]</a><br>
-	  4. <a href="https://silicognition.is-a.dev/">[ silicognition ]</a><br>
-	  5. <a href="https://www.0xn1nja.dev/">[ 0xN1nja ]</a><br>
-	  6. <a href="https://natya.is-a.dev/">[ natya ]</a><br>
-	  7. <a href="https://kanishkpaul.me/">[ kanishk ]</a><br>
-	  8. <a href="https://aspiz.uk/">[ aspizu ]</a><br>
-	  9. <a href="https://anurag.tech/">[ anurag ]</a><br>
-	  10. <a href="https://graycup.org/">[ arjun ]</a><br>
-	  11. <a href="https://mooofin.github.io/portfolio/index.html">[ moofin ]</a><br>
-	  12. <a href="https://ashishh.bearblog.dev/">[ ashish ]</a><br>
-	  13. <a href="https://bit2swaz.vercel.app/">[ bit2swaz ]</a><br>
-	  14. <a href="https://github.com/KineticTactic">[ kinetictactic ]</a><br>
-	  15. <a href="https://namishh.com/">[ namish ]</a><br>
-	  16. <a href="https://sarthaksidhant.com/">[ sarthak sidhant ]</a><br>
-	  17. <a href="https://pvsssss.github.io/pvs-does-stuff/">[ pvs ]</a><br>
-	  18. <a href="https://tnm-yes-anyidea.gitlab.io/">[ tnm ]</a><br>
-	  19. <a href="https://cxinu.github.io/">[ cxinu ]</a><br>
-
+	  <div id="ring-members"></div>
+	  <script>
+		  fetch("https://ring.seggs.lol/webring")
+			  .then(res => res.json())
+			  .then(members => {
+				  const container = document.getElementById("ring-members");
+				  let num = 1;
+				  members.forEach(member => {
+					  const a = document.createElement("a");
+					  a.href = member.url;
+					  a.textContent = `${num} [ ${member.name} ]`;
+					  num++
+					  container.appendChild(a);
+					  container.appendChild(document.createElement("br"));
+				  });
+			  });
+	  </script>
     </td>
 
     <!-- RIGHT COLUMN -->
