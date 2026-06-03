@@ -282,6 +282,6 @@ ${rssItems}
   </channel>
 </rss>`;
 
-const rssOut = path.join(__dirname, '../../feed.xml');
+const rssOut = path.join(path.dirname(postsJson), 'feed.xml');
 fs.writeFileSync(rssOut, rssFeed, 'utf8');
 console.log(`updated: feed.xml (${index.length} items)`);
