@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
 
-// ── helpers ──────────────────────────────────────────────────────────────────
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -39,7 +38,6 @@ function slugFromFile(filename) {
   return path.basename(filename, '.md');
 }
 
-// ── template ─────────────────────────────────────────────────────────────────
 
 function buildPostHtml({ slug, title, date, tags, series, fragment }) {
   const tagStr = tags && tags.length ? ` &mdash; ${tagsToHtml(tags)}` : '';
@@ -50,6 +48,7 @@ function buildPostHtml({ slug, title, date, tags, series, fragment }) {
 <html lang="en">
 <head>
   <title>${title} - Aakarsh Kashyap</title>
+  <link rel="alternate" type="application/rss+xml" title="Aakarsh Kashyap" href="/feed.xml">
 <style>
 a:visited {
   color: #0000EE;
@@ -198,7 +197,6 @@ ${fragment}
 </html>`;
 }
 
-// ── main ─────────────────────────────────────────────────────────────────────
 
 const postsDir = path.join(__dirname, '../../posts');
 const postsJson = path.join(__dirname, '../../posts.json');
@@ -233,3 +231,57 @@ index.sort((a, b) => (b.date > a.date ? 1 : -1));
 
 fs.writeFileSync(postsJson, JSON.stringify(index, null, 2), 'utf8');
 console.log(`updated: posts.json (${index.length} posts)`);
+
+const SITE_URL = 'https://souls-syntax.github.io';
+const SITE_TITLE = 'Aakarsh Kashyap';
+const SITE_DESC = 'made with vim and spite';
+
+function escapeXml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function toRfc822(dateStr) {
+  const d = dateStr ? new Date(dateStr + 'T00:00:00Z') : new Date();
+  return isNaN(d) ? new Date().toUTCString() : d.toUTCString();
+}
+
+const rssItems = index.map(post => {
+  const postUrl = `${SITE_URL}/${post.url}`;
+  const tagsLine = post.tags && post.tags.length
+    ? post.tags.map(t => `<category>${escapeXml(t)}</category>`).join('\n      ')
+    : '';
+  const seriesLine = post.series
+    ? `<itunes:subtitle>series: ${escapeXml(post.series)}</itunes:subtitle>`
+    : '';
+
+  return `  <item>
+    <title>${escapeXml(post.title)}</title>
+    <link>${postUrl}</link>
+    <guid isPermaLink="true">${postUrl}</guid>
+    <pubDate>${toRfc822(post.date)}</pubDate>
+    ${tagsLine}
+    ${seriesLine}
+  </item>`;
+}).join('\n');
+
+const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>${escapeXml(SITE_TITLE)}</title>
+    <link>${SITE_URL}</link>
+    <description>${escapeXml(SITE_DESC)}</description>
+    <language>en</language>
+    <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+${rssItems}
+  </channel>
+</rss>`;
+
+const rssOut = path.join(__dirname, '../../feed.xml');
+fs.writeFileSync(rssOut, rssFeed, 'utf8');
+console.log(`updated: feed.xml (${index.length} items)`);
