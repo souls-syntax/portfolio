@@ -1,5 +1,16 @@
 [
   {
+    "slug": "realLangs_0",
+    "title": "Retarded take : Episode 0 : some languages are not real programming language",
+    "date": "2026-06-12",
+    "tags": [
+      "retarded",
+      "language"
+    ],
+    "series": "tsundere",
+    "url": "posts/realLangs_0.html"
+  },
+  {
     "slug": "tsun_0",
     "title": "tsundere-runtime, Episode - 0 : What I am trying to do with this project, why and how.",
     "date": "2026-05-25",
