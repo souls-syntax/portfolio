@@ -344,3 +344,19 @@ Tell me in the comments what you thought of this whole idea, where I am lacking 
 
 
 [ EDITED : 2026-05-30 ]
+
+**vang** · June 7, 2026
+so cool
+
+---
+
+**saar** · May 30, 2026
+i am genuinely so excited for this. i love all of this. there's so much to learn from here
+
+---
+
+**Nambar1 Baka** · May 28, 2026
+And with this, the baka of the year award goes to ...
+
+> **Aakarsh Kashyap** · May 28, 2026
+> @Nambar1 Baka, Goes to me obviously, Muhahahahahahaha

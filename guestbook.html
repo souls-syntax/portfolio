@@ -86,12 +86,97 @@ img { max-width: 100%; height: auto; }
       <small>I was born for glorious purpose humpf!!</small>
       <br><br>
 
+      <!-- -------------------------------------------------------- -->
+
+      <script src="https://giscus.app/client.js"
+              data-repo="souls-syntax/portfolio"
+              data-repo-id="R_kgDOSnkCrw"
+              data-category="General"
+              data-category-id="DIC_kwDOSnkCr84DAfMP"
+              data-mapping="pathname"
+              data-strict="0"
+              data-reactions-enabled="1"
+              data-emit-metadata="0"
+              data-input-position="bottom"
+              data-theme="dark_tritanopia"
+              data-lang="en"
+              crossorigin="anonymous"
+              async>
+      </script>
+<!-- --------------------------------------------------------- -->
+
+      <!-- <section id="guestbook-archive">
+           <h3>Legacy Messages <span class="archive-note">(archived, pre-migration)</span></h3>
+           <div id="archive-list"></div>
+           </section> -->
+      <section style="max-width: 700px; margin: 0 auto 32px; font-family: sans-serif; color: #000;">
+          <h3 style="font-size: 18px; margin-bottom: 12px;">
+              Legacy Messages
+              <span style="font-size: 13px; font-weight: normal; color: #888;">(archived, pre-migration)</span>
+          </h3>
+          <div id="archive-list"></div>
+      </section>
+      <script>
+
+async function loadArchive() {
+  try {
+    const res = await fetch(
+'guestbook_stale_comments.json'
+);
+    const entries = await res.json();
+    const container = document.getElementById('archive-list');
+    container.innerHTML = entries.map(entry => renderEntry(entry)).join('');
+  } catch (err) {
+    console.error('Failed to load guestbook archive:', err);
+  }
+}
+
+function renderEntry(entry) {
+  const repliesHtml = (entry.replies || [])
+    .map(reply => `
+      <div style="margin-left: 32px; margin-top: 12px; padding-left: 16px; border-left: 2px solid #444;">
+        <div style="display: flex; gap: 8px; align-items: baseline; margin-bottom: 4px;">
+          <span style="font-weight: bold; font-size: 14px;">${escapeHtml(reply.author)}</span>
+          <span style="font-size: 12px; color: #888;">${formatDate(reply.date)}</span>
+        </div>
+        <p style="margin: 0; white-space: pre-wrap; font-size: 14px; line-height: 1.5;">${escapeHtml(reply.message)}</p>
+      </div>
+    `).join('');
+
+  return `
+    <div style="border-bottom: 1px solid #333; padding: 16px 0;">
+      <div style="display: flex; gap: 8px; align-items: baseline; margin-bottom: 4px;">
+        <span style="font-weight: bold; font-size: 15px;">${escapeHtml(entry.author)}</span>
+        <span style="font-size: 12px; color: #888;">${formatDate(entry.date)}</span>
+      </div>
+      <p style="margin: 0; white-space: pre-wrap; font-size: 14px; line-height: 1.5;">${escapeHtml(entry.message)}</p>
+      ${repliesHtml}
+    </div>
+  `;
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+document.addEventListener('DOMContentLoaded', loadArchive);
+      </script>
       <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Widget</a> is loading comments...</div>
       <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
       <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24DvIUhUm9n4dxM9p9T8jNY0"+"&opts=16798&num=10&ts=1779738216783");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
       <hr>
 
     </td>
+
+
+    <!-- ------------------------------------------------------------------------- -->
 
     <!-- RIGHT COLUMN -->
     <td width="140" valign="top" style="border-left: 1px solid black; padding: 4px;">
