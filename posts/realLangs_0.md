@@ -57,4 +57,4 @@ you can literaly just write this
 
 And there you go your favourite language becoming a submissive slave of C++.
 
-### NOTICE: As name suggests this is a retarded take I don't really view these things in such way. You can think of this as me just ragebaiting you
+### NOTICE: As name suggests this is a retarded take I don't really view these things in such way. You can think of this as me just ragebaiting you 

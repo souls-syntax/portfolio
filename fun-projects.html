@@ -1,14 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Aakarsh Kashyap</title>
+  <title>Fun Projects - Aakarsh Kashyap</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <style>
+
 a:visited {
-  color: #0000EE;
+color: #0000EE;
 }
 img { max-width: 100%; height: auto; }
 @media (max-width: 600px) {
@@ -25,28 +27,26 @@ img { max-width: 100%; height: auto; }
     box-sizing: border-box;
   }
 }
-</style>
-<body>
 
-<marquee>
-          Abandon All Hope, Ye Who Enter Here
-</marquee>
+</style>
+<body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
+
+<marquee>projects i do for the sake of doing it.</marquee>
 <hr>
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
   <tr>
 
-    <!-- LEFT SIDEBAR -->
     <td width="150" valign="top" style="border-right: 1px solid black;">
 
       <img src="gifs/banner.gif" alt="[banner gif]" width="140" height="50"><br>
       <br>
 
       <b>Menu</b><br>
-      <a href="index.html"><b>About Me</b></a><br>
+      <a href="index.html">About Me</a><br>
       <a href="resume.html">Resume</a><br>
       <a href="blog.html">Blog</a><br>
       <a href="projects.html">Projects</a><br>
-      <a href="fun-projects.html">Fun Projects</a><br>
+      <a href="fun-projects.html"><b>Fun Projects</b></a><br>
       <a href="social.html">Social</a><br>
       <a href="guestbook.html">GuestBook</a><br>
 
@@ -80,64 +80,45 @@ img { max-width: 100%; height: auto; }
 
     </td>
 
-    <!-- MAIN CONTENT -->
     <td valign="top" style="padding: 8px;">
-      <b>About Me</b>
+
+      <b>Fun Projects</b>
       <hr>
-      <p> You can find my resume here <a href="resume/resume.pdf">[Resume]</a></p>
-      <hr>
-      <div max-width: 1100px;
-<p>
-hey. i'm aakarsh kashyap - systems programmer, gpu compute nerd, and chronic C addict(don't talk bad about C yk).
-</p>
-<p>
-currently a 3rd year CSE student at GLA University (Mathura) and concurrently doing B.S. Data Science \& AI from IIT Madras.
-</p>
-<p>
-ohh i also use arch btw. ;) just telling you
-</p>
-<p>
-i build things close to the metal - cuda kernels, bootloaders, runtimes, and the occasional kernel from scratch 
-(sauceOS is my x86-64 hobby OS, currently wrestling with PCB and scheduling).
-</p>
-<p>
-my main niche is GPU compute and compiler infrastructure(noob in both). 
-</p>
-<p>
-currently working on tsundere-runtime a challenge from saar, it's a web-stack from scratch project, with websites being reimagined as game loop instead of documents. tehehehe
-</p>
-<p>
-i hold role of CWO at builders-inc, a developer community, and maintain soft-cuda - a hybrid CPU/GPU AOT deep learning framework with a custom 3-pass compiler, bump allocator, and lazy DAG. the hybrid model provides 35% increased perf, which i'm unreasonably proud of.
-</p>
-<p>
-i use no LSP. i don't need syntax highlighting. i do this for fun.
-</p>
-<p>
-when i'm not writing assembly or debugging page faults at 2am, i'm reading web novels (ORV, Shadow Slave, AOTC), listening to nightcore, or grinding Honkai: star rail ; ).
-</p>
-<p>
-long-term goal: GPU compute or compiler work in Germany. short-term goal: survive summer without sleeping on a schedule.
-</p>
 
-<hr>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td id="tab-p1" style="border: 1px solid black; border-bottom: none; padding: 2px 8px; background:#000000;">
+            <a href="#" onclick="showProject('p1')" style="color:#ffffff; text-decoration:none;">project one</a>
+          </td>
+          <td width="4"></td>
+          <td id="tab-p2" style="border: 1px solid black; border-bottom: none; padding: 2px 8px;">
+            <a href="#" onclick="showProject('p2')">project two</a>
+          </td>
+          <td width="4"></td>
+          <td id="tab-p3" style="border: 1px solid black; border-bottom: none; padding: 2px 8px;">
+            <a href="#" onclick="showProject('p3')">project three</a>
+          </td>
+          <td width="4"></td>
+          <td id="tab-p4" style="border: 1px solid black; border-bottom: none; padding: 2px 8px;">
+            <a href="#" onclick="showProject('p4')">project four</a>
+          </td>
+        </tr>
+      </table>
+      <hr style="margin-top:0;">
 
-<b>Code of Conduct</b>
+	<div id="proj-p1">
+	  <b>smt smt</b><br>
+	  <small></small>
 
-<p>I vow my dishonor to 9front, to the 9front Island Nation and to 9front
-Commander, in all clandestine, treacherous and greedy ways possible
-with respect for nothing and compassion for no one.</p>
+	  <p>
+          I will put smt here tommorow
+	  </p>
 
-<hr>
-      <a href="weird/now.html">\now</a><br>
-      <a href="weird/logs.html">\logs</a><br>
-      <a href="weird/uses.html">\uses</a><br>
-      <a href="weird/links.html">\links</a><br>
-      <a href="weird/garden.html">\garden</a><br>
-      <!-- <a href="weird/shrine.html">\shrine</a><br> -->
-      <a href="weird/buttons.html">\buttons</a><br>
+	  </a>
+	</div>
+
     </td>
 
-    <!-- RIGHT COLUMN -->
     <td width="140" valign="top" style="border-left: 1px solid black; padding: 4px;">
       <b>Stuff</b><br>
       <hr>
@@ -156,6 +137,8 @@ with respect for nothing and compassion for no one.</p>
       <a href="#" id="bgm-btn" onclick="toggleBGM()">[play]</a>
     </td>
 
+    </td>
+
   </tr>
 </table>
 
@@ -163,7 +146,7 @@ with respect for nothing and compassion for no one.</p>
 <center>
 
   <img src="buttons/firefox.gif" alt="best viewed in firefox" width="88" height="31">
-  <img src="buttons/vi-vim.gif" alt="vim my love" width="88" height="31">
+  <img src="buttons/vi-vim.gif" alt="[button]" width="88" height="31">
   <img src="buttons/underconstruction.gif" alt="under construction" width="88" height="31">
   <br><br>
 
@@ -187,14 +170,13 @@ with respect for nothing and compassion for no one.</p>
       document.getElementById('np-track').textContent = d.track || '---';
     })
     .catch(function(){});
-    function toggleBGM() {
+  function toggleBGM() {
     var a = document.getElementById('bgm');
     var btn = document.getElementById('bgm-btn');
     if (a.paused) { a.play(); btn.textContent = '[stop]'; }
     else { a.pause(); a.currentTime = 0; btn.textContent = '[play]'; }
     return false;
   }
-
 
 fetch('https://visit-counter-kohl.vercel.app/api/count')
   .then(function(r){ return r.json(); })

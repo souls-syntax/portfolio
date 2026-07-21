@@ -49,6 +49,7 @@ function buildPostHtml({ slug, title, date, tags, series, fragment }) {
 <head>
   <title>${title} - Aakarsh Kashyap</title>
   <link rel="alternate" type="application/rss+xml" title="Aakarsh Kashyap" href="/feed.xml">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <style>
 a:visited {
   color: #0000EE;
@@ -94,6 +95,7 @@ img { max-width: 100%; height: auto; }
       <a href="../resume.html">Resume</a><br>
       <a href="../blog.html"><b>Blog</b></a><br>
       <a href="../projects.html">Projects</a><br>
+      <a href="../fun-projects.html">Fun Projects</a><br>
       <a href="../social.html">Social</a><br>
       <a href="../guestbook.html">GuestBook</a><br>
       <hr>
