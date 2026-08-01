@@ -70,13 +70,38 @@
     };
   }
 
-  // back-to-top
+  // back-to-top (auto-hide until scrolled 300px)
   var topChip = document.getElementById('top-chip');
   if (topChip) {
     topChip.onclick = function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return false;
     };
+    function checkScroll() {
+      if (window.scrollY > 300) {
+        topChip.classList.add('visible');
+      } else {
+        topChip.classList.remove('visible');
+      }
+    }
+    checkScroll();
+    window.addEventListener('scroll', checkScroll, { passive: true });
+  }
+
+  // nav popup (\begin{document})
+  var navChip = document.getElementById('nav-chip');
+  var navPopup = document.getElementById('latex-nav-popup');
+  if (navChip && navPopup) {
+    navChip.onclick = function(e) {
+      e.preventDefault();
+      navPopup.classList.toggle('show');
+      return false;
+    };
+    document.addEventListener('click', function(e) {
+      if (!navPopup.contains(e.target) && e.target !== navChip) {
+        navPopup.classList.remove('show');
+      }
+    });
   }
 
   // table of contents

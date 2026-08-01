@@ -13,7 +13,8 @@
   line-height: 1.65;
   hyphens: auto;
   margin: 0;
-  padding-top: 40px;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 [data-theme="latex"] body a,
@@ -138,34 +139,17 @@
   background: #e0e0e0;
   color: #222;
 }
+[data-theme="latex"][data-mode="dark"] .latex-chip {
+  background: #2a2a2a;
+  border-color: #555;
+  color: #aaa;
+}
+[data-theme="latex"][data-mode="dark"] .latex-chip:hover {
+  background: #3a3a3a;
+  color: #fff;
+}
 
-/* ── minimal nav (latex mode only) ── */
-[data-theme="personal"] .latex-nav { display: none; }
-.latex-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  padding: 9px 16px;
-  background: #fafafa;
-  border-bottom: 1px solid #ddd;
-  font-size: 13px;
-  color: #666;
-  font-family: "Crimson Text", Georgia, serif;
-  z-index: 9998;
-  display: none;
-}
-[data-theme="latex"] .latex-nav { display: block; }
-.latex-nav a {
-  color: #555 !important;
-  text-decoration: none !important;
-  font-family: "Crimson Text", Georgia, serif !important;
-}
-.latex-nav a:hover {
-  color: #000 !important;
-  text-decoration: underline !important;
-}
+/* (latex-nav removed — replaced by \begin{document} nav chip) */
 
 /* ═══════════════════════════════════════════════════
    Dark mode (pagecolor toggle) — latex view only
@@ -194,24 +178,15 @@
 [data-theme="latex"][data-mode="dark"] b {
   color: #e8e8e8;
 }
-[data-theme="latex"][data-mode="dark"] .latex-nav {
-  background: #1a1a1a;
-  border-bottom-color: #333;
-}
-[data-theme="latex"][data-mode="dark"] .latex-nav a {
-  color: #888 !important;
-}
-[data-theme="latex"][data-mode="dark"] .latex-nav a:hover {
-  color: #fff !important;
-}
 [data-theme="latex"][data-mode="dark"] img[src*="buttons/"] {
   filter: invert(1) grayscale(100%);
   opacity: 0.55;
 }
 
-/* ── pagecolor toggle chip ── */
+/* ── pagecolor toggle chip (side by side with \end{document}) ── */
 .pagecolor-chip {
-  bottom: 82px;
+  bottom: 52px;
+  right: 150px;
 }
 [data-theme="personal"] .pagecolor-chip {
   display: none;
@@ -243,6 +218,15 @@
 .top-chip {
   bottom: 52px;
   left: 18px;
+  right: auto;
+  width: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, background 0.15s, color 0.15s;
+}
+.top-chip.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 [data-theme="personal"] .top-chip { display: none; }
 [data-theme="latex"][data-mode="dark"] .top-chip {
@@ -251,6 +235,24 @@
   color: #aaa;
 }
 [data-theme="latex"][data-mode="dark"] .top-chip:hover {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+/* ── nav chip (\begin{document}) — left side ── */
+.nav-chip {
+  bottom: 82px;
+  left: 18px;
+  right: auto;
+  width: auto;
+}
+[data-theme="personal"] .nav-chip { display: none; }
+[data-theme="latex"][data-mode="dark"] .nav-chip {
+  background: #2a2a2a;
+  border-color: #555;
+  color: #aaa;
+}
+[data-theme="latex"][data-mode="dark"] .nav-chip:hover {
   background: #3a3a3a;
   color: #fff;
 }
@@ -326,7 +328,7 @@
    Table of contents chip + overlay
    ═══════════════════════════════════════════════════ */
 .toc-chip {
-  bottom: 112px;
+  bottom: 82px;
 }
 [data-theme="personal"] .toc-chip { display: none; }
 [data-theme="latex"][data-mode="dark"] .toc-chip {
@@ -341,7 +343,7 @@
 .latex-toc {
   display: none;
   position: fixed;
-  bottom: 144px;
+  bottom: 112px;
   right: 18px;
   max-width: 320px;
   max-height: 60vh;
@@ -388,4 +390,105 @@
 }
 [data-theme="latex"][data-mode="dark"] .latex-toc .toc-title {
   border-bottom-color: #444;
+}
+
+/* ═══════════════════════════════════════════════════
+   Nav popover (\begin{document} chip)
+   ═══════════════════════════════════════════════════ */
+.latex-nav-popup {
+  display: none;
+  position: fixed;
+  bottom: 112px;
+  left: 18px;
+  max-width: 200px;
+  background: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 10px 14px;
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 13px;
+  line-height: 1.8;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  z-index: 9999;
+}
+[data-theme="latex"] .latex-nav-popup.show { display: block; }
+[data-theme="latex"][data-mode="dark"] .latex-nav-popup {
+  background: #1f1f1f;
+  border-color: #444;
+  color: #ccc;
+}
+.latex-nav-popup a {
+  display: block;
+  color: #555 !important;
+  text-decoration: none !important;
+  padding: 2px 0;
+}
+.latex-nav-popup a:hover {
+  color: #000 !important;
+  text-decoration: underline !important;
+}
+[data-theme="latex"][data-mode="dark"] .latex-nav-popup a {
+  color: #aaa !important;
+}
+[data-theme="latex"][data-mode="dark"] .latex-nav-popup a:hover {
+  color: #fff !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   Mobile chip positioning
+   ═══════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .latex-chip {
+    font-size: 10px;
+    padding: 2px 7px;
+  }
+  .toc-chip {
+    bottom: 74px;
+  }
+  .nav-chip {
+    bottom: 74px;
+  }
+  .latex-toc {
+    bottom: 100px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+  .latex-nav-popup {
+    bottom: 100px;
+    left: 10px;
+  }
+  .top-chip,
+  .pagecolor-chip,
+  .latex-chip#theme-chip {
+    bottom: 46px;
+  }
+  .pagecolor-chip {
+    right: 120px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   Print stylesheet — LaTeX mode prints like a paper
+   ═══════════════════════════════════════════════════ */
+@media print {
+  .latex-chip,
+  .latex-toc,
+  .latex-nav-popup,
+  .latex-taskbar,
+  .top-chip,
+  .nav-chip,
+  .toc-chip,
+  .pagecolor-chip {
+    display: none !important;
+  }
+  [data-theme="latex"] body {
+    padding-bottom: 0 !important;
+  }
+  [data-theme="latex"] img[src*="buttons/"] {
+    display: none !important;
+  }
+  [data-theme="latex"] marquee {
+    display: none !important;
+  }
 }
