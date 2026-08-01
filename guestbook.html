@@ -15,6 +15,67 @@ a:visited {
   color: #0000EE;
 }
 img { max-width: 100%; height: auto; }
+
+/* ── guestbook archive ── */
+.gb-archive {
+  max-width: 700px;
+  margin: 0 auto 32px;
+}
+.gb-archive h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-variant: small-caps;
+  letter-spacing: 1px;
+}
+.gb-archive .archive-note {
+  font-size: 12px;
+  font-weight: normal;
+  color: #888;
+  font-variant: normal;
+}
+.gb-entry {
+  border-bottom: 1px solid #ccc;
+  padding: 14px 0;
+}
+.gb-meta {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+.gb-author {
+  font-weight: bold;
+  font-size: 14px;
+}
+.gb-date {
+  font-size: 12px;
+  color: #888;
+}
+.gb-msg {
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.gb-reply {
+  margin-left: 24px;
+  margin-top: 10px;
+  padding-left: 14px;
+  border-left: 2px solid #ccc;
+}
+
+/* latex dark mode */
+[data-theme="latex"][data-mode="dark"] .gb-entry {
+  border-bottom-color: #444;
+}
+[data-theme="latex"][data-mode="dark"] .gb-reply {
+  border-left-color: #555;
+}
+[data-theme="latex"][data-mode="dark"] .gb-date,
+[data-theme="latex"][data-mode="dark"] .archive-note {
+  color: #777;
+}
+
 @media (max-width: 600px) {
   table[width="100%"] > tbody > tr {
     display: block;
@@ -115,10 +176,10 @@ img { max-width: 100%; height: auto; }
            <h3>Legacy Messages <span class="archive-note">(archived, pre-migration)</span></h3>
            <div id="archive-list"></div>
            </section> -->
-      <section style="max-width: 700px; margin: 0 auto 32px; font-family: sans-serif; color: #000;">
-          <h3 style="font-size: 18px; margin-bottom: 12px;">
+      <section class="gb-archive">
+          <h3>
               Legacy Messages
-              <span style="font-size: 13px; font-weight: normal; color: #888;">(archived, pre-migration)</span>
+              <span class="archive-note">(archived, pre-migration)</span>
           </h3>
           <div id="archive-list"></div>
       </section>
@@ -126,9 +187,7 @@ img { max-width: 100%; height: auto; }
 
 async function loadArchive() {
   try {
-    const res = await fetch(
-'guestbook_stale_comments.json'
-);
+    const res = await fetch('guestbook_stale_comments.json');
     const entries = await res.json();
     const container = document.getElementById('archive-list');
     container.innerHTML = entries.map(entry => renderEntry(entry)).join('');
@@ -140,22 +199,22 @@ async function loadArchive() {
 function renderEntry(entry) {
   const repliesHtml = (entry.replies || [])
     .map(reply => `
-      <div style="margin-left: 32px; margin-top: 12px; padding-left: 16px; border-left: 2px solid #444;">
-        <div style="display: flex; gap: 8px; align-items: baseline; margin-bottom: 4px;">
-          <span style="font-weight: bold; font-size: 14px;">${escapeHtml(reply.author)}</span>
-          <span style="font-size: 12px; color: #888;">${formatDate(reply.date)}</span>
+      <div class="gb-reply">
+        <div class="gb-meta">
+          <span class="gb-author">${escapeHtml(reply.author)}</span>
+          <span class="gb-date">${formatDate(reply.date)}</span>
         </div>
-        <p style="margin: 0; white-space: pre-wrap; font-size: 14px; line-height: 1.5;">${escapeHtml(reply.message)}</p>
+        <p class="gb-msg">${escapeHtml(reply.message)}</p>
       </div>
     `).join('');
 
   return `
-    <div style="border-bottom: 1px solid #333; padding: 16px 0;">
-      <div style="display: flex; gap: 8px; align-items: baseline; margin-bottom: 4px;">
-        <span style="font-weight: bold; font-size: 15px;">${escapeHtml(entry.author)}</span>
-        <span style="font-size: 12px; color: #888;">${formatDate(entry.date)}</span>
+    <div class="gb-entry">
+      <div class="gb-meta">
+        <span class="gb-author">${escapeHtml(entry.author)}</span>
+        <span class="gb-date">${formatDate(entry.date)}</span>
       </div>
-      <p style="margin: 0; white-space: pre-wrap; font-size: 14px; line-height: 1.5;">${escapeHtml(entry.message)}</p>
+      <p class="gb-msg">${escapeHtml(entry.message)}</p>
       ${repliesHtml}
     </div>
   `;
@@ -263,7 +322,10 @@ fetch('https://visit-counter-kohl.vercel.app/api/count')
   <a href="index.html">\ref{about}</a>
   <a href="resume.html">\ref{resume}</a>
   <a href="projects.html">\ref{projects}</a>
+  <a href="fun-projects.html">\ref{fun-projects}</a>
   <a href="blog.html">\ref{blog}</a>
+  <a href="social.html">\ref{social}</a>
+  <a href="guestbook.html">\ref{guestbook}</a>
   <a href="https://github.com/souls-syntax">\ref{github}</a>
 </div>
 <div class="latex-taskbar">
@@ -271,7 +333,10 @@ fetch('https://visit-counter-kohl.vercel.app/api/count')
     <a href="index.html">about</a> &middot;
     <a href="resume.html">resume</a> &middot;
     <a href="projects.html">projects</a> &middot;
+    <a href="fun-projects.html">fun</a> &middot;
     <a href="blog.html">blog</a> &middot;
+    <a href="social.html">social</a> &middot;
+    <a href="guestbook.html">guestbook</a> &middot;
     <a href="https://github.com/souls-syntax">github</a>
   </div>
   <div class="taskbar-center"><i>made with vim and spite</i></div>

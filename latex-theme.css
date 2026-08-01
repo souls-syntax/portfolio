@@ -108,13 +108,15 @@
   color: inherit !important;
 }
 
-/* ── keep 88x31 buttons, restyled ── */
+/* ── keep 88x31 buttons at fixed size (both themes) ── */
+img[src*="buttons/"] {
+  width: 88px;
+  height: 31px;
+}
 [data-theme="latex"] img[src*="buttons/"] {
   display: inline !important;
   filter: grayscale(100%);
   opacity: 0.45;
-  width: 88px;
-  height: 31px;
 }
 
 /* ── latex chip (toggle button) ── */
