@@ -44,6 +44,9 @@ portfolio/
 ├── music_update.sh     # Shell script that updates nowplaying.json
 ├── guestbook-api/      # Unused Vercel KV API scaffold (kept for reference, not deployed)
 │   └── api/comments.js
+├── js/
+│   ├── chaos-toggle.js  # Chaos-toggle script (hides marquees/GIFs/BGM on non-dual-layer pages)
+│   └── theme-toggle.js  # Dual-layer theme toggle (LaTeX ↔ personal on index, resume, projects)
 └── nowplaying.json     # Also exists in weird/ subdirectory
 ```
 
@@ -193,13 +196,82 @@ Use `var` not `let`/`const`. Use `.then(function(){})` not arrow functions. Keep
 
 - **No Tailwind, no Bootstrap, no React, no build tools** — plain HTML + vanilla JS + vanilla CSS only
 - **No `let`/`const`/arrow functions** in shared scripts — keep oldweb JS style
-- **No external fonts** — browser default serif/sans is intentional
+- **No external fonts on the oldweb/personal layer** — browser default serif/sans is intentional. The LaTeX layer uses Crimson Text via Google Fonts.
 - **Fixed pixel sizes on GIFs** are intentional — `width="88" height="31"` for buttons, etc.
 - **`<marquee>` on every page** — it's a feature, not a bug
 - **`<b>` not `<strong>`**, `<i>` not `<em>` — oldweb HTML conventions
 - **`bgcolor`, `text`, `link`, `vlink` on `<body>`** — intentional, matches retro style
 - **White background (`#ffffff`), black text (`#000000`), classic blue links (`#0000ee`)** — do not change the color scheme
 - The site deliberately looks like it was made in 2001. Preserve that at all costs.
+
+---
+
+## Dual-Layer Theme System (LATEX Toggle)
+
+Three core pages use a dual-layer design with a LaTeX-to-personal toggle:
+
+- `index.html` — LaTeX professional layer + wrapped personal layer
+- `resume.html` — same dual-layer structure
+- `projects.html` — same dual-layer structure
+
+### Architecture
+
+```html
+<html data-theme="latex">  <!-- or "personal" -->
+  <body>
+    <div id="latex-layer">
+      <!-- LaTeX-chip toggle: \end{document} -->
+      <!-- Professional content with Crimson Text font, paper-like styling -->
+    </div>
+    <div id="personal-layer">
+      <!-- LaTeX-chip toggle: \documentclass{article} -->
+      <!-- EXISTING chaotic HTML -- completely untouched, all oldweb conventions apply inside -->
+    </div>
+    <script src="js/theme-toggle.js"></script>
+  </body>
+</html>
+```
+
+### Layer visibility CSS
+
+```css
+[data-theme="latex"]    #personal-layer { display: none; }
+[data-theme="personal"] #latex-layer   { display: none; }
+```
+
+### State management (`js/theme-toggle.js`)
+
+1. Checks URL params (`?theme=latex|personal`), then localStorage key `theme`
+2. Default: `"latex"` (professional layer visible on first visit)
+3. Sets `data-theme` attribute on `<html>`
+4. Toggle chips (`#toggle-to-personal`, `#toggle-to-latex`) call `applyTheme()`
+5. Persists via `localStorage.setItem('theme', ...)`
+
+### LaTeX theme styling
+
+- **Font**: Crimson Text (Google Fonts webfont, loaded via `<link>` in `<head>`)
+- **Background**: `#fafafa` (off-white paper)
+- **Layout**: max-width 680px centered, generous padding, justified text
+- **Sections**: small-caps headers with § numbering, thin top border (`1px solid #333`)
+- **Projects**: left-bordered cards with tags
+- **Toggle chip**: fixed bottom-right, monospace, light gray bg, thin border
+
+### Chaos toggle (personal layer only)
+
+Within the personal layer, the `chaos-toggle.js` script provides a secondary `[toggle chaos]` link that hides/shows marquees, GIFs, audio, and blinkies using `body:not(.chaos)` CSS rules. This is independent from the LaTeX layer swap.
+
+### Non-dual-layer pages
+
+All other pages (blog, guestbook, social, fun-projects, webring, weird/*, blog posts) use only the chaos toggle system (`js/chaos-toggle.js`). They do NOT have a LaTeX layer. The `[toggle chaos]` link and `body:not(.chaos)` CSS rules are on every page.
+
+### Adding LaTeX content to a new dual-layer page
+
+1. Copy structure from `index.html`
+2. Add Crimson Text webfont `<link>` in `<head>`
+3. Include layer-visibility CSS + LaTeX theme CSS in `<style>`
+4. Add `<div id="latex-layer">` with professional content + `\end{document}` chip
+5. Wrap existing content in `<div id="personal-layer">` with `\documentclass{article}` chip + `chaos-toggle.js`
+6. Add `<script src="js/theme-toggle.js"></script>` before `</body>`
 
 ---
 

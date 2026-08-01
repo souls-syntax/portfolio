@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>Aakarsh Kashyap</title>
+    <link>https://souls-syntax.github.io</link>
+    <description>made with vim and spite</description>
+    <language>en</language>
+    <atom:link href="https://souls-syntax.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Sat, 01 Aug 2026 17:02:42 GMT</lastBuildDate>
+  <item>
+    <title>Retarded take : Episode 0 : some languages are not real programming language</title>
+    <link>https://souls-syntax.github.io/posts/realLangs_0.html</link>
+    <guid isPermaLink="true">https://souls-syntax.github.io/posts/realLangs_0.html</guid>
+    <pubDate>Fri, 12 Jun 2026 00:00:00 GMT</pubDate>
+    <description>The way i see it most of the language floating around just don&apos;t have a purpose other than providing syntactic sugar, they exist purely to become someones eye-candy. I call that language grooming. Making a language without any specific purpose just for the sole purpose of having a beautiful on…</description>
+    <category>retarded</category>
+      <category>language</category>
+    <itunes:subtitle>series: tsundere</itunes:subtitle>
+  </item>
+  <item>
+    <title>tsundere-runtime, Episode - 0 : What I am trying to do with this project, why and how.</title>
+    <link>https://souls-syntax.github.io/posts/tsun_0.html</link>
+    <guid isPermaLink="true">https://souls-syntax.github.io/posts/tsun_0.html</guid>
+    <pubDate>Mon, 25 May 2026 00:00:00 GMT</pubDate>
+    <description>Me trying to do something out of my league. And recording it&apos;s journey Hmm so as usual we were talking on discord and it was bought up how js is like bandage of web. Tbh I agree with this point. It was made in rush have lots of obvious holes and is not really very nice to code with. So saar…</description>
+    <category>programming</category>
+      <category>zig</category>
+      <category>c</category>
+      <category>linux</category>
+    <itunes:subtitle>series: tsundere</itunes:subtitle>
+  </item>
+  </channel>
+</rss>

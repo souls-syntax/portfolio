@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="latex-theme.css">
 <style>
 a:visited {
   color: #0000EE;
@@ -83,16 +87,10 @@ img { max-width: 100%; height: auto; }
       <hr>
 
       <small>filter by series:</small><br>
-      <input type="button" value="all" onclick="filterPosts('all', 'series')">
-      <input type="button" value="tsundere" onclick="filterPosts('tsundere', 'series')">
+      <span id="series-filters"></span>
       <br>
       <small>filter by tag:</small><br>
-      <input type="button" value="all" onclick="filterPosts('all', 'tag')">
-      <input type="button" value="touhou" onclick="filterPosts('touhou', 'tag')">
-      <input type="button" value="programming" onclick="filterPosts('programming', 'tag')">
-      <input type="button" value="linux" onclick="filterPosts('linux', 'tag')">
-      <input type="button" value="zig" onclick="filterPosts('zig', 'tag')">
-      <input type="button" value="c" onclick="filterPosts('c', 'tag')">
+      <span id="tag-filters"></span>
       <br><br>
 	  
       <table width="100%" border="0" cellpadding="2" id="post-list">
@@ -139,6 +137,7 @@ img { max-width: 100%; height: auto; }
   <br><br>
 
   <small>aakarsh kashyap ; made with vim and spite</small>
+  
 
 </center>
 
@@ -149,7 +148,8 @@ function filterPosts(val, by) {
     if (val === 'all') {
       rows[i].style.display = '';
     } else if (by === 'tag') {
-      rows[i].style.display = rows[i].getAttribute('data-tags').indexOf(val) !== -1 ? '' : 'none';
+      var tags = rows[i].getAttribute('data-tags').split(' ');
+      rows[i].style.display = tags.indexOf(val) !== -1 ? '' : 'none';
     } else if (by === 'series') {
       rows[i].style.display = rows[i].getAttribute('data-series') === val ? '' : 'none';
     }
@@ -169,17 +169,48 @@ function filterPosts(val, by) {
   .then(function(posts){
     var list = document.getElementById('post-list');
     list.innerHTML = '';
+
+    // collect unique tags and series
+    var allTags = [];
+    var allSeries = [];
+    for (var i = 0; i < posts.length; i++) {
+      var p = posts[i];
+      for (var j = 0; j < p.tags.length; j++) {
+        if (allTags.indexOf(p.tags[j]) === -1) allTags.push(p.tags[j]);
+      }
+      if (p.series && allSeries.indexOf(p.series) === -1) allSeries.push(p.series);
+    }
+
+    // build filter buttons dynamically
+    var seriesBox = document.getElementById('series-filters');
+    var tagBox = document.getElementById('tag-filters');
+
+    var seriesHtml = '<input type="button" value="all" onclick="filterPosts(\'all\', \'series\')">';
+    for (var s = 0; s < allSeries.length; s++) {
+      seriesHtml += ' <input type="button" value="' + allSeries[s] + '" onclick="filterPosts(\'' + allSeries[s] + '\', \'series\')">';
+    }
+    seriesBox.innerHTML = seriesHtml;
+
+    var tagHtml = '<input type="button" value="all" onclick="filterPosts(\'all\', \'tag\')">';
+    for (var t = 0; t < allTags.length; t++) {
+      tagHtml += ' <input type="button" value="' + allTags[t] + '" onclick="filterPosts(\'' + allTags[t] + '\', \'tag\')">';
+    }
+    tagBox.innerHTML = tagHtml;
+
+    // render post rows
     for (var i = 0; i < posts.length; i++) {
       var p = posts[i];
       var tagStr = p.tags.map(function(t){ return '['+t+']'; }).join(' ');
+      var readStr = p.readingTime ? ' &middot; ' + p.readingTime + ' min' : '';
+      var excerptStr = p.excerpt ? '<br><small style="color:#666;">' + p.excerpt + '</small>' : '';
       var row = document.createElement('tr');
       row.className = 'post-row';
       row.setAttribute('data-tags', p.tags.join(' '));
       row.setAttribute('data-series', p.series || '');
       row.innerHTML =
         '<td><small>' + p.date + '</small></td>' +
-        '<td><a href="' + p.url + '">' + p.title + '</a></td>' +
-        '<td><small>' + tagStr + '</small></td>';
+        '<td><a href="' + p.url + '">' + p.title + '</a>' + excerptStr + '</td>' +
+        '<td><small>' + tagStr + '<br>' + readStr + '</small></td>';
       list.appendChild(row);
     }
   })
@@ -199,6 +230,34 @@ fetch('https://visit-counter-kohl.vercel.app/api/count')
   })
   .catch(function(){});
 </script>
+
+<nav class="latex-nav">
+  <a href="index.html">about</a> &middot;
+  <a href="resume.html">resume</a> &middot;
+  <a href="projects.html">projects</a> &middot;
+  <a href="blog.html">blog</a> &middot;
+  <a href="https://github.com/souls-syntax">github</a>
+</nav>
+<!-- latex extras: toc, footer, back-to-top -->
+<a href="#" class="latex-chip toc-chip" id="toc-chip">\tableofcontents</a>
+<div class="latex-toc" id="latex-toc"></div>
+<div class="latex-taskbar">
+  <div class="taskbar-left">
+    <a href="index.html">about</a> &middot;
+    <a href="resume.html">resume</a> &middot;
+    <a href="projects.html">projects</a> &middot;
+    <a href="blog.html">blog</a> &middot;
+    <a href="https://github.com/souls-syntax">github</a>
+  </div>
+  <div class="taskbar-center"><i>made with vim and spite</i></div>
+  <div class="taskbar-right"><span id="latex-clock">--:--</span></div>
+</div>
+  set in Crimson Text &middot; &copy; 2026 Aakarsh Kashyap
+</div>
+<a href="#" class="latex-chip top-chip" id="top-chip">\top</a>
+<a href="#" class="latex-chip pagecolor-chip" id="pagecolor-chip">\pagecolor{dark}</a>
+<a href="#" class="latex-chip" id="theme-chip">\end{document}</a>
+<script src="js/theme-toggle.js"></script>
 
 </body>
 </html>

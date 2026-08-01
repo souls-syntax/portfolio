@@ -8,7 +8,14 @@
       "language"
     ],
     "series": "tsundere",
-    "url": "posts/realLangs_0.html"
+    "readingTime": 1,
+    "excerpt": "The way i see it most of the language floating around just don't have a purpose other than providing syntactic sugar, they exist purely to become someones eye-candy. I call that language grooming. Making a language without any specific purpose just for the sole purpose of having a beautiful on…",
+    "url": "posts/realLangs_0.html",
+    "prev": {
+      "slug": "tsun_0",
+      "title": "tsundere-runtime, Episode - 0 : What I am trying to do with this project, why and how."
+    },
+    "next": null
   },
   {
     "slug": "tsun_0",
@@ -21,6 +28,13 @@
       "linux"
     ],
     "series": "tsundere",
-    "url": "posts/tsun_0.html"
+    "readingTime": 10,
+    "excerpt": "Me trying to do something out of my league. And recording it's journey Hmm so as usual we were talking on discord and it was bought up how js is like bandage of web. Tbh I agree with this point. It was made in rush have lots of obvious holes and is not really very nice to code with. So saar…",
+    "url": "posts/tsun_0.html",
+    "prev": null,
+    "next": {
+      "slug": "realLangs_0",
+      "title": "Retarded take : Episode 0 : some languages are not real programming language"
+    }
   }
 ]
