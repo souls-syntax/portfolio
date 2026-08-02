@@ -437,9 +437,10 @@ img[src*="buttons/"] {
 }
 
 /* ═══════════════════════════════════════════════════
-   Mobile chip positioning
+   Mobile responsive (both themes)
    ═══════════════════════════════════════════════════ */
 @media (max-width: 600px) {
+  /* ── chip positioning ── */
   .latex-chip {
     font-size: 10px;
     padding: 2px 7px;
@@ -467,6 +468,51 @@ img[src*="buttons/"] {
   }
   .pagecolor-chip {
     right: 120px;
+  }
+
+  /* ── LaTeX mode: reduce padding on center column ── */
+  [data-theme="latex"] table[width="100%"] > tbody > tr > td,
+  [data-theme="latex"] table[width="100%"] > tr > td {
+    padding: 24px 14px 60px !important;
+    max-width: 100%;
+  }
+
+  /* ── LaTeX mode: prevent code/pre overflow ── */
+  [data-theme="latex"] pre {
+    overflow-x: auto;
+    max-width: 100%;
+    font-size: 13px;
+  }
+  [data-theme="latex"] code {
+    word-break: break-word;
+  }
+  [data-theme="latex"] img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ── personal mode: hide sidebars on ALL pages ── */
+  [data-theme="personal"] table[width="100%"] > tbody > tr > td[width="150"],
+  [data-theme="personal"] table[width="100%"] > tbody > tr > td[width="140"],
+  [data-theme="personal"] table[width="100%"] > tr > td[width="150"],
+  [data-theme="personal"] table[width="100%"] > tr > td[width="140"] {
+    display: none;
+  }
+  [data-theme="personal"] table[width="100%"] > tbody > tr > td,
+  [data-theme="personal"] table[width="100%"] > tr > td {
+    display: block;
+    width: 100% !important;
+    border: none !important;
+    box-sizing: border-box;
+  }
+
+  /* ── taskbar: shrink text on mobile ── */
+  .latex-taskbar {
+    font-size: 11px;
+    padding: 0 8px;
+  }
+  .taskbar-center {
+    display: none;
   }
 }
 
