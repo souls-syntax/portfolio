@@ -168,7 +168,8 @@ img { max-width: 100%; height: auto; }
       <a href="../projects.html">Projects</a><br>
       <a href="../fun-projects.html">Fun Projects</a><br>
       <a href="../social.html">Social</a><br>
-      <a href="../guestbook.html">GuestBook</a><br>
+       <a href="../guestbook.html">GuestBook</a><br>
+       <a href="../awareness.html">Awareness</a><br>
       <hr>
       <b>Friends</b><br>
       <a href="https://shashwatagrawal20.github.io/portfolio/">[ Shashwat ]</a><br>
