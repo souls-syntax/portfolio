@@ -1,542 +1,542 @@
-/* ═══════════════════════════════════════════════════
-   latex-theme.css — academic-paper theme toggle
-   Applied when <html data-theme="latex"> is set.
-   One DOM, CSS-only presentation switch (moofin pattern).
-   ═══════════════════════════════════════════════════ */
-
-/* ── body / paper ── */
-[data-theme="latex"] body {
-  background: #fafafa !important;
-  color: #1a1a1a !important;
-  font-family: "Crimson Text", Georgia, "Times New Roman", serif !important;
-  text-align: justify;
-  line-height: 1.65;
-  hyphens: auto;
-  margin: 0;
-  scroll-behavior: smooth;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-[data-theme="latex"] body a,
-[data-theme="latex"] body a:visited {
-  color: #1a1a1a !important;
-  text-decoration: underline;
-  text-decoration-color: #aaa;
-  text-underline-offset: 2px;
-}
-[data-theme="latex"] body a:hover {
-  color: #000 !important;
-  text-decoration-color: #333;
-}
-
-/* ── hide chaos ── */
-[data-theme="latex"] marquee { display: none !important; }
-[data-theme="latex"] img[src*="gifs/"] { display: none !important; }
-[data-theme="latex"] audio { display: none !important; }
-[data-theme="latex"] audio + b { display: none !important; }
-[data-theme="latex"] audio ~ #bgm-btn { display: none !important; }
-[data-theme="latex"] #bgm-btn { display: none !important; }
-
-/* ── collapse 3-column table to centered single column ── */
-[data-theme="latex"] table[width="100%"] > tbody > tr > td:first-child,
-[data-theme="latex"] table[width="100%"] > tr > td:first-child {
-  display: none !important;
-}
-[data-theme="latex"] table[width="100%"] > tbody > tr > td:last-child,
-[data-theme="latex"] table[width="100%"] > tr > td:last-child {
-  display: none !important;
-}
-[data-theme="latex"] table[width="100%"] > tbody > tr > td,
-[data-theme="latex"] table[width="100%"] > tr > td {
-  display: block !important;
-  width: 100% !important;
-  max-width: 680px;
-  margin: 0 auto;
-  border: none !important;
-  padding: 48px 32px 80px !important;
-  box-sizing: border-box;
-}
-
-/* ── restyle content ── */
-[data-theme="latex"] hr {
-  border: none !important;
-  border-top: 1px solid #333 !important;
-  margin: 24px 0;
-}
-[data-theme="latex"] b {
-  font-variant: small-caps;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
-[data-theme="latex"] small {
-  font-size: 12px;
-  color: #666;
-}
-[data-theme="latex"] p { margin: 8px 0; }
-[data-theme="latex"] ul { padding-left: 20px; }
-[data-theme="latex"] li { margin: 4px 0; }
-[data-theme="latex"] center { padding: 16px 0; }
-
-/* ── neutralize inline styles on tab headers (projects page) ── */
-[data-theme="latex"] td[id^="tab-"],
-[data-theme="latex"] td[id^="tab-"] a,
-[data-theme="latex"] td[style*="background:#000000"],
-[data-theme="latex"] td[style*="background:#000"] {
-  background: transparent !important;
-  border: 1px solid #333 !important;
-  border-bottom: none !important;
-  padding: 2px 8px !important;
-}
-[data-theme="latex"] td[id^="tab-"] a {
-  color: inherit !important;
-  text-decoration: none !important;
-}
-[data-theme="latex"] td[id^="tab-"]:not([style*="background:transparent"]) a,
-[data-theme="latex"] td[id^="tab-"].active a {
-  font-weight: 700;
-}
-/* generic neutralizer for any inline black-bg cells */
-[data-theme="latex"] [style*="background:#000000"],
-[data-theme="latex"] [style*="background:#000"],
-[data-theme="latex"] [style*="background-color:#000000"],
-[data-theme="latex"] [style*="background-color:#000"] {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-[data-theme="latex"] [style*="color:#ffffff"],
-[data-theme="latex"] [style*="color:#fff"] {
-  color: inherit !important;
-}
-
-/* ── keep 88x31 buttons at fixed size (both themes) ── */
-img[src*="buttons/"] {
-  width: 88px;
-  height: 31px;
-}
-[data-theme="latex"] img[src*="buttons/"] {
-  display: inline !important;
-  filter: grayscale(100%);
-  opacity: 0.45;
-}
-
-/* ── latex chip (toggle button) ── */
-.latex-chip {
-  position: fixed;
-  bottom: 52px;
-  right: 18px;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
-  background: #f4f4f4;
-  border: 1px solid #bbb;
-  border-radius: 2px;
-  padding: 3px 10px;
-  cursor: pointer;
-  text-decoration: none;
-  color: #555;
-  z-index: 9999;
-  user-select: none;
-  transition: background 0.15s, color 0.15s;
-}
-.latex-chip:hover {
-  background: #e0e0e0;
-  color: #222;
-}
-[data-theme="latex"][data-mode="dark"] .latex-chip {
-  background: #2a2a2a;
-  border-color: #555;
-  color: #aaa;
-}
-[data-theme="latex"][data-mode="dark"] .latex-chip:hover {
-  background: #3a3a3a;
-  color: #fff;
-}
-
-/* (latex-nav removed — replaced by \begin{document} nav chip) */
-
-/* ═══════════════════════════════════════════════════
-   Dark mode (pagecolor toggle) — latex view only
-   Triggered by <html data-mode="dark">
-   ═══════════════════════════════════════════════════ */
-
-[data-theme="latex"][data-mode="dark"] body {
-  background: #1a1a1a !important;
-  color: #d4d4d4 !important;
-}
-[data-theme="latex"][data-mode="dark"] body a,
-[data-theme="latex"][data-mode="dark"] body a:visited {
-  color: #c8c8c8 !important;
-  text-decoration-color: #555;
-}
-[data-theme="latex"][data-mode="dark"] body a:hover {
-  color: #fff !important;
-  text-decoration-color: #999;
-}
-[data-theme="latex"][data-mode="dark"] hr {
-  border-top-color: #444 !important;
-}
-[data-theme="latex"][data-mode="dark"] small {
-  color: #999;
-}
-[data-theme="latex"][data-mode="dark"] b {
-  color: #e8e8e8;
-}
-[data-theme="latex"][data-mode="dark"] img[src*="buttons/"] {
-  filter: invert(1) grayscale(100%);
-  opacity: 0.55;
-}
-
-/* ── pagecolor toggle chip (side by side with \end{document}) ── */
-.pagecolor-chip {
-  bottom: 52px;
-  right: 150px;
-}
-[data-theme="personal"] .pagecolor-chip {
-  display: none;
-}
-[data-theme="latex"][data-mode="dark"] .pagecolor-chip {
-  background: #2a2a2a;
-  border-color: #555;
-  color: #aaa;
-}
-[data-theme="latex"][data-mode="dark"] .pagecolor-chip:hover {
-  background: #3a3a3a;
-  color: #fff;
-}
-
-/* ── highlight.js github-dark already dark — keep readable in dark latex ── */
-[data-theme="latex"][data-mode="dark"] pre,
-[data-theme="latex"][data-mode="dark"] pre code {
-  background: #0d1117 !important;
-  color: #c9d1d9 !important;
-}
-[data-theme="latex"][data-mode="dark"] td[id^="tab-"],
-[data-theme="latex"][data-mode="dark"] td[id^="tab-"] a {
-  border-color: #555 !important;
-}
-
-/* ═══════════════════════════════════════════════════
-   Back-to-top chip (\top)
-   ═══════════════════════════════════════════════════ */
-.top-chip {
-  bottom: 52px;
-  left: 18px;
-  right: auto;
-  width: auto;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease, background 0.15s, color 0.15s;
-}
-.top-chip.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-[data-theme="personal"] .top-chip { display: none; }
-[data-theme="latex"][data-mode="dark"] .top-chip {
-  background: #2a2a2a;
-  border-color: #555;
-  color: #aaa;
-}
-[data-theme="latex"][data-mode="dark"] .top-chip:hover {
-  background: #3a3a3a;
-  color: #fff;
-}
-
-/* ── nav chip (\begin{document}) — left side ── */
-.nav-chip {
-  bottom: 82px;
-  left: 18px;
-  right: auto;
-  width: auto;
-}
-[data-theme="personal"] .nav-chip { display: none; }
-[data-theme="latex"][data-mode="dark"] .nav-chip {
-  background: #2a2a2a;
-  border-color: #555;
-  color: #aaa;
-}
-[data-theme="latex"][data-mode="dark"] .nav-chip:hover {
-  background: #3a3a3a;
-  color: #fff;
-}
-
-/* ═══════════════════════════════════════════════════
-   LaTeX sticky taskbar (bottom-fixed bar)
-   ═══════════════════════════════════════════════════ */
-[data-theme="latex"] body { padding-bottom: 44px; }
-[data-theme="personal"] .latex-taskbar { display: none; }
-.latex-taskbar {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 36px;
-  background: #f0f0f0;
-  border-top: 1px solid #ccc;
-  font-family: "Crimson Text", Georgia, serif;
-  font-size: 13px;
-  color: #666;
-  z-index: 9998;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-[data-theme="latex"] .latex-taskbar { display: flex; }
-[data-theme="latex"][data-mode="dark"] .latex-taskbar {
-  background: #1a1a1a;
-  border-top-color: #333;
-  color: #888;
-}
-.latex-taskbar a {
-  color: #555 !important;
-  text-decoration: none !important;
-  white-space: nowrap;
-}
-.latex-taskbar a:hover {
-  color: #000 !important;
-  text-decoration: underline !important;
-}
-[data-theme="latex"][data-mode="dark"] .latex-taskbar a {
-  color: #999 !important;
-}
-[data-theme="latex"][data-mode="dark"] .latex-taskbar a:hover {
-  color: #fff !important;
-}
-.taskbar-left, .taskbar-right {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-}
-.taskbar-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-style: italic;
-  font-size: 12px;
-  color: #999;
-  pointer-events: none;
-}
-[data-theme="latex"][data-mode="dark"] .taskbar-center {
-  color: #666;
-}
-.taskbar-right {
-  font-family: "Courier New", monospace;
-  font-size: 12px;
-}
-
-/* ═══════════════════════════════════════════════════
-   Table of contents chip + overlay
-   ═══════════════════════════════════════════════════ */
-.toc-chip {
-  bottom: 82px;
-}
-[data-theme="personal"] .toc-chip { display: none; }
-[data-theme="latex"][data-mode="dark"] .toc-chip {
-  background: #2a2a2a;
-  border-color: #555;
-  color: #aaa;
-}
-[data-theme="latex"][data-mode="dark"] .toc-chip:hover {
-  background: #3a3a3a;
-  color: #fff;
-}
-.latex-toc {
-  display: none;
-  position: fixed;
-  bottom: 112px;
-  right: 18px;
-  max-width: 320px;
-  max-height: 60vh;
-  overflow-y: auto;
-  background: #fafafa;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  padding: 14px 18px;
-  font-family: "Crimson Text", Georgia, serif;
-  font-size: 13px;
-  line-height: 1.6;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  z-index: 9999;
-}
-[data-theme="latex"] .latex-toc.show { display: block; }
-[data-theme="latex"][data-mode="dark"] .latex-toc {
-  background: #1f1f1f;
-  border-color: #444;
-  color: #ccc;
-}
-[data-theme="latex"][data-mode="dark"] .latex-toc a {
-  color: #aaa !important;
-}
-[data-theme="latex"][data-mode="dark"] .latex-toc a:hover {
-  color: #fff !important;
-}
-.latex-toc a {
-  display: block;
-  color: #555 !important;
-  text-decoration: none !important;
-  padding: 2px 0;
-}
-.latex-toc a:hover {
-  color: #000 !important;
-  text-decoration: underline !important;
-}
-.latex-toc .toc-title {
-  font-weight: 600;
-  font-variant: small-caps;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 4px;
-}
-[data-theme="latex"][data-mode="dark"] .latex-toc .toc-title {
-  border-bottom-color: #444;
-}
-
-/* ═══════════════════════════════════════════════════
-   Nav popover (\begin{document} chip)
-   ═══════════════════════════════════════════════════ */
-.latex-nav-popup {
-  display: none;
-  position: fixed;
-  bottom: 112px;
-  left: 18px;
-  max-width: 200px;
-  background: #fafafa;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  padding: 10px 14px;
-  font-family: "Crimson Text", Georgia, serif;
-  font-size: 13px;
-  line-height: 1.8;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  z-index: 9999;
-}
-[data-theme="latex"] .latex-nav-popup.show { display: block; }
-[data-theme="latex"][data-mode="dark"] .latex-nav-popup {
-  background: #1f1f1f;
-  border-color: #444;
-  color: #ccc;
-}
-.latex-nav-popup a {
-  display: block;
-  color: #555 !important;
-  text-decoration: none !important;
-  padding: 2px 0;
-}
-.latex-nav-popup a:hover {
-  color: #000 !important;
-  text-decoration: underline !important;
-}
-[data-theme="latex"][data-mode="dark"] .latex-nav-popup a {
-  color: #aaa !important;
-}
-[data-theme="latex"][data-mode="dark"] .latex-nav-popup a:hover {
-  color: #fff !important;
-}
-
-/* ═══════════════════════════════════════════════════
-   Mobile responsive (both themes)
-   ═══════════════════════════════════════════════════ */
-@media (max-width: 600px) {
-  /* ── chip positioning ── */
-  .latex-chip {
-    font-size: 10px;
-    padding: 2px 7px;
-  }
-  .toc-chip {
-    bottom: 74px;
-  }
-  .nav-chip {
-    bottom: 74px;
-  }
-  .latex-toc {
-    bottom: 100px;
-    right: 10px;
-    left: 10px;
-    max-width: none;
-  }
-  .latex-nav-popup {
-    bottom: 100px;
-    left: 10px;
-  }
-  .top-chip,
-  .pagecolor-chip,
-  .latex-chip#theme-chip {
-    bottom: 46px;
-  }
-  .pagecolor-chip {
-    right: 120px;
-  }
-
-  /* ── LaTeX mode: reduce padding on center column ── */
-  [data-theme="latex"] table[width="100%"] > tbody > tr > td,
-  [data-theme="latex"] table[width="100%"] > tr > td {
-    padding: 24px 14px 60px !important;
-    max-width: 100%;
-  }
-
-  /* ── LaTeX mode: prevent code/pre overflow ── */
-  [data-theme="latex"] pre {
-    overflow-x: auto;
-    max-width: 100%;
-    font-size: 13px;
-  }
-  [data-theme="latex"] code {
-    word-break: break-word;
-  }
-  [data-theme="latex"] img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* ── personal mode: hide sidebars on ALL pages ── */
-  [data-theme="personal"] table[width="100%"] > tbody > tr > td[width="150"],
-  [data-theme="personal"] table[width="100%"] > tbody > tr > td[width="140"],
-  [data-theme="personal"] table[width="100%"] > tr > td[width="150"],
-  [data-theme="personal"] table[width="100%"] > tr > td[width="140"] {
-    display: none;
-  }
-  [data-theme="personal"] table[width="100%"] > tbody > tr > td,
-  [data-theme="personal"] table[width="100%"] > tr > td {
-    display: block;
-    width: 100% !important;
-    border: none !important;
-    box-sizing: border-box;
-  }
-
-  /* ── taskbar: shrink text on mobile ── */
-  .latex-taskbar {
-    font-size: 11px;
-    padding: 0 8px;
-  }
-  .taskbar-center {
-    display: none;
-  }
-}
-
-/* ═══════════════════════════════════════════════════
-   Print stylesheet — LaTeX mode prints like a paper
-   ═══════════════════════════════════════════════════ */
-@media print {
-  .latex-chip,
-  .latex-toc,
-  .latex-nav-popup,
-  .latex-taskbar,
-  .top-chip,
-  .nav-chip,
-  .toc-chip,
-  .pagecolor-chip {
-    display: none !important;
-  }
-  [data-theme="latex"] body {
-    padding-bottom: 0 !important;
-  }
-  [data-theme="latex"] img[src*="buttons/"] {
-    display: none !important;
-  }
-  [data-theme="latex"] marquee {
-    display: none !important;
-  }
-}
+/* /* ═══════════════════════════════════════════════════ */
+/*    latex-theme.css — academic-paper theme toggle */
+/*    Applied when <html data-theme="latex"> is set. */
+/*    One DOM, CSS-only presentation switch (moofin pattern). */
+/*    ═══════════════════════════════════════════════════ */ */
+/**/
+/* /* ── body / paper ── */ */
+/* [data-theme="latex"] body { */
+/*   background: #fafafa !important; */
+/*   color: #1a1a1a !important; */
+/*   font-family: "Crimson Text", Georgia, "Times New Roman", serif !important; */
+/*   text-align: justify; */
+/*   line-height: 1.65; */
+/*   hyphens: auto; */
+/*   margin: 0; */
+/*   scroll-behavior: smooth; */
+/*   transition: background-color 0.3s ease, color 0.3s ease; */
+/* } */
+/**/
+/* [data-theme="latex"] body a, */
+/* [data-theme="latex"] body a:visited { */
+/*   color: #1a1a1a !important; */
+/*   text-decoration: underline; */
+/*   text-decoration-color: #aaa; */
+/*   text-underline-offset: 2px; */
+/* } */
+/* [data-theme="latex"] body a:hover { */
+/*   color: #000 !important; */
+/*   text-decoration-color: #333; */
+/* } */
+/**/
+/* /* ── hide chaos ── */ */
+/* [data-theme="latex"] marquee { display: none !important; } */
+/* [data-theme="latex"] img[src*="gifs/"] { display: none !important; } */
+/* [data-theme="latex"] audio { display: none !important; } */
+/* [data-theme="latex"] audio + b { display: none !important; } */
+/* [data-theme="latex"] audio ~ #bgm-btn { display: none !important; } */
+/* [data-theme="latex"] #bgm-btn { display: none !important; } */
+/**/
+/* /* ── collapse 3-column table to centered single column ── */ */
+/* [data-theme="latex"] table[width="100%"] > tbody > tr > td:first-child, */
+/* [data-theme="latex"] table[width="100%"] > tr > td:first-child { */
+/*   display: none !important; */
+/* } */
+/* [data-theme="latex"] table[width="100%"] > tbody > tr > td:last-child, */
+/* [data-theme="latex"] table[width="100%"] > tr > td:last-child { */
+/*   display: none !important; */
+/* } */
+/* [data-theme="latex"] table[width="100%"] > tbody > tr > td, */
+/* [data-theme="latex"] table[width="100%"] > tr > td { */
+/*   display: block !important; */
+/*   width: 100% !important; */
+/*   max-width: 680px; */
+/*   margin: 0 auto; */
+/*   border: none !important; */
+/*   padding: 48px 32px 80px !important; */
+/*   box-sizing: border-box; */
+/* } */
+/**/
+/* /* ── restyle content ── */ */
+/* [data-theme="latex"] hr { */
+/*   border: none !important; */
+/*   border-top: 1px solid #333 !important; */
+/*   margin: 24px 0; */
+/* } */
+/* [data-theme="latex"] b { */
+/*   font-variant: small-caps; */
+/*   letter-spacing: 1px; */
+/*   font-weight: 600; */
+/* } */
+/* [data-theme="latex"] small { */
+/*   font-size: 12px; */
+/*   color: #666; */
+/* } */
+/* [data-theme="latex"] p { margin: 8px 0; } */
+/* [data-theme="latex"] ul { padding-left: 20px; } */
+/* [data-theme="latex"] li { margin: 4px 0; } */
+/* [data-theme="latex"] center { padding: 16px 0; } */
+/**/
+/* /* ── neutralize inline styles on tab headers (projects page) ── */ */
+/* [data-theme="latex"] td[id^="tab-"], */
+/* [data-theme="latex"] td[id^="tab-"] a, */
+/* [data-theme="latex"] td[style*="background:#000000"], */
+/* [data-theme="latex"] td[style*="background:#000"] { */
+/*   background: transparent !important; */
+/*   border: 1px solid #333 !important; */
+/*   border-bottom: none !important; */
+/*   padding: 2px 8px !important; */
+/* } */
+/* [data-theme="latex"] td[id^="tab-"] a { */
+/*   color: inherit !important; */
+/*   text-decoration: none !important; */
+/* } */
+/* [data-theme="latex"] td[id^="tab-"]:not([style*="background:transparent"]) a, */
+/* [data-theme="latex"] td[id^="tab-"].active a { */
+/*   font-weight: 700; */
+/* } */
+/* /* generic neutralizer for any inline black-bg cells */ */
+/* [data-theme="latex"] [style*="background:#000000"], */
+/* [data-theme="latex"] [style*="background:#000"], */
+/* [data-theme="latex"] [style*="background-color:#000000"], */
+/* [data-theme="latex"] [style*="background-color:#000"] { */
+/*   background: transparent !important; */
+/*   background-color: transparent !important; */
+/* } */
+/* [data-theme="latex"] [style*="color:#ffffff"], */
+/* [data-theme="latex"] [style*="color:#fff"] { */
+/*   color: inherit !important; */
+/* } */
+/**/
+/* /* ── keep 88x31 buttons at fixed size (both themes) ── */ */
+/* img[src*="buttons/"] { */
+/*   width: 88px; */
+/*   height: 31px; */
+/* } */
+/* [data-theme="latex"] img[src*="buttons/"] { */
+/*   display: inline !important; */
+/*   filter: grayscale(100%); */
+/*   opacity: 0.45; */
+/* } */
+/**/
+/* /* ── latex chip (toggle button) ── */ */
+/* .latex-chip { */
+/*   position: fixed; */
+/*   bottom: 52px; */
+/*   right: 18px; */
+/*   font-family: "Courier New", Courier, monospace; */
+/*   font-size: 12px; */
+/*   background: #f4f4f4; */
+/*   border: 1px solid #bbb; */
+/*   border-radius: 2px; */
+/*   padding: 3px 10px; */
+/*   cursor: pointer; */
+/*   text-decoration: none; */
+/*   color: #555; */
+/*   z-index: 9999; */
+/*   user-select: none; */
+/*   transition: background 0.15s, color 0.15s; */
+/* } */
+/* .latex-chip:hover { */
+/*   background: #e0e0e0; */
+/*   color: #222; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .latex-chip { */
+/*   background: #2a2a2a; */
+/*   border-color: #555; */
+/*   color: #aaa; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .latex-chip:hover { */
+/*   background: #3a3a3a; */
+/*   color: #fff; */
+/* } */
+/**/
+/* /* (latex-nav removed — replaced by \begin{document} nav chip) */ */
+/**/
+/* /* ═══════════════════════════════════════════════════ */
+/*    Dark mode (pagecolor toggle) — latex view only */
+/*    Triggered by <html data-mode="dark"> */
+/*    ═══════════════════════════════════════════════════ */ */
+/**/
+/* [data-theme="latex"][data-mode="dark"] body { */
+/*   background: #1a1a1a !important; */
+/*   color: #d4d4d4 !important; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] body a, */
+/* [data-theme="latex"][data-mode="dark"] body a:visited { */
+/*   color: #c8c8c8 !important; */
+/*   text-decoration-color: #555; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] body a:hover { */
+/*   color: #fff !important; */
+/*   text-decoration-color: #999; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] hr { */
+/*   border-top-color: #444 !important; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] small { */
+/*   color: #999; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] b { */
+/*   color: #e8e8e8; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] img[src*="buttons/"] { */
+/*   filter: invert(1) grayscale(100%); */
+/*   opacity: 0.55; */
+/* } */
+/**/
+/* /* ── pagecolor toggle chip (side by side with \end{document}) ── */ */
+/* .pagecolor-chip { */
+/*   bottom: 52px; */
+/*   right: 150px; */
+/* } */
+/* [data-theme="personal"] .pagecolor-chip { */
+/*   display: none; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .pagecolor-chip { */
+/*   background: #2a2a2a; */
+/*   border-color: #555; */
+/*   color: #aaa; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .pagecolor-chip:hover { */
+/*   background: #3a3a3a; */
+/*   color: #fff; */
+/* } */
+/**/
+/* /* ── highlight.js github-dark already dark — keep readable in dark latex ── */ */
+/* [data-theme="latex"][data-mode="dark"] pre, */
+/* [data-theme="latex"][data-mode="dark"] pre code { */
+/*   background: #0d1117 !important; */
+/*   color: #c9d1d9 !important; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] td[id^="tab-"], */
+/* [data-theme="latex"][data-mode="dark"] td[id^="tab-"] a { */
+/*   border-color: #555 !important; */
+/* } */
+/**/
+/* /* ═══════════════════════════════════════════════════ */
+/*    Back-to-top chip (\top) */
+/*    ═══════════════════════════════════════════════════ */ */
+/* .top-chip { */
+/*   bottom: 52px; */
+/*   left: 18px; */
+/*   right: auto; */
+/*   width: auto; */
+/*   opacity: 0; */
+/*   pointer-events: none; */
+/*   transition: opacity 0.25s ease, background 0.15s, color 0.15s; */
+/* } */
+/* .top-chip.visible { */
+/*   opacity: 1; */
+/*   pointer-events: auto; */
+/* } */
+/* [data-theme="personal"] .top-chip { display: none; } */
+/* [data-theme="latex"][data-mode="dark"] .top-chip { */
+/*   background: #2a2a2a; */
+/*   border-color: #555; */
+/*   color: #aaa; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .top-chip:hover { */
+/*   background: #3a3a3a; */
+/*   color: #fff; */
+/* } */
+/**/
+/* /* ── nav chip (\begin{document}) — left side ── */ */
+/* .nav-chip { */
+/*   bottom: 82px; */
+/*   left: 18px; */
+/*   right: auto; */
+/*   width: auto; */
+/* } */
+/* [data-theme="personal"] .nav-chip { display: none; } */
+/* [data-theme="latex"][data-mode="dark"] .nav-chip { */
+/*   background: #2a2a2a; */
+/*   border-color: #555; */
+/*   color: #aaa; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .nav-chip:hover { */
+/*   background: #3a3a3a; */
+/*   color: #fff; */
+/* } */
+/**/
+/* /* ═══════════════════════════════════════════════════ */
+/*    LaTeX sticky taskbar (bottom-fixed bar) */
+/*    ═══════════════════════════════════════════════════ */ */
+/* [data-theme="latex"] body { padding-bottom: 44px; } */
+/* [data-theme="personal"] .latex-taskbar { display: none; } */
+/* .latex-taskbar { */
+/*   display: none; */
+/*   position: fixed; */
+/*   bottom: 0; */
+/*   left: 0; */
+/*   right: 0; */
+/*   height: 36px; */
+/*   background: #f0f0f0; */
+/*   border-top: 1px solid #ccc; */
+/*   font-family: "Crimson Text", Georgia, serif; */
+/*   font-size: 13px; */
+/*   color: #666; */
+/*   z-index: 9998; */
+/*   align-items: center; */
+/*   justify-content: space-between; */
+/*   padding: 0 16px; */
+/*   box-sizing: border-box; */
+/* } */
+/* [data-theme="latex"] .latex-taskbar { display: flex; } */
+/* [data-theme="latex"][data-mode="dark"] .latex-taskbar { */
+/*   background: #1a1a1a; */
+/*   border-top-color: #333; */
+/*   color: #888; */
+/* } */
+/* .latex-taskbar a { */
+/*   color: #555 !important; */
+/*   text-decoration: none !important; */
+/*   white-space: nowrap; */
+/* } */
+/* .latex-taskbar a:hover { */
+/*   color: #000 !important; */
+/*   text-decoration: underline !important; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .latex-taskbar a { */
+/*   color: #999 !important; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .latex-taskbar a:hover { */
+/*   color: #fff !important; */
+/* } */
+/* .taskbar-left, .taskbar-right { */
+/*   display: flex; */
+/*   align-items: center; */
+/*   gap: 6px; */
+/*   white-space: nowrap; */
+/* } */
+/* .taskbar-center { */
+/*   position: absolute; */
+/*   left: 50%; */
+/*   transform: translateX(-50%); */
+/*   font-style: italic; */
+/*   font-size: 12px; */
+/*   color: #999; */
+/*   pointer-events: none; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .taskbar-center { */
+/*   color: #666; */
+/* } */
+/* .taskbar-right { */
+/*   font-family: "Courier New", monospace; */
+/*   font-size: 12px; */
+/* } */
+/**/
+/* /* ═══════════════════════════════════════════════════ */
+/*    Table of contents chip + overlay */
+/*    ═══════════════════════════════════════════════════ */ */
+/* .toc-chip { */
+/*   bottom: 82px; */
+/* } */
+/* [data-theme="personal"] .toc-chip { display: none; } */
+/* [data-theme="latex"][data-mode="dark"] .toc-chip { */
+/*   background: #2a2a2a; */
+/*   border-color: #555; */
+/*   color: #aaa; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .toc-chip:hover { */
+/*   background: #3a3a3a; */
+/*   color: #fff; */
+/* } */
+/* .latex-toc { */
+/*   display: none; */
+/*   position: fixed; */
+/*   bottom: 112px; */
+/*   right: 18px; */
+/*   max-width: 320px; */
+/*   max-height: 60vh; */
+/*   overflow-y: auto; */
+/*   background: #fafafa; */
+/*   border: 1px solid #ccc; */
+/*   border-radius: 2px; */
+/*   padding: 14px 18px; */
+/*   font-family: "Crimson Text", Georgia, serif; */
+/*   font-size: 13px; */
+/*   line-height: 1.6; */
+/*   box-shadow: 0 4px 20px rgba(0,0,0,0.08); */
+/*   z-index: 9999; */
+/* } */
+/* [data-theme="latex"] .latex-toc.show { display: block; } */
+/* [data-theme="latex"][data-mode="dark"] .latex-toc { */
+/*   background: #1f1f1f; */
+/*   border-color: #444; */
+/*   color: #ccc; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .latex-toc a { */
+/*   color: #aaa !important; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .latex-toc a:hover { */
+/*   color: #fff !important; */
+/* } */
+/* .latex-toc a { */
+/*   display: block; */
+/*   color: #555 !important; */
+/*   text-decoration: none !important; */
+/*   padding: 2px 0; */
+/* } */
+/* .latex-toc a:hover { */
+/*   color: #000 !important; */
+/*   text-decoration: underline !important; */
+/* } */
+/* .latex-toc .toc-title { */
+/*   font-weight: 600; */
+/*   font-variant: small-caps; */
+/*   letter-spacing: 1px; */
+/*   margin-bottom: 6px; */
+/*   border-bottom: 1px solid #ddd; */
+/*   padding-bottom: 4px; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .latex-toc .toc-title { */
+/*   border-bottom-color: #444; */
+/* } */
+/**/
+/* /* ═══════════════════════════════════════════════════ */
+/*    Nav popover (\begin{document} chip) */
+/*    ═══════════════════════════════════════════════════ */ */
+/* .latex-nav-popup { */
+/*   display: none; */
+/*   position: fixed; */
+/*   bottom: 112px; */
+/*   left: 18px; */
+/*   max-width: 200px; */
+/*   background: #fafafa; */
+/*   border: 1px solid #ccc; */
+/*   border-radius: 2px; */
+/*   padding: 10px 14px; */
+/*   font-family: "Crimson Text", Georgia, serif; */
+/*   font-size: 13px; */
+/*   line-height: 1.8; */
+/*   box-shadow: 0 4px 20px rgba(0,0,0,0.08); */
+/*   z-index: 9999; */
+/* } */
+/* [data-theme="latex"] .latex-nav-popup.show { display: block; } */
+/* [data-theme="latex"][data-mode="dark"] .latex-nav-popup { */
+/*   background: #1f1f1f; */
+/*   border-color: #444; */
+/*   color: #ccc; */
+/* } */
+/* .latex-nav-popup a { */
+/*   display: block; */
+/*   color: #555 !important; */
+/*   text-decoration: none !important; */
+/*   padding: 2px 0; */
+/* } */
+/* .latex-nav-popup a:hover { */
+/*   color: #000 !important; */
+/*   text-decoration: underline !important; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .latex-nav-popup a { */
+/*   color: #aaa !important; */
+/* } */
+/* [data-theme="latex"][data-mode="dark"] .latex-nav-popup a:hover { */
+/*   color: #fff !important; */
+/* } */
+/**/
+/* /* ═══════════════════════════════════════════════════ */
+/*    Mobile responsive (both themes) */
+/*    ═══════════════════════════════════════════════════ */ */
+/* @media (max-width: 600px) { */
+/*   /* ── chip positioning ── */ */
+/*   .latex-chip { */
+/*     font-size: 10px; */
+/*     padding: 2px 7px; */
+/*   } */
+/*   .toc-chip { */
+/*     bottom: 74px; */
+/*   } */
+/*   .nav-chip { */
+/*     bottom: 74px; */
+/*   } */
+/*   .latex-toc { */
+/*     bottom: 100px; */
+/*     right: 10px; */
+/*     left: 10px; */
+/*     max-width: none; */
+/*   } */
+/*   .latex-nav-popup { */
+/*     bottom: 100px; */
+/*     left: 10px; */
+/*   } */
+/*   .top-chip, */
+/*   .pagecolor-chip, */
+/*   .latex-chip#theme-chip { */
+/*     bottom: 46px; */
+/*   } */
+/*   .pagecolor-chip { */
+/*     right: 120px; */
+/*   } */
+/**/
+/*   /* ── LaTeX mode: reduce padding on center column ── */ */
+/*   [data-theme="latex"] table[width="100%"] > tbody > tr > td, */
+/*   [data-theme="latex"] table[width="100%"] > tr > td { */
+/*     padding: 24px 14px 60px !important; */
+/*     max-width: 100%; */
+/*   } */
+/**/
+/*   /* ── LaTeX mode: prevent code/pre overflow ── */ */
+/*   [data-theme="latex"] pre { */
+/*     overflow-x: auto; */
+/*     max-width: 100%; */
+/*     font-size: 13px; */
+/*   } */
+/*   [data-theme="latex"] code { */
+/*     word-break: break-word; */
+/*   } */
+/*   [data-theme="latex"] img { */
+/*     max-width: 100%; */
+/*     height: auto; */
+/*   } */
+/**/
+/*   /* ── personal mode: hide sidebars on ALL pages ── */ */
+/*   [data-theme="personal"] table[width="100%"] > tbody > tr > td[width="150"], */
+/*   [data-theme="personal"] table[width="100%"] > tbody > tr > td[width="140"], */
+/*   [data-theme="personal"] table[width="100%"] > tr > td[width="150"], */
+/*   [data-theme="personal"] table[width="100%"] > tr > td[width="140"] { */
+/*     display: none; */
+/*   } */
+/*   [data-theme="personal"] table[width="100%"] > tbody > tr > td, */
+/*   [data-theme="personal"] table[width="100%"] > tr > td { */
+/*     display: block; */
+/*     width: 100% !important; */
+/*     border: none !important; */
+/*     box-sizing: border-box; */
+/*   } */
+/**/
+/*   /* ── taskbar: shrink text on mobile ── */ */
+/*   .latex-taskbar { */
+/*     font-size: 11px; */
+/*     padding: 0 8px; */
+/*   } */
+/*   .taskbar-center { */
+/*     display: none; */
+/*   } */
+/* } */
+/**/
+/* /* ═══════════════════════════════════════════════════ */
+/*    Print stylesheet — LaTeX mode prints like a paper */
+/*    ═══════════════════════════════════════════════════ */ */
+/* @media print { */
+/*   .latex-chip, */
+/*   .latex-toc, */
+/*   .latex-nav-popup, */
+/*   .latex-taskbar, */
+/*   .top-chip, */
+/*   .nav-chip, */
+/*   .toc-chip, */
+/*   .pagecolor-chip { */
+/*     display: none !important; */
+/*   } */
+/*   [data-theme="latex"] body { */
+/*     padding-bottom: 0 !important; */
+/*   } */
+/*   [data-theme="latex"] img[src*="buttons/"] { */
+/*     display: none !important; */
+/*   } */
+/*   [data-theme="latex"] marquee { */
+/*     display: none !important; */
+/*   } */
+/* } */

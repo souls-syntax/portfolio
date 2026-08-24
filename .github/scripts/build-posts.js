@@ -159,7 +159,8 @@ img { max-width: 100%; height: auto; }
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
   <tr>
     <td width="150" valign="top" class="side-panel" style="border-right: 1px solid black;">
-      <img src="../gifs/banner.gif" alt="[banner gif]" width="140" height="50"><br>
+       <!-- <img src="../gifs/banner.gif" alt="[banner gif]" width="140" height="50"><br> -->
+       <img src="../gifs/test/arceuid-tsukihime.gif" alt="Tsukihime moon princess" width="150" height="80"><br>
       <br>
       <b>Menu</b><br>
       <a href="../index.html">About Me</a><br>
@@ -224,13 +225,15 @@ ${fragment}
     <td width="140" valign="top"  class="side-panel" style="border-left: 1px solid black; padding: 4px;">
       <b>Stuff</b><br>
       <hr>
-      <img src="../gifs/ozua-ozuai.gif" alt="[gif]" width="130" height="100"><br>
-      <br>
-      <img src="../gifs/flandre-scarlet-cheering.gif" alt="[gif]" width="130" height="100"><br>
-      <br>
-      <img src="../gifs/reimu-touhou.gif" alt="[gif]" width="130" height="100"><br>
-      <br>
-      <img src="../gifs/touhou-remilia-scarlet.gif" alt="[gif]" width="130" height="100"><br>
+       <img src="../gifs/test/tsukihime-tsukihime-remake.gif" alt="[gif]" width="130" height="100"><br>
+       <br>
+       <img src="../gifs/test/saber-fate-saber.gif" alt="[gif]" width="130" height="100"><br>
+       <!-- <img src="../gifs/flandre-scarlet-cheering.gif" alt="[gif]" width="130" height="100"><br> -->
+       <br>
+       <img src="../gifs/test/fate-padoru-christmas.gif" alt="[gif]" width="130" height="100"><br>
+       <!-- <img src="../gifs/reimu-touhou.gif" alt="[gif]" width="130" height="100"><br> -->
+       <br>
+       <img src="../gifs/test/scáthach-fate.gif" alt="Saber from Fate Carnival Phantasm" width="140"><br>
       <audio id="bgm" loop>
         <source src="../bgm.mp3" type="audio/mpeg">
       </audio>
