@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /upload.sh
+Disallow: /garden_up.sh
+Disallow: /music_update.sh
+Disallow: /temp
+Disallow: /guestbook_stale_comments.json
+Disallow: /nowplaying.json
+
+Sitemap: https://masterrecord.chaldea.moe/sitemap.xml
