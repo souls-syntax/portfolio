@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="darkmode.css">
 </head>
 <style>
   center img[src*="buttons/"] { width: 88px; height: 31px; max-width: none; }
@@ -15,29 +16,6 @@ a:visited {
   color: #0000EE;
 }
 img { max-width: 100%; height: auto; }
-
-/*
-Optional late-night mode keeps the site's old-school layout intact.
-body.dark-mode {
-  background-color: #05051a !important;
-  background-image:
-    radial-gradient(1px 1px at 17px 23px, rgba(255,255,255,.9) 50%, transparent 55%),
-    radial-gradient(1px 1px at 71px 89px, rgba(190,205,255,.8) 50%, transparent 55%),
-    radial-gradient(1px 1px at 43px 51px, rgba(255,255,255,.7) 50%, transparent 55%),
-    radial-gradient(2px 2px at 116px 37px, rgba(255,255,255,.85) 50%, transparent 55%),
-    radial-gradient(1px 1px at 181px 143px, rgba(185,200,255,.8) 50%, transparent 55%),
-    radial-gradient(2px 2px at 267px 211px, rgba(255,255,255,.7) 50%, transparent 55%);
-  background-size: 137px 157px, 223px 191px, 307px 271px, 419px 367px, 557px 503px, 719px 613px;
-  background-position: 0 0, 31px 47px, 83px 19px, 127px 71px, 211px 103px, 17px 139px;
-  color: #d8d8e8 !important;
-}
-body.dark-mode a,
-body.dark-mode a:visited { color: #79d9ff !important; }
-body.dark-mode a:hover { color: #ff9de2 !important; }
-body.dark-mode hr,
-body.dark-mode td { border-color: #4d527d !important; }
-body.dark-mode #dark-mode-btn { color: #ffcb6b !important; }
-*/
 
 @media (max-width: 600px) {
   table[width="100%"] > tbody > tr {
@@ -102,7 +80,7 @@ body.dark-mode #dark-mode-btn { color: #ffcb6b !important; }
       <hr>
 
       <img src="gifs/000010.gif" alt="blinkie" width="150" height="20"><br>
-      <img src="buttons/threadlocked.png" alt="threadlocked"><br>
+      <a href="https://ring.seggs.lol/" target="_blank"><img src="buttons/threadlocked.png" alt="threadlocked"></a><br>
       <br>
       <img src="gifs/main_header.gif" alt="[gif]" width="140" height="90"><br>
       <br>
@@ -189,10 +167,12 @@ with respect for nothing and compassion for no one.</p>
       </audio>
       <b>BGM</b><br>
       <a href="#" id="bgm-btn" onclick="toggleBGM()">[play]</a>
-      <!-- Dark-mode experiment, preserved for later refinement.
+    <!-- Dark-mode experiment, preserved for later refinement. -->
       <br>
-      <a href="#" id="dark-mode-btn" onclick="toggleDarkMode(); return false;">[dark mode]</a>
-      -->
+      <br>
+      <b>theme toggle</b><br>
+    <a href="#" id="dark-mode-btn" onclick="toggleDarkMode(); return false;">[dark mode]</a>
+
     </td>
 
   </tr>
@@ -234,23 +214,6 @@ with respect for nothing and compassion for no one.</p>
     return false;
   }
 
-  /* Dark-mode experiment, preserved for later refinement.
-  function setDarkMode(enabled) {
-    document.body.classList.toggle('dark-mode', enabled);
-    document.getElementById('dark-mode-btn').textContent = enabled
-      ? '[light mode]'
-      : '[dark mode]';
-    localStorage.setItem('dark-mode', enabled ? 'on' : 'off');
-  }
-
-  function toggleDarkMode() {
-    setDarkMode(!document.body.classList.contains('dark-mode'));
-  }
-
-  setDarkMode(localStorage.getItem('dark-mode') === 'on');
-  */
-
-
 fetch('https://visit-counter-kohl.vercel.app/api/count')
   .then(function(r){ return r.json(); })
   .then(function(d){
@@ -258,5 +221,6 @@ fetch('https://visit-counter-kohl.vercel.app/api/count')
   })
   .catch(function(){});
 </script>
+<script src="darkmode.js"></script>
 </body>
 </html>

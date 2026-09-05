@@ -39,6 +39,7 @@ img { max-width: 100%; height: auto; }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../darkmode.css">
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
 <marquee>welcome to my site</marquee>
@@ -433,6 +434,8 @@ And with this, the baka of the year award goes to ...</p>
       </audio>
       <b>BGM</b><br>
       <a href="#" id="bgm-btn" onclick="toggleBGM()">[play]</a>
+    <br>
+    <a href="#" id="dark-mode-btn" onclick="toggleDarkMode(); return false;">[dark mode]</a>
     </td>
   </tr>
 </table>
@@ -500,5 +503,6 @@ And with this, the baka of the year award goes to ...</p>
 <a href="#" class="latex-chip pagecolor-chip" id="pagecolor-chip">\pagecolor{dark}</a>
 <a href="#" class="latex-chip" id="theme-chip">\end{document}</a>
 <script src="../js/theme-toggle.js"></script>
+<script src="../darkmode.js"></script>
 </body>
 </html>

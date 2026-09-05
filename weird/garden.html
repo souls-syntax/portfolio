@@ -25,6 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../darkmode.css">
     </head>
     <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
 
@@ -72,7 +73,7 @@
                     <hr>
 
                     <img src="../gifs/000010.gif" alt="blinkie" width="150" height="20"><br>
-                    <img src="../buttons/threadlocked.png" alt="threadlocked"><br>
+                    <a href="https://ring.seggs.lol/" target="_blank"><img src="../buttons/threadlocked.png" alt="threadlocked"></a><br>
                     <br>
                     <img src="../gifs/main_header.gif" alt="[gif]" width="140" height="90"><br>
                     <br>
@@ -272,6 +273,10 @@
                     </audio>
                     <b>BGM</b><br>
                     <a href="#" id="bgm-btn" onclick="toggleBGM()">[play]</a>
+    <br>
+    <br>
+    <b>theme toggle</b><br>
+    <a href="#" id="dark-mode-btn" onclick="toggleDarkMode(); return false;">[dark mode]</a>
                 </td>
 
             </tr>
@@ -321,5 +326,6 @@
              })
              .catch(function(){});
 </script>
+<script src="../darkmode.js"></script>
 </body>
 </html>

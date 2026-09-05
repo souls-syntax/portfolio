@@ -1,0 +1,20 @@
+/* Optional late-night mode keeps the site's old-school layout intact. */
+body.dark-mode {
+  background-color: #05051a !important;
+  background-image:
+    radial-gradient(1px 1px at 17px 23px, rgba(255,255,255,.9) 50%, transparent 55%),
+    radial-gradient(1px 1px at 71px 89px, rgba(190,205,255,.8) 50%, transparent 55%),
+    radial-gradient(1px 1px at 43px 51px, rgba(255,255,255,.7) 50%, transparent 55%),
+    radial-gradient(2px 2px at 116px 37px, rgba(255,255,255,.85) 50%, transparent 55%),
+    radial-gradient(1px 1px at 181px 143px, rgba(185,200,255,.8) 50%, transparent 55%),
+    radial-gradient(2px 2px at 267px 211px, rgba(255,255,255,.7) 50%, transparent 55%);
+  background-size: 137px 157px, 223px 191px, 307px 271px, 419px 367px, 557px 503px, 719px 613px;
+  background-position: 0 0, 31px 47px, 83px 19px, 127px 71px, 211px 103px, 17px 139px;
+  color: #d8d8e8 !important;
+}
+body.dark-mode a,
+body.dark-mode a:visited { color: #79d9ff !important; }
+body.dark-mode a:hover { color: #ff9de2 !important; }
+body.dark-mode hr,
+body.dark-mode td { border-color: #4d527d !important; }
+body.dark-mode #dark-mode-btn { color: #ffcb6b !important; }
