@@ -96,3 +96,29 @@ body.dark-wallpaper-mode b {
     background-color: text;
     color: transparent;
 }
+
+body.light-wallpaper-mode {
+  background-color: #05051a !important;
+  /* background-image: */
+  /*   radial-gradient(1px 1px at 17px 23px, rgba(255,255,255,.9) 50%, transparent 55%), */
+  /*   radial-gradient(1px 1px at 71px 89px, rgba(190,205,255,.8) 50%, transparent 55%), */
+  /*   radial-gradient(1px 1px at 43px 51px, rgba(255,255,255,.7) 50%, transparent 55%), */
+  /*   radial-gradient(2px 2px at 116px 37px, rgba(255,255,255,.85) 50%, transparent 55%), */
+  /*   radial-gradient(1px 1px at 181px 143px, rgba(185,200,255,.8) 50%, transparent 55%), */
+  /*   radial-gradient(2px 2px at 267px 211px, rgba(255,255,255,.7) 50%, transparent 55%); */
+  /* background-size: 137px 157px, 223px 191px, 307px 271px, 419px 367px, 557px 503px, 719px 613px; */
+  /* background-position: 0 0, 31px 47px, 83px 19px, 127px 71px, 211px 103px, 17px 139px; */
+  background-image: url("wallpaper/kv1.jpg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  color: #05051a !important;
+}
+
+body.light-wallpaper-mode a,
+body.light-wallpaper-mode a:visited { color: #79d9ff !important; }
+body.light-wallpaper-mode a:hover { color: #ff9de2 !important; }
+body.light-wallpaper-mode hr,
+body.light-wallpaper-mode td { border-color: #4d527d !important; }
+body.light-wallpaper-mode #dark-mode-btn { color: #ffcb6b !important; }
