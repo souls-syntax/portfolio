@@ -1,14 +1,27 @@
-function setDarkMode(enabled) {
-  document.body.classList.toggle('dark-mode', enabled);
+function setTheme(theme) {
+  document.body.classList.remove('dark-mode', 'dark-wallpaper-mode');
+
+  if (theme === 'dark') {
+    document.body.classList.add('dark-mode');
+  } else if (theme === 'dark-wallpaper') {
+    document.body.classList.add('dark-wallpaper-mode');
+  }
+
   var btn = document.getElementById('dark-mode-btn');
   if (btn) {
-    btn.textContent = enabled ? '[light mode]' : '[dark mode]';
+    if (theme === 'light') btn.textContent = '[dark mode]';
+    else if (theme === 'dark') btn.textContent = '[tsukhime]';
+    else btn.textContent = '[light mode]';
   }
-  localStorage.setItem('dark-mode', enabled ? 'on' : 'off');
+
+  localStorage.setItem('theme', theme);
 }
 
 function toggleDarkMode() {
-  setDarkMode(!document.body.classList.contains('dark-mode'));
+  var current = localStorage.getItem('theme') || 'light';
+  if (current === 'light') setTheme('dark');
+  else if (current === 'dark') setTheme('dark-wallpaper');
+  else setTheme('light');
 }
 
-setDarkMode(localStorage.getItem('dark-mode') === 'on');
+setTheme(localStorage.getItem('theme') || 'light');
