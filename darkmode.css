@@ -57,3 +57,42 @@ body.dark-wallpaper-mode p {
     background-color: text;
     color: transparent;
 }
+body.dark-wallpaper-mode h1 {
+    background: linear-gradient(to right, #ffffff, #000000);
+    -webkit-background-clip: text;
+    background-color: text;
+    color: transparent;
+}
+
+body.dark-wallpaper-mode h2 {
+    background: linear-gradient(to right, #ffffff, #000000);
+    -webkit-background-clip: text;
+    background-color: text;
+    color: transparent;
+}
+body.dark-wallpaper-mode h3 {
+    background: linear-gradient(to right, #ffffff, #000000);
+    -webkit-background-clip: text;
+    background-color: text;
+    color: transparent;
+}
+body.dark-wallpaper-mode h4 {
+    background: linear-gradient(to right, #ffffff, #000000);
+    -webkit-background-clip: text;
+    background-color: text;
+    color: transparent;
+}
+
+body.dark-wallpaper-mode h5 {
+    background: linear-gradient(to right, #ffffff, #000000);
+    -webkit-background-clip: text;
+    background-color: text;
+    color: transparent;
+}
+
+body.dark-wallpaper-mode b {
+    background: linear-gradient(to right, #ffffff, #000000);
+    -webkit-background-clip: text;
+    background-color: text;
+    color: transparent;
+}
