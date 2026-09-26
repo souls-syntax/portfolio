@@ -115,17 +115,19 @@ function buildPostHtml({ slug, title, date, tags, series, readingTime, prev, nex
 <html lang="en">
 <head>
   <title>${escapeHtml(title)} - Aakarsh Kashyap</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="alternate" type="application/rss+xml" title="Aakarsh Kashyap" href="/feed.xml">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../latex-theme.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 <style>
-a:visited {
-  color: #0000EE;
-}
+a:visited { color: #0000EE; }
 img { max-width: 100%; height: auto; }
+center img[src*="buttons/"] { width: 88px; height: 31px; max-width: none; }
 .post-content {
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -141,62 +143,23 @@ img { max-width: 100%; height: auto; }
   word-break: break-all;
 }
 @media (max-width: 600px) {
-  .side-panel { display: none; }
-  table[width="100%"] > tbody > tr > td:not(.side-panel),
-  table[width="100%"] > tr > td:not(.side-panel) {
+  table[width="100%"] > tbody > tr { display: block; }
+  table[width="100%"] > tbody > tr > td,
+  table[width="100%"] > tr > td {
     display: block;
     width: 100% !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid black;
     box-sizing: border-box;
   }
 }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
-<marquee>welcome to my site</marquee>
-<hr>
-<table width="100%" border="0" cellspacing="0" cellpadding="4">
-  <tr>
-    <td width="150" valign="top" class="side-panel" style="border-right: 1px solid black;">
-       <!-- <img src="../gifs/banner.gif" alt="[banner gif]" width="140" height="50"><br> -->
-       <img src="../gifs/test/arceuid-tsukihime.gif" alt="Tsukihime moon princess" width="150" height="80"><br>
-      <br>
-      <b>Menu</b><br>
-      <a href="../index.html">About Me</a><br>
-      <a href="../resume.html">Resume</a><br>
-      <a href="../blog.html"><b>Blog</b></a><br>
-      <a href="../projects.html">Projects</a><br>
-      <a href="../fun-projects.html">Fun Projects</a><br>
-      <a href="../social.html">Social</a><br>
-       <a href="../guestbook.html">GuestBook</a><br>
-       <a href="../awareness.html">Awareness</a><br>
-      <hr>
-      <b>Friends</b><br>
-      <a href="https://utkarsh-1771.github.io/Portfolio/">[ utkarsh ]</a><br>
-      <a href="https://shashwatagrawal20.github.io/portfolio/">[ Shashwat ]</a><br>
-      <a href="https://www.seivarya.in/">[ seivarya ]</a><br>
-      <a href="https://sodakeyeatsmush.vercel.app/">[ Saad ]</a><br>
-      <a href="https://www.shobhitnagpal.com/">[ Saar ]</a><br>
-      <a href="https://margatroid.moe/"><img src="https://margatroid.moe/assets/button/margatroid8831.png"></a><br>
-      <a href="https://manthan3.me/"><img src="../buttons/manthanxmew.gif"></a><br>
-      <a href="https://insicli.github.io/">[ insi ]</a><br>
-      <hr>
-      <b>Status</b><br>
-      <small>&#x2713; site is up</small><br>
-      <small>since 2026-05-26</small><br>
-      <hr>
-      <b>Now Playing</b><br>
-      <small id="np-artist">...</small><br>
-      <small id="np-track">...</small><br>
-      <hr>
-      <img src="../gifs/000010.gif" alt="blinkie" width="150" height="20"><br>
-      <a href="https://chaldea.moe/" target="_blank"><img src="../buttons/chaldea.gif" alt="personalLogo"></a><br>
-      <br>
-      <img src="../gifs/main_header.gif" alt="[gif]" width="140" height="90"><br>
-      <br>
-    </td>
-    <td valign="top" style="padding: 8px;">
+<body>
+
+<div id="app">
+  <weird-layout marquee="welcome to my site">
       <a href="../blog.html">&larr; back to blog</a>
       <hr>
       <b>${escapeHtml(title)}</b><br>
@@ -226,65 +189,12 @@ ${fragment}
       <hr>
       ${prevNext}
       <small><a href="../blog.html">&larr; back to blog</a></small>
-    </td>
-    <td width="140" valign="top"  class="side-panel" style="border-left: 1px solid black; padding: 4px;">
-      <b>Stuff</b><br>
-      <hr>
-       <img src="../gifs/test/tsukihime-tsukihime-remake.gif" alt="[gif]" width="130" height="100"><br>
-       <br>
-       <img src="../gifs/test/saber-fate-saber.gif" alt="[gif]" width="130" height="100"><br>
-       <!-- <img src="../gifs/flandre-scarlet-cheering.gif" alt="[gif]" width="130" height="100"><br> -->
-       <br>
-       <img src="../gifs/test/fate-padoru-christmas.gif" alt="[gif]" width="130" height="100"><br>
-       <!-- <img src="../gifs/reimu-touhou.gif" alt="[gif]" width="130" height="100"><br> -->
-       <br>
-       <img src="../gifs/test/scáthach-fate.gif" alt="Saber from Fate Carnival Phantasm" width="140"><br>
-      <audio id="bgm" loop>
-        <source src="../bgm.mp3" type="audio/mpeg">
-      </audio>
-      <b>BGM</b><br>
-      <a href="#" id="bgm-btn" onclick="toggleBGM()">[play]</a>
-    </td>
-  </tr>
-</table>
-<hr>
-<center>
-  <img src="../buttons/firefox.gif" alt="best viewed in firefox" width="88" height="31">
-  <img src="../buttons/vi-vim.gif" alt="vim my love" width="88" height="31">
-  <img src="../buttons/underconstruction.gif" alt="under construction" width="88" height="31">
-  <br><br>
-  <small>
-    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; <a href="../webring.html">webring</a> &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
-  </small>
-  <br><br>
-  <small id="visit-count">...</small>
-  <br><br>
-  <small>aakarsh kashyap ; made with vim and spite</small>
-</center>
-<script>
-  fetch('../nowplaying.json')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      document.getElementById('np-artist').textContent = d.artist || '---';
-      document.getElementById('np-track').textContent = d.track || '---';
-    })
-    .catch(function(){});
+  </weird-layout>
+</div>
 
-  function toggleBGM() {
-    var a = document.getElementById('bgm');
-    var btn = document.getElementById('bgm-btn');
-    if (a.paused) { a.play(); btn.textContent = '[stop]'; }
-    else { a.pause(); a.currentTime = 0; btn.textContent = '[play]'; }
-    return false;
-  }
-
-  fetch('https://visit-counter-kohl.vercel.app/api/count')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      document.getElementById('visit-count').textContent = 'visitors: ' + d.count;
-    })
-    .catch(function(){});
-</script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="../layouts/weird-layout.js"></script>
+<script>Vue.createApp({}).component('weird-layout', WeirdLayout).mount('#app');</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <nav class="latex-nav">

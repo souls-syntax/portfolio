@@ -1,0 +1,191 @@
+// Weird Layout Component for weird/ subdirectory pages and posts/
+// Usage: <weird-layout marquee="your marquee text"><template #default>...content...</template></weird-layout>
+var WeirdLayout = {
+  props: {
+    marquee: { type: String, default: 'welcome to my site' }
+  },
+  data: function() {
+    var path = window.location.pathname;
+    var file = path.split('/').pop() || 'index.html';
+    return {
+      currentPath: path,
+      currentFile: file,
+      navLinks: [
+        { href: '../index.html', label: 'About Me' },
+        { href: '../resume.html', label: 'Resume' },
+        { href: '../blog.html', label: 'Blog' },
+        { href: '../projects.html', label: 'Projects' },
+        { href: '../fun-projects.html', label: 'Fun Projects' },
+        { href: '../social.html', label: 'Social' },
+        { href: '../guestbook.html', label: 'GuestBook' },
+        { href: '../awareness.html', label: 'Awareness' }
+      ]
+    };
+  },
+  methods: {
+    isCurrent: function(href) {
+      if (href === '../blog.html' && this.currentPath.indexOf('/posts/') !== -1) {
+        return true;
+      }
+      return false;
+    }
+  },
+  template: `
+<div>
+  <marquee>{{ marquee }}</marquee>
+  <hr>
+  <table width="100%" border="0" cellspacing="0" cellpadding="4">
+    <tr>
+
+      <!-- LEFT SIDEBAR -->
+      <td width="150" valign="top" style="border-right: 1px solid black;">
+          <!-- <img src="../gifs/banner.gif" alt="[banner gif]" width="140" height="50"><br> -->
+          <img src="../gifs/test/arceuid-tsukihime.gif" alt="Tsukihime moon princess" width="150" height="80"><br>
+        <br>
+
+        <b>Menu</b><br>
+        <template v-for="link in navLinks" :key="link.href">
+          <a :href="link.href">
+            <b v-if="isCurrent(link.href)">{{ link.label }}</b>
+            <template v-else>{{ link.label }}</template>
+          </a><br>
+        </template>
+
+        <hr>
+
+        <b>Friends</b><br>
+        <a href="https://utkarsh-1771.github.io/Portfolio/">[ utkarsh ]</a><br>
+        <a href="https://shashwatagrawal20.github.io/portfolio/">[ Shashwat ]</a><br>
+        <a href="https://www.seivarya.in/">[ seivarya ]</a><br>
+        <a href="https://sodakeyeatsmush.vercel.app/">[ Saad ]</a><br>
+        <a href="https://www.shobhitnagpal.com/">[ Saar ]</a><br>
+        <a href="https://margatroid.moe/"><img src="https://margatroid.moe/assets/button/margatroid8831.png"></a><br>
+        <a href="https://manthan3.me/"><img src="../buttons/manthanxmew.gif"></a><br>
+        <a href="https://insicli.github.io/">[ insi ]</a><br>
+
+        <hr>
+
+        <b>Status</b><br>
+        <small>&#x2713; site is up</small><br>
+        <small>since 2026-05-26</small><br>
+
+        <hr>
+
+        <b>Now Playing</b><br>
+        <small id="np-artist">...</small><br>
+        <small id="np-track">...</small><br>
+
+        <hr>
+
+        <img src="../gifs/000010.gif" alt="blinkie" width="150" height="20"><br>
+        <a href="https://chaldea.moe/" target="_blank"><img src="../buttons/chaldea.gif" alt="personalLogo"></a><br>
+        <br>
+        <img src="../gifs/main_header.gif" alt="[gif]" width="140" height="90"><br>
+        <br>
+
+      </td>
+
+      <!-- MAIN CONTENT -->
+      <td valign="top" style="padding: 8px;">
+        <slot></slot>
+      </td>
+
+      <!-- RIGHT COLUMN -->
+      <td width="140" valign="top" style="border-left: 1px solid black; padding: 4px;">
+        <b>Stuff</b><br>
+        <hr>
+        <img src="../gifs/test/tsukihime-tsukihime-remake.gif" alt="[gif]" width="130" height="100"><br>
+        <br>
+        <img src="../gifs/test/saber-fate-saber.gif" alt="[gif]" width="130" height="100"><br>
+        <!-- <img src="../gifs/flandre-scarlet-cheering.gif" alt="[gif]" width="130" height="100"><br> -->
+        <br>
+        <img src="../gifs/test/fate-padoru-christmas.gif" alt="[gif]" width="130" height="100"><br>
+        <!-- <img src="../gifs/reimu-touhou.gif" alt="[gif]" width="130" height="100"><br> -->
+        <br>
+        <img src="../gifs/test/scáthach-fate.gif" alt="Saber from Fate Carnival Phantasm" width="140"><br>
+
+        <audio id="bgm" loop>
+          <source src="../bgm.mp3" type="audio/mpeg">
+        </audio>
+        <b>BGM</b><br>
+        <a href="#" id="bgm-btn" onclick="toggleBGM();">[play]</a>
+        <br>
+        <br>
+        <b>theme toggle</b><br>
+        <a href="#" id="dark-mode-btn" onclick="toggleDarkMode(); return false;">[dark mode]</a>
+      </td>
+
+    </tr>
+  </table>
+
+  <hr>
+  <center>
+
+    <img src="../buttons/firefox.gif" alt="best viewed in firefox" width="88" height="31">
+    <img src="../buttons/vi-vim.gif" alt="vim my love" width="88" height="31">
+    <img src="../buttons/underconstruction.gif" alt="under construction" width="88" height="31">
+    <br><br>
+
+    <slot name="footer-extra"></slot>
+
+    <small>
+      &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; <a href="../webring.html">webring</a> &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
+    </small>
+    <br><br>
+
+    <small id="visit-count">...</small>
+    <br><br>
+
+    <small>aakarsh kashyap ; made with vim and spite</small>
+
+  </center>
+</div>
+  `,
+  mounted: function() {
+    // Now Playing: try local first, fall back to parent directory
+    function updateNP(d) {
+      var artist = document.getElementById('np-artist');
+      var track = document.getElementById('np-track');
+      if (artist) artist.textContent = d.artist || '---';
+      if (track) track.textContent = d.track || '---';
+    }
+
+    fetch('nowplaying.json')
+      .then(function(r){
+        if (!r.ok) throw new Error();
+        return r.json();
+      })
+      .then(updateNP)
+      .catch(function(){
+        fetch('../nowplaying.json')
+          .then(function(r){ return r.json(); })
+          .then(updateNP)
+          .catch(function(){});
+      });
+
+    // Visit Counter
+    fetch('https://visit-counter-kohl.vercel.app/api/count')
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        var el = document.getElementById('visit-count');
+        if (el) el.textContent = 'visitors: ' + d.count;
+      })
+      .catch(function(){});
+
+    // BGM toggle (expose globally)
+    window.toggleBGM = function() {
+      var a = document.getElementById('bgm');
+      var btn = document.getElementById('bgm-btn');
+      if (a.paused) { a.play(); btn.textContent = '[stop]'; }
+      else { a.pause(); a.currentTime = 0; btn.textContent = '[play]'; }
+      return false;
+    };
+
+    // Load darkmode script
+    if (!document.querySelector('script[src="../darkmode.js"]')) {
+      var s = document.createElement('script');
+      s.src = '../darkmode.js';
+      document.body.appendChild(s);
+    }
+  }
+};
