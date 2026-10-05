@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Wiki-Style Float Pattern — Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* ───────────────────────────────────────────────
+           THE GOLDEN RULE:
+           Float only works inside a BLOCK container.
+           Do NOT put floated elements inside display:flex.
+           ─────────────────────────────────────────────── */
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: #222;
+            background: #f4f0e8;
+        }
+
+        /* Simulating the sidebar offset like your SCP site */
+        .page {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border: 1px solid #ccc;
+        }
+
+        h1 { margin-bottom: 20px; font-family: monospace; color: #600000; }
+        h2 { margin: 30px 0 15px; color: #600000; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+
+        /* ═══════════════════════════════════════════════
+           THE PATTERN: .wiki-section
+           ═══════════════════════════════════════════════
+
+           1. The SECTION must be display:block (the default).
+              This is where all your text + images live.
+
+           2. Images get float:right or float:left.
+
+           3. Text (paragraphs) naturally wraps around them.
+
+           4. When you want the float to STOP affecting text
+              below, use  clear:both  on the next element.
+        */
+
+        .wiki-section {
+            /* display: block;  ← already the default for div */
+            width: 100%;
+        }
+
+        /* ── FLOAT-RIGHT IMAGE CARD ── */
+        .wiki-img-right {
+            float: right;             /* ← image sits on the right */
+            width: 250px;             /* ← fixed width, NOT percentage */
+            margin: 0 0 15px 20px;    /* ← margin-left pushes text away */
+            /* top right bottom left */
+
+            background: #f9f9f9;
+            border: 1px solid #999;
+            padding: 5px;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .wiki-img-right img {
+            width: 100%;              /* fill the card width */
+            display: block;
+        }
+
+        .wiki-img-right .caption {
+            padding: 6px;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* ── FLOAT-LEFT IMAGE CARD ── */
+        .wiki-img-left {
+            float: left;              /* ← image sits on the left */
+            width: 250px;
+            margin: 0 20px 15px 0;    /* ← margin-right pushes text away */
+
+            background: #f9f9f9;
+            border: 1px solid #999;
+            padding: 5px;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .wiki-img-left img {
+            width: 100%;
+            display: block;
+        }
+
+        .wiki-img-left .caption {
+            padding: 6px;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* ── CLEAR FLOAT ──
+           Use this class on any element that should START
+           below all floated images (i.e. "stop wrapping").  */
+        .clear {
+            clear: both;
+        }
+
+        /* Nice paragraph spacing */
+        .wiki-section p {
+            margin-bottom: 1em;
+        }
+
+        /* ── CHEAT SHEET BOX ── */
+        .cheatsheet {
+            margin: 30px 0;
+            padding: 20px;
+            background: #fffde8;
+            border: 2px dashed #b08800;
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.9;
+        }
+        .cheatsheet h3 { font-family: monospace; color: #806000; margin-bottom: 10px;}
+        .cheatsheet code { background: #eee; padding: 2px 6px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <h1>Wiki-Style Float Pattern — Demo</h1>
+
+        <!-- ═══════════════════════════════════════════
+             EXAMPLE 1: Image on the RIGHT, text wraps
+             ═══════════════════════════════════════════ -->
+        <h2>Example 1 — Image floated RIGHT</h2>
+
+        <div class="wiki-section">
+
+            <!-- STEP 1: Place the image BEFORE the paragraphs -->
+            <div class="wiki-img-right">
+                <img src="asstes/SCP-239.png" alt="SCP-239">
+                <div class="caption"><b>SCP-239</b> — The Witch Child</div>
+            </div>
+
+            <!-- STEP 2: Just write paragraphs. They wrap automatically. -->
+            <p>SCP-239 appears to be an 8-year-old girl, 1 meter in height and
+            weighing 20 kilograms. The subject displays remarkable reality-bending
+            abilities and seems to be able to do virtually anything — as long as
+            she believes she can.</p>
+
+            <p>Special Containment Procedures: SCP-239 is to be kept within a one
+            room cell furnished with 1 (one) bed, 1 (one) EKG machine, and 1 (one)
+            IV to be filled with pentobarbital mixed with [DATA EXPUNGED] to be
+            refilled daily. Under no circumstances is SCP-239 to be removed from
+            her containment area at any given time.</p>
+
+            <p>The walls of this cell are to be coated in a telekill-lead alloy.
+            Only Class 2 personnel are allowed any contact with SCP-239 at any
+            time. All personnel guarding SCP-239's containment area are to be
+            equipped with Telekill headgear (SCP-148).</p>
+
+            <p>Subject's proper name is Sigurrós Stefánsdóttir. Under absolutely
+            no condition should the subject ever be awakened. Any personnel found
+            attempting to awaken the subject will be immediately terminated.</p>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════
+             EXAMPLE 2: Image on the LEFT, text wraps
+             ═══════════════════════════════════════════ -->
+        <h2 class="clear">Example 2 — Image floated LEFT</h2>
+
+        <div class="wiki-section">
+
+            <div class="wiki-img-left">
+                <img src="asstes/SCP-239.png" alt="SCP-239">
+                <div class="caption"><b>SCP-239</b> — The Witch Child</div>
+            </div>
+
+            <p>Description: SCP-239 appears to be an 8-year-old girl. Tests have
+            shown that she has the ability to alter reality to a degree that the
+            Foundation has been unable to measure.</p>
+
+            <p>SCP-239 came to the Foundation's attention after Agents were called
+            to investigate a series of strange events centered around her school.
+            After several incidents, the Foundation intervened and brought SCP-239
+            into containment.</p>
+
+            <p>The subject was told that she is a "witch" and that the Foundation
+            is a "school for witches" in order to curb her abilities. She has been
+            given a set of rules written on a "magic parchment" that she must
+            follow. This has been effective in controlling her powers to a degree.</p>
+
+            <p>However, the subject's abilities remain a significant threat. In
+            the event of a containment breach, Protocol XP-239-B is to be
+            initiated immediately, which involves [REDACTED].</p>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════
+             EXAMPLE 3: Multiple images, alternating
+             ═══════════════════════════════════════════ -->
+        <h2 class="clear">Example 3 — Multiple images, anywhere you want</h2>
+
+        <div class="wiki-section">
+
+            <!-- First image: RIGHT -->
+            <div class="wiki-img-right">
+                <img src="asstes/SCP-239.png" alt="image-1">
+                <div class="caption">First image — right side</div>
+            </div>
+
+            <p>You can keep inserting images anywhere in the flow. Just drop a
+            floated image div before the paragraph you want it to appear next to.
+            The text will automatically wrap around it. This is the exact same
+            technique Wikipedia uses for all of its article images.</p>
+
+            <p>The key insight is that the image must come BEFORE the text in the
+            HTML source. The browser sees the float, reserves space for it on the
+            specified side, and then flows the remaining inline content around it.</p>
+
+            <!-- Second image: LEFT (drop it mid-flow!) -->
+            <div class="wiki-img-left">
+                <img src="asstes/SCP-239.png" alt="image-2">
+                <div class="caption">Second image — left side</div>
+            </div>
+
+            <p>Now this paragraph wraps around the second image on the left side.
+            You can keep alternating or stacking them. The float property is what
+            makes this work — not flexbox, not grid. Good old CSS floats.</p>
+
+            <p>When the text is long enough, it will continue flowing below the
+            image and span the full width again. This is natural float behaviour
+            and exactly what you want for a wiki-style layout.</p>
+
+            <p>If you ever need a section to START fresh below all images (no
+            wrapping), just add class="clear" to it. That's the clear:both trick.
+            This gives you full control over where the wrapping stops.</p>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════
+             CHEAT SHEET
+             ═══════════════════════════════════════════ -->
+        <div class="cheatsheet clear">
+            <h3>📋 CHEAT SHEET — The Pattern</h3>
+
+            <b>Rule 1:</b> Parent must be <code>display: block</code> (the default). NOT flex. NOT grid.<br>
+            <b>Rule 2:</b> Image div gets <code>float: right</code> or <code>float: left</code>.<br>
+            <b>Rule 3:</b> Image div must come <b>BEFORE</b> the paragraphs in HTML source.<br>
+            <b>Rule 4:</b> Give the image a fixed <code>width</code> (e.g. 250px, 300px).<br>
+            <b>Rule 5:</b> Use <code>margin</code> to create spacing between image and text.<br>
+            <b>Rule 6:</b> To stop wrapping, use <code>clear: both</code> on the next element.<br><br>
+
+            <b>HTML structure:</b><br>
+            <code>&lt;div class="wiki-section"&gt;</code> ← block container<br>
+            &nbsp;&nbsp;<code>&lt;div class="wiki-img-right"&gt;</code> ← floated image<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;img src="..."&gt;</code><br>
+            &nbsp;&nbsp;<code>&lt;/div&gt;</code><br>
+            &nbsp;&nbsp;<code>&lt;p&gt;Text wraps around...&lt;/p&gt;</code><br>
+            &nbsp;&nbsp;<code>&lt;p&gt;More text...&lt;/p&gt;</code><br>
+            <code>&lt;/div&gt;</code><br><br>
+
+            <b>CSS:</b><br>
+            <code>.wiki-img-right { float: right; width: 250px; margin: 0 0 15px 20px; }</code><br>
+            <code>.wiki-img-left  { float: left;  width: 250px; margin: 0 20px 15px 0; }</code><br>
+            <code>.clear { clear: both; }</code>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -4,8 +4,6 @@
     margin:0;
     padding: 0;
 }
-/* .main-content {margin-left: 250px; */
-/* } */
 
 
 body {
@@ -25,13 +23,14 @@ body {
     width: 140px;
 }
 
-.title-text {
+.title-text a {
     margin: 0;
     color: white;
     text-shadow: 2px 2px 4px black;
     font-family: monospace;
     font-size: 3rem;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .title-sub-text {
@@ -74,6 +73,7 @@ body {
     z-index: 10;
     padding: 1em 1em 0 1em;
     scrollbar-width: thin;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .box {
@@ -142,4 +142,21 @@ body {
         text-decoration: none;
         font-size: 1.2rem;
     }
+}
+
+
+/* CONTENT */
+
+.content {
+    position: relative;
+    padding: 30px 20px 30px 250px;
+}
+
+/* .content first-para { */
+/*    flex-wrap:wrap; */
+/* } */
+
+
+.content h3 {
+    text-align: center;
 }
