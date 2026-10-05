@@ -1,0 +1,145 @@
+*
+{
+    box-sizing:border-box;
+    margin:0;
+    padding: 0;
+}
+/* .main-content {margin-left: 250px; */
+/* } */
+
+
+body {
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 20px;
+    background: linear-gradient(to bottom, #000000, #6b3a3a);
+}
+
+.scp-logo {
+    width: 140px;
+}
+
+.title-text {
+    margin: 0;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    font-family: monospace;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.title-sub-text {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #f5e6b3;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    padding: 8px 150px;
+    background: linear-gradient(to bottom, #666666, #333333)
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    transition:transform 0.3s ease;
+}
+
+.nav a:hover {
+    background-color: black;
+    color: azure;
+    border-radius: 10px;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0%;
+    /* right: 70%; */
+    width: 15.25rem;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 10;
+    padding: 1em 1em 0 1em;
+    scrollbar-width: thin;
+}
+
+.box {
+    background: white;
+    border: 1px solid #7a1a2a;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+}
+
+.green {
+    background: #e6f5e6;
+}
+
+.box h4 {
+    margin: 0 0 8px 0;
+    padding-left: 15px;
+    font-size: 0.75rem;
+    color: #600000;
+    border-bottom: 1px solid #600000;
+}
+
+.box a {
+    display: block;
+    margin-bottom: 6px;
+    color: #b01030;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+.menu-btn,
+.close-btn {
+    display: none;
+}
+
+@media (max-width: 800px) {
+
+    .menu-btn {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 5;
+        padding: 4px 12px;
+        font-size: 1.8rem;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+    }
+
+    .sidebar {
+        left: -18rem;
+        background-color: #eee;
+        transition: left 0.4s ease-in-out;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .close-btn {
+        display: block;
+        margin-bottom: 10px;
+        color: #600000;
+        text-decoration: none;
+        font-size: 1.2rem;
+    }
+}
