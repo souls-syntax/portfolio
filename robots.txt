@@ -1,3 +1,6 @@
+# Allow all crawlers to access all pages so they can read the noindex meta tags.
+# The noindex directive on each page tells search engines not to index the content.
+
 User-agent: *
 Allow: /
 
@@ -7,5 +10,10 @@ Disallow: /music_update.sh
 Disallow: /temp
 Disallow: /guestbook_stale_comments.json
 Disallow: /nowplaying.json
+Disallow: /posts.json
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.graph/
+Disallow: /bgm.mp3
 
 Sitemap: https://masterrecord.chaldea.moe/sitemap.xml

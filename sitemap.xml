@@ -2,49 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://masterrecord.chaldea.moe/</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://masterrecord.chaldea.moe/blog.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://masterrecord.chaldea.moe/projects.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://masterrecord.chaldea.moe/resume.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://masterrecord.chaldea.moe/social.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://masterrecord.chaldea.moe/fun-projects.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://masterrecord.chaldea.moe/awareness.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://masterrecord.chaldea.moe/guestbook.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://masterrecord.chaldea.moe/webring.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <priority>0.3</priority>
   </url>
+
+  <!-- Blog posts -->
   <url>
     <loc>https://masterrecord.chaldea.moe/posts/tsun_0.html</loc>
     <lastmod>2026-05-25</lastmod>
@@ -55,9 +57,110 @@
     <lastmod>2026-06-12</lastmod>
     <priority>0.9</priority>
   </url>
+
+  <!-- Professional -->
   <url>
     <loc>https://masterrecord.chaldea.moe/professional/</loc>
     <lastmod>2026-09-05</lastmod>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Weird / personal pages -->
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/now.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/logs.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/uses.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/links.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/garden.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/buttons.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/arts.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/videos.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/anime.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/shrine.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/realshrine.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/lore-notes.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- SCP lore pages -->
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/scp-entry.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/guide-for-newcomers.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/witch-child.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/the-company-contractor.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/sorry.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/demo-wiki-float.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/slutlife.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.2</priority>
   </url>
 </urlset>
