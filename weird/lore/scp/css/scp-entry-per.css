@@ -1,53 +1,11 @@
-/* /\* ── Card: floats right, text wraps around it ── *\/ */
-/* .card { */
-/*     float: right;                 /\* sit on the right side *\/ */
-/*     width: 300px;                 /\* fixed width — won't shrink *\/ */
-/*     margin: 0 0 15px 20px;        /\* space: top right bottom left *\/ */
-
-/*     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
-/*     transition: transform 0.3s ease; */
-/*     overflow: hidden; */
-/*     background: #f9f9f9; */
-/*     border: 1px solid #999; */
-/* } */
-
-/* .card:hover { */
-/*     box-shadow: 0 3px 10px 8px rgba(0,0,0,0.2); */
-/*     transform: scale(1.02); */
-/* } */
-
-/* .thumbnail { */
-/*     width: 100%; */
-/*     display: block;               /\* removes inline gap under image *\/ */
-/* } */
-
-/* /\* The wiki-section must be a BLOCK container (not flex/grid) *\/ */
-/* .wiki-section { */
-/*     width: 100%; */
-/* } */
-
-/* .wiki-section p { */
-/*     margin-bottom: 1em; */
-/* } */
-
-/* .container { */
-/*     color: black; */
-/*     padding: 6px 10px; */
-/* } */
-
-/* /\* Utility: add to any element to stop float wrapping *\/ */
-/* .clear { */
-/*     clear: both; */
-/* } */
-
-/* h1 { */
-/*     margin-bottom: 20px; */
-/*     font-family: monospace; */
-/*     color: #600000; */
-/* } */
-
 .wiki-section {
     width: 100%;
+}
+
+.content-title {
+    margin-bottom: 20px;
+    font-family: monospace;
+    color: #600000;
 }
 
 .wiki-img-right {
@@ -102,4 +60,38 @@
 
 .wiki-section p {
     margin-bottom: 1rem;
+}
+
+@media (max-width: 800px) {
+
+.wiki-img-left {
+    float: center;
+    width: 250px;
+    margin: 0 20px 15px 0;
+
+    background: #f9f9f9;
+    border: 1px solid #999;
+    padding: 5px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.wiki-img-right {
+    float: center;
+    width: 250px;
+    margin: 0 20px 15px 0;
+
+    background: #f9f9f9;
+    border: 1px solid #999;
+    padding: 5px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.content-title {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: monospace;
+    color: #600000;
+}
 }
