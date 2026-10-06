@@ -40,66 +40,8 @@
 /*     clear: both; */
 /* } */
 
-/* h1 { */
-/*     margin-bottom: 20px; */
-/*     font-family: monospace; */
-/*     color: #600000; */
-/* } */
-
-.wiki-section {
-    width: 100%;
-}
-
-.wiki-img-right {
-    float: right;
-    width: 250px;
-    margin: 0 0 15px 20px;
-
-    background: #f9f9f9;
-    border: 1px solid #999;
-    padding: 5px;
-    font-size: 0.85rem;
-    text-align: center;
-}
-
-.wiki-img-right img {
-    width: 100%;
-    display: block;
-}
-
-.wiki-img-right .caption {
-    padding: 6px;
-    color: #555;
-    font-style: italic;
-}
-
-.wiki-img-left {
-    float: left;
-    width: 250px;
-    margin: 0 20px 15px 0;
-
-    background: #f9f9f9;
-    border: 1px solid #999;
-    padding: 5px;
-    font-size: 0.85rem;
-    text-align: center;
-}
-
-.wiki-img-left img {
-    width: 100%;
-    display: block;
-}
-
-.wiki-img-left .caption {
-    padding: 6px;
-    color: #555;
-    font-style: italic;
-}
-
-.clear {
-    clear: both;
-}
-
-.wiki-section p {
-    margin-bottom: 1rem;
+h1 {
+    margin-bottom: 20px;
+    font-family: monospace;
+    color: #600000;
 }
