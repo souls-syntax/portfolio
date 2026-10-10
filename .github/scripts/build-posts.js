@@ -118,13 +118,14 @@ function buildPostHtml({ slug, title, date, tags, series, readingTime, prev, nex
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="robots" content="noindex, nofollow">
   <title>${escapeHtml(title)} - Aakarsh Kashyap</title>
-  <link rel="alternate" type="application/rss+xml" title="Aakarsh Kashyap" href="/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Aakarsh Kashyap's Blog" href="/feed.xml">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../latex-theme.css">
+  <link rel="stylesheet" href="../darkmode.css">
 <style>
+center img[src*="buttons/"] { width: 88px; height: 31px; max-width: none; }
 a:visited {
   color: #0000EE;
 }
@@ -247,6 +248,10 @@ ${fragment}
       </audio>
       <b>BGM</b><br>
       <a href="#" id="bgm-btn" onclick="toggleBGM()">[play]</a>
+      <br>
+      <br>
+      <b>theme toggle</b><br>
+      <a href="#" id="dark-mode-btn" onclick="toggleDarkMode(); return false;">[dark mode]</a>
     </td>
   </tr>
 </table>
@@ -256,6 +261,7 @@ ${fragment}
   <img src="../buttons/vi-vim.gif" alt="vim my love" width="88" height="31">
   <img src="../buttons/underconstruction.gif" alt="under construction" width="88" height="31">
   <br><br>
+  <a href="/feed.xml">RSS FEED</a><br>
   <small>
     &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; <a href="../webring.html">webring</a> &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
   </small>
@@ -290,30 +296,7 @@ ${fragment}
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-<nav class="latex-nav">
-  <a href="../index.html">about</a> &middot;
-  <a href="../resume.html">resume</a> &middot;
-  <a href="../projects.html">projects</a> &middot;
-  <a href="../blog.html">blog</a> &middot;
-  <a href="https://github.com/souls-syntax">github</a>
-</nav>
-<a href="#" class="latex-chip toc-chip" id="toc-chip">\\tableofcontents</a>
-<div class="latex-toc" id="latex-toc"></div>
-<div class="latex-taskbar">
-  <div class="taskbar-left">
-    <a href="../index.html">about</a> &middot;
-    <a href="../resume.html">resume</a> &middot;
-    <a href="../projects.html">projects</a> &middot;
-    <a href="../blog.html">blog</a> &middot;
-    <a href="https://github.com/souls-syntax">github</a>
-  </div>
-  <div class="taskbar-center"><i>made with vim and spite</i></div>
-  <div class="taskbar-right"><span id="latex-clock">--:--</span></div>
-</div>
-<a href="#" class="latex-chip top-chip" id="top-chip">\\top</a>
-<a href="#" class="latex-chip pagecolor-chip" id="pagecolor-chip">\\pagecolor{dark}</a>
-<a href="#" class="latex-chip" id="theme-chip">\\end{document}</a>
-<script src="../js/theme-toggle.js"></script>
+<script src="../darkmode.js"></script>
 </body>
 </html>`;
 }
