@@ -2,7 +2,7 @@
 title: me-thinks, Episode - 0 : Is AI gonna kill the SWE ?
 date: 2026-10-11
 tags: [programming, ai, me-thinks]
-series: tsundere
+series: me-thinks
 ---
 
 # The Spark Problem
