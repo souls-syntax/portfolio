@@ -399,7 +399,17 @@ fs.writeFileSync(postsJson, JSON.stringify(index, null, 2), 'utf8');
 console.log(`updated: posts.json (${index.length} posts)`);
 
 // ── RSS feed ──
-const SITE_URL = 'https://souls-syntax.github.io';
+// canonical origin is whatever the CNAME file says, so feed links can't drift
+// out of sync with sitemap.xml / the real Pages domain
+const cnamePath = path.join(__dirname, '../../CNAME');
+if (!fs.existsSync(cnamePath)) {
+  throw new Error('CNAME not found at ' + cnamePath + ' - cannot determine site URL');
+}
+const cname = fs.readFileSync(cnamePath, 'utf8').trim();
+if (!cname) {
+  throw new Error('CNAME is empty at ' + cnamePath + ' - cannot determine site URL');
+}
+const SITE_URL = 'https://' + cname;
 const SITE_TITLE = 'Aakarsh Kashyap';
 const SITE_DESC = 'made with vim and spite';
 
