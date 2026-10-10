@@ -114,6 +114,9 @@ function buildPostHtml({ slug, title, date, tags, series, readingTime, prev, nex
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="robots" content="noindex, nofollow">
   <title>${escapeHtml(title)} - Aakarsh Kashyap</title>
   <link rel="alternate" type="application/rss+xml" title="Aakarsh Kashyap" href="/feed.xml">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">

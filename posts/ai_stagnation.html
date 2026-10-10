@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="robots" content="noindex, nofollow">
+  <title>me-thinks, Episode - 0 : Is AI gonna kill the SWE ? - Aakarsh Kashyap</title>
+  <link rel="alternate" type="application/rss+xml" title="Aakarsh Kashyap" href="/feed.xml">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../latex-theme.css">
+<style>
+a:visited {
+  color: #0000EE;
+}
+img { max-width: 100%; height: auto; }
+.post-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+.post-content pre {
+  overflow-x: auto;
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;
+}
+.post-content code {
+  word-break: break-all;
+}
+@media (max-width: 600px) {
+  .side-panel { display: none; }
+  table[width="100%"] > tbody > tr > td:not(.side-panel),
+  table[width="100%"] > tr > td:not(.side-panel) {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
+<marquee>welcome to my site</marquee>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+  <tr>
+    <td width="150" valign="top" class="side-panel" style="border-right: 1px solid black;">
+       <!-- <img src="../gifs/banner.gif" alt="[banner gif]" width="140" height="50"><br> -->
+       <img src="../gifs/test/arceuid-tsukihime.gif" alt="Tsukihime moon princess" width="150" height="80"><br>
+      <br>
+      <b>Menu</b><br>
+      <a href="../index.html">About Me</a><br>
+      <a href="../resume.html">Resume</a><br>
+      <a href="../blog.html"><b>Blog</b></a><br>
+      <a href="../projects.html">Projects</a><br>
+      <a href="../fun-projects.html">Fun Projects</a><br>
+      <a href="../social.html">Social</a><br>
+       <a href="../guestbook.html">GuestBook</a><br>
+       <a href="../awareness.html">Awareness</a><br>
+      <hr>
+      <b>Friends</b><br>
+      <a href="https://utkarsh-1771.github.io/Portfolio/">[ utkarsh ]</a><br>
+      <a href="https://shashwatagrawal20.github.io/portfolio/">[ Shashwat ]</a><br>
+      <a href="https://www.seivarya.in/">[ seivarya ]</a><br>
+      <a href="https://sodakeyeatsmush.vercel.app/">[ Saad ]</a><br>
+      <a href="https://www.shobhitnagpal.com/">[ Saar ]</a><br>
+      <a href="https://margatroid.moe/"><img src="https://margatroid.moe/assets/button/margatroid8831.png"></a><br>
+      <a href="https://manthan3.me/"><img src="../buttons/manthanxmew.gif"></a><br>
+      <a href="https://insicli.github.io/">[ insi ]</a><br>
+      <hr>
+      <b>Status</b><br>
+      <small>&#x2713; site is up</small><br>
+      <small>since 2026-05-26</small><br>
+      <hr>
+      <b>Now Playing</b><br>
+      <small id="np-artist">...</small><br>
+      <small id="np-track">...</small><br>
+      <hr>
+      <img src="../gifs/000010.gif" alt="blinkie" width="150" height="20"><br>
+      <a href="https://chaldea.moe/" target="_blank"><img src="../buttons/chaldea.gif" alt="personalLogo"></a><br>
+      <br>
+      <img src="../gifs/main_header.gif" alt="[gif]" width="140" height="90"><br>
+      <br>
+    </td>
+    <td valign="top" style="padding: 8px;">
+      <a href="../blog.html">&larr; back to blog</a>
+      <hr>
+      <b>me-thinks, Episode - 0 : Is AI gonna kill the SWE ?</b><br>
+      <small>2026-05-25 &mdash; [programming] [ai] [me-thinks] &mdash; 6 min read</small><br><small>series: tsundere</small>
+      <hr>
+      <!-- FRAGMENT START -->
+      <div class="post-content">
+<h1 id="the-spark-problem">The Spark Problem</h1><p>AI might freeze the foundations of tech. Worse, it might stop producing the kind of people who would ever question them.</p>
+<p>Mathematicians have been having a version of this argument about AI, and I think their worry carries over to software. It doesn&#39;t map one to one (at this point it&#39;s barely engineering anymore), but the underlying question is the same: what happens to the progression of perspective?</p>
+<p><strong>Two definitions</strong></p>
+<p>By problems I don&#39;t mean product problems. I mean things like a slow OS, cache issues, no elegant way to do something (better CSS), a language that&#39;s more expressive and faster, a better implementation of an idea.</p>
+<p>By brute force I don&#39;t mean inefficient. I mean grinding away inside one perspective when the perspective is the actual problem.</p>
+<p>Take a spiral that grows forever. In Cartesian coordinates it&#39;s ugly: you can&#39;t even write it as y = f(x), and the parametric version is x and y tangled up in sines and cosines. You can keep patching approximations forever. Switch to polar and it&#39;s r = aθ. One line. The answer didn&#39;t get smarter, the frame changed.</p>
+<p>Memory safety went the same way. &quot;Manual control with safety&quot; was a mess in the old frame, and Rust&#39;s ownership isn&#39;t a better pointer, it&#39;s a different coordinate system. That&#39;s what I mean by a perspective. Elegant isn&#39;t &quot;short,&quot; it&#39;s &quot;you picked the frame where the problem is simple.&quot;</p>
+<p><strong>No friction, no new ideas</strong></p>
+<p>Problems used to force new things into existence: better ways, different perspectives. AI is many things, but it&#39;s not elegant, and it&#39;s not a discoverer of new perspectives. You throw compute at a problem and a solution arrives. That&#39;s great for speed, but there&#39;s no buzz in it. If today&#39;s AI had arrived in 2010, Rust probably wouldn&#39;t exist, and neither would a lot of other things.</p>
+<p>If LLMs can brute force any solution, people stop running into problems, and elegant ideas stop being needed. Software slowly settles onto the basic tools we have now and just keeps using them. We may never even feel the limit of the current perspective, because the AI absorbs it. With plain Spring, the friction is what eventually produces something like Spring Boot. If the friction never reaches a human, we just stay on Spring.</p>
+<p>It also weakens collaboration. Novel ideas spread because of buzz: one discovery excites people, that excitement produces the next discovery, and so on. I think AI kills that loop too. Nobody reads something deeply, thinks &quot;oh, so that&#39;s how they did it,&quot; and rebuilds it in a neat 50 lines. They hand it to an LLM, which understands it, reproduces it with whatever is already established, and ships it. We never get those 50 lines, the ones that would have been revolutionary and pulled even more people into that perspective.</p>
+<p><strong>No spite, no new foundations</strong></p>
+<p>Spite is one of the best motives ever. Somewhere there&#39;s a person who would have been so annoyed at the modern OS that he&#39;d go build a super divine one. Except he never got annoyed, because an LLM smoothed over everything.</p>
+<p>And to get annoyed at a design, you have to touch it. Most people now work on &quot;I have this idea, implement it&quot; and go yolo. Maybe the AI is annoyed at its own architecture, who knows, but you certainly aren&#39;t, because you never see it. And it will keep getting better, the way image generation went from a thousand-word description to one sentence.</p>
+<p>With AI architecture as it is right now, new perspectives probably aren&#39;t coming from the machine either. So we climb so high in abstraction that current tech just freezes. That might not even be that bad, but we&#39;ll lose some amazing things.</p>
+<p>Maybe SI gets good enough to generate new perspectives itself. Unlikely, since we&#39;ve never seen it. The more likely version is that SI becomes so woven into society that we only notice later. Life is easy, everything works, and if you look even slightly underneath, it&#39;s all the same as it was in 2026. That&#39;s what AI taking over actually looks like. Not the movies, where AI for some reason wants to kill humans, but a world that works so well that nothing ever changes.</p>
+<p><strong>Hobby and paycheck</strong></p>
+<p>The split will get obvious: people who do this for the love, and people who do it for the money. Nothing wrong with either. But it used to be nerds doing nerd things and getting paid for it. Now it goes back to nerds doing nerd things, with the paycheck coming from somewhere else. Doing things for the sake of things.</p>
+<p><strong>Stuck is the point</strong></p>
+<p>Here&#39;s the thing that ties all of this together: you rarely appreciate polar coordinates until you&#39;ve suffered in Cartesian. The shift only looks like a breakthrough to someone who felt the old frame&#39;s limit with their own hands. If an LLM absorbs that pain, you never learn where the limit was, so you never learn a better frame could exist. New perspectives come from people who were stuck.</p>
+<p>It&#39;s also why we can&#39;t predict the future. Imagination is stuck inside the frame of its time, and the real thing usually arrives from a different one. Now say AI can turn our dreams into reality with the tech we already have. Then we never need the new discovery. If they had built flying cars the moment they imagined them, we might never have gotten helicopters or bullet trains. If there had been a separate device for video calls, we might never have gotten smartphones. When imagination quickly becomes reality, we can explore just about every idea, but they all come from the same frame. We get more of the same kind of thing.</p>
+<p>Which is why I care less about the tools freezing and more about who stops getting stuck.</p>
+<p><strong>No new nerds</strong></p>
+<p>This is the problem I&#39;ve been trying to get at all along: new people in this very geeky community.</p>
+<p>I didn&#39;t get in out of pure curiosity. Everyone told me there was money in it, and then I fell in love. Now imagine the person whose whole starting point is &quot;build me a better YouTube, here&#39;s 200k.&quot; He&#39;ll never fall in love with C. He&#39;ll never defend C++ while admitting it&#39;s bloated. There&#39;s no version of him that hates Rust just because it&#39;s Rust, tries Zig, gets header file withdrawal, and crawls back to C to heal his trauma. He&#39;ll never start a game engine every other week and bin it after some progress because the shortcuts make him feel like a cheat.</p>
+<p>Nerds didn&#39;t come out amazed at computers from birth. They saw something and got curious. I think the AI user loses that first ignition, the one that happened to me because I wanted to do something difficult and forced myself to love C out of spite. Hating Java, realising it&#39;s kinda good, then meeting Spring Boot and hating it even more. That person doesn&#39;t get built, because the next one may not even know whether code is 01, asm, Ruby or R.</p>
+<p>&quot;But LLMs can be tutors. They can even spark curiosity.&quot;</p>
+<p>Lmao. That assumes I, or any engineer, even bothers to chat with it. I read maybe 10% of what it writes, the first bit, and move on. Agent mode is worse: you say &quot;build that,&quot; go get coffee, come back to a few permission prompts, and yes yes yes, because you don&#39;t understand what it&#39;s asking, and carry on with your day. That&#39;s the problem.</p>
+<p>I don&#39;t have a fix. I just know the spark has to come from somewhere, and I&#39;d like the next person to still be able to hate Rust for no reason and love C out of spite.</p>
+      </div>
+      <!-- FRAGMENT END -->
+      <hr>
+<script src="https://giscus.app/client.js"
+        data-repo="souls-syntax/portfolio"
+        data-repo-id="R_kgDOSnkCrw"
+        data-category="General"
+        data-category-id="DIC_kwDOSnkCr84DAfMP"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark_tritanopia"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+      <hr>
+      <hr><small><a href="tsun_0.html">&larr; tsundere-runtime, Episode - 0 : What I am trying to do with this project, why and how.</a> &middot; <a href="realLangs_0.html">Retarded take : Episode 0 : some languages are not real programming language &rarr;</a></small>
+      <small><a href="../blog.html">&larr; back to blog</a></small>
+    </td>
+    <td width="140" valign="top"  class="side-panel" style="border-left: 1px solid black; padding: 4px;">
+      <b>Stuff</b><br>
+      <hr>
+       <img src="../gifs/test/tsukihime-tsukihime-remake.gif" alt="[gif]" width="130" height="100"><br>
+       <br>
+       <img src="../gifs/test/saber-fate-saber.gif" alt="[gif]" width="130" height="100"><br>
+       <!-- <img src="../gifs/flandre-scarlet-cheering.gif" alt="[gif]" width="130" height="100"><br> -->
+       <br>
+       <img src="../gifs/test/fate-padoru-christmas.gif" alt="[gif]" width="130" height="100"><br>
+       <!-- <img src="../gifs/reimu-touhou.gif" alt="[gif]" width="130" height="100"><br> -->
+       <br>
+       <img src="../gifs/test/scáthach-fate.gif" alt="Saber from Fate Carnival Phantasm" width="140"><br>
+      <audio id="bgm" loop>
+        <source src="../bgm.mp3" type="audio/mpeg">
+      </audio>
+      <b>BGM</b><br>
+      <a href="#" id="bgm-btn" onclick="toggleBGM()">[play]</a>
+    </td>
+  </tr>
+</table>
+<hr>
+<center>
+  <img src="../buttons/firefox.gif" alt="best viewed in firefox" width="88" height="31">
+  <img src="../buttons/vi-vim.gif" alt="vim my love" width="88" height="31">
+  <img src="../buttons/underconstruction.gif" alt="under construction" width="88" height="31">
+  <br><br>
+  <small>
+    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; <a href="../webring.html">webring</a> &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
+  </small>
+  <br><br>
+  <small id="visit-count">...</small>
+  <br><br>
+  <small>aakarsh kashyap ; made with vim and spite</small>
+</center>
+<script>
+  fetch('../nowplaying.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      document.getElementById('np-artist').textContent = d.artist || '---';
+      document.getElementById('np-track').textContent = d.track || '---';
+    })
+    .catch(function(){});
+
+  function toggleBGM() {
+    var a = document.getElementById('bgm');
+    var btn = document.getElementById('bgm-btn');
+    if (a.paused) { a.play(); btn.textContent = '[stop]'; }
+    else { a.pause(); a.currentTime = 0; btn.textContent = '[play]'; }
+    return false;
+  }
+
+  fetch('https://visit-counter-kohl.vercel.app/api/count')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      document.getElementById('visit-count').textContent = 'visitors: ' + d.count;
+    })
+    .catch(function(){});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<nav class="latex-nav">
+  <a href="../index.html">about</a> &middot;
+  <a href="../resume.html">resume</a> &middot;
+  <a href="../projects.html">projects</a> &middot;
+  <a href="../blog.html">blog</a> &middot;
+  <a href="https://github.com/souls-syntax">github</a>
+</nav>
+<a href="#" class="latex-chip toc-chip" id="toc-chip">\tableofcontents</a>
+<div class="latex-toc" id="latex-toc"></div>
+<div class="latex-taskbar">
+  <div class="taskbar-left">
+    <a href="../index.html">about</a> &middot;
+    <a href="../resume.html">resume</a> &middot;
+    <a href="../projects.html">projects</a> &middot;
+    <a href="../blog.html">blog</a> &middot;
+    <a href="https://github.com/souls-syntax">github</a>
+  </div>
+  <div class="taskbar-center"><i>made with vim and spite</i></div>
+  <div class="taskbar-right"><span id="latex-clock">--:--</span></div>
+</div>
+<a href="#" class="latex-chip top-chip" id="top-chip">\top</a>
+<a href="#" class="latex-chip pagecolor-chip" id="pagecolor-chip">\pagecolor{dark}</a>
+<a href="#" class="latex-chip" id="theme-chip">\end{document}</a>
+<script src="../js/theme-toggle.js"></script>
+</body>
+</html>
