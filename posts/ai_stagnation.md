@@ -63,4 +63,7 @@ Nerds didn't come out amazed at computers from birth. They saw something and got
 
 Lmao. That assumes I, or any engineer, even bothers to chat with it. I read maybe 10% of what it writes, the first bit, and move on. Agent mode is worse: you say "build that," go get coffee, come back to a few permission prompts, and yes yes yes, because you don't understand what it's asking, and carry on with your day. That's the problem.
 
+I just fear that this might lead us to a technological equilibrium that becomes difficult to escape because it keeps making itself comfortable.
+
 I don't have a fix. I just know the spark has to come from somewhere, and I'd like the next person to still be able to hate Rust for no reason and love C out of spite.
+
