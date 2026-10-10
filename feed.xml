@@ -6,7 +6,18 @@
     <description>made with vim and spite</description>
     <language>en</language>
     <atom:link href="https://souls-syntax.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sat, 10 Oct 2026 22:20:40 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 22:23:27 GMT</lastBuildDate>
+  <item>
+    <title>me-thinks, Episode - 0 : Is AI gonna kill the SWE ?</title>
+    <link>https://souls-syntax.github.io/posts/ai_stagnation.html</link>
+    <guid isPermaLink="true">https://souls-syntax.github.io/posts/ai_stagnation.html</guid>
+    <pubDate>Sun, 11 Oct 2026 00:00:00 GMT</pubDate>
+    <description>AI might freeze the foundations of tech. Worse, it might stop producing the kind of people who would ever question them. Mathematicians have been having a version of this argument about AI, and I think their worry carries over to software. It doesn&apos;t map one to one (at this point it&apos;s barely…</description>
+    <category>programming</category>
+      <category>ai</category>
+      <category>me-thinks</category>
+    <itunes:subtitle>series: tsundere</itunes:subtitle>
+  </item>
   <item>
     <title>Retarded take : Episode 0 : some languages are not real programming language</title>
     <link>https://souls-syntax.github.io/posts/realLangs_0.html</link>
@@ -15,17 +26,6 @@
     <description>The way i see it most of the language floating around just don&apos;t have a purpose other than providing syntactic sugar, they exist purely to become someones eye-candy. I call that language grooming. Making a language without any specific purpose just for the sole purpose of having a beautiful on…</description>
     <category>retarded</category>
       <category>language</category>
-    <itunes:subtitle>series: tsundere</itunes:subtitle>
-  </item>
-  <item>
-    <title>me-thinks, Episode - 0 : Is AI gonna kill the SWE ?</title>
-    <link>https://souls-syntax.github.io/posts/ai_stagnation.html</link>
-    <guid isPermaLink="true">https://souls-syntax.github.io/posts/ai_stagnation.html</guid>
-    <pubDate>Mon, 25 May 2026 00:00:00 GMT</pubDate>
-    <description>AI might freeze the foundations of tech. Worse, it might stop producing the kind of people who would ever question them. Mathematicians have been having a version of this argument about AI, and I think their worry carries over to software. It doesn&apos;t map one to one (at this point it&apos;s barely…</description>
-    <category>programming</category>
-      <category>ai</category>
-      <category>me-thinks</category>
     <itunes:subtitle>series: tsundere</itunes:subtitle>
   </item>
   <item>

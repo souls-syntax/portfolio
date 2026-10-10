@@ -1,5 +1,24 @@
 [
   {
+    "slug": "ai_stagnation",
+    "title": "me-thinks, Episode - 0 : Is AI gonna kill the SWE ?",
+    "date": "2026-10-11",
+    "tags": [
+      "programming",
+      "ai",
+      "me-thinks"
+    ],
+    "series": "tsundere",
+    "readingTime": 6,
+    "excerpt": "AI might freeze the foundations of tech. Worse, it might stop producing the kind of people who would ever question them. Mathematicians have been having a version of this argument about AI, and I think their worry carries over to software. It doesn't map one to one (at this point it's barely…",
+    "url": "posts/ai_stagnation.html",
+    "prev": {
+      "slug": "realLangs_0",
+      "title": "Retarded take : Episode 0 : some languages are not real programming language"
+    },
+    "next": null
+  },
+  {
     "slug": "realLangs_0",
     "title": "Retarded take : Episode 0 : some languages are not real programming language",
     "date": "2026-06-12",
@@ -12,31 +31,12 @@
     "excerpt": "The way i see it most of the language floating around just don't have a purpose other than providing syntactic sugar, they exist purely to become someones eye-candy. I call that language grooming. Making a language without any specific purpose just for the sole purpose of having a beautiful on…",
     "url": "posts/realLangs_0.html",
     "prev": {
-      "slug": "ai_stagnation",
-      "title": "me-thinks, Episode - 0 : Is AI gonna kill the SWE ?"
-    },
-    "next": null
-  },
-  {
-    "slug": "ai_stagnation",
-    "title": "me-thinks, Episode - 0 : Is AI gonna kill the SWE ?",
-    "date": "2026-05-25",
-    "tags": [
-      "programming",
-      "ai",
-      "me-thinks"
-    ],
-    "series": "tsundere",
-    "readingTime": 6,
-    "excerpt": "AI might freeze the foundations of tech. Worse, it might stop producing the kind of people who would ever question them. Mathematicians have been having a version of this argument about AI, and I think their worry carries over to software. It doesn't map one to one (at this point it's barely…",
-    "url": "posts/ai_stagnation.html",
-    "prev": {
       "slug": "tsun_0",
       "title": "tsundere-runtime, Episode - 0 : What I am trying to do with this project, why and how."
     },
     "next": {
-      "slug": "realLangs_0",
-      "title": "Retarded take : Episode 0 : some languages are not real programming language"
+      "slug": "ai_stagnation",
+      "title": "me-thinks, Episode - 0 : Is AI gonna kill the SWE ?"
     }
   },
   {
@@ -55,8 +55,8 @@
     "url": "posts/tsun_0.html",
     "prev": null,
     "next": {
-      "slug": "ai_stagnation",
-      "title": "me-thinks, Episode - 0 : Is AI gonna kill the SWE ?"
+      "slug": "realLangs_0",
+      "title": "Retarded take : Episode 0 : some languages are not real programming language"
     }
   }
 ]
