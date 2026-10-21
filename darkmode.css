@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Cinzel:wght@500;600;700&family=IM+Fell+English:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
 body.dark-mode {
   background-color: #05051a !important;
   background-image:
@@ -24,77 +28,115 @@ body.dark-mode td { border-color: #4d527d !important; }
 body.dark-mode #dark-mode-btn { color: #ffcb6b !important; }
 
   /* background-image: url("wallpaper/tsukhime.jpg") !important; */
-
-
 body.dark-wallpaper-mode {
-  background-color: #05051a !important;
-  /* background-image: */
-  /*   radial-gradient(1px 1px at 17px 23px, rgba(255,255,255,.9) 50%, transparent 55%), */
-  /*   radial-gradient(1px 1px at 71px 89px, rgba(190,205,255,.8) 50%, transparent 55%), */
-  /*   radial-gradient(1px 1px at 43px 51px, rgba(255,255,255,.7) 50%, transparent 55%), */
-  /*   radial-gradient(2px 2px at 116px 37px, rgba(255,255,255,.85) 50%, transparent 55%), */
-  /*   radial-gradient(1px 1px at 181px 143px, rgba(185,200,255,.8) 50%, transparent 55%), */
-  /*   radial-gradient(2px 2px at 267px 211px, rgba(255,255,255,.7) 50%, transparent 55%); */
-  /* background-size: 137px 157px, 223px 191px, 307px 271px, 419px 367px, 557px 503px, 719px 613px; */
-  /* background-position: 0 0, 31px 47px, 83px 19px, 127px 71px, 211px 103px, 17px 139px; */
-  background-image: url("wallpaper/tsukhime.jpg") !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  background-size: cover !important;
-  background-attachment: fixed !important;
-  color: #d8d8e8 !important;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    line-height: 1.45;
+    color: #e0d9e8 !important;
+
+    background-color: #05051a !important;
+    background-image: none !important;
+    /* color: #ff0000 !important; */
+    position: relative;
+    isolation: isolate;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
 }
 
-body.dark-wallpaper-mode a,
-body.dark-wallpaper-mode a:visited { color: #79d9ff !important; }
+body.dark-wallpaper-mode::before {
+    content: "";
+    background-image:
+        linear-gradient(
+            rgba(5, 5, 26, 0.55),
+            rgba(5, 5, 26, 0.55)
+        ), url("wallpaper/tsukhime.jpg") !important;
+    z-index: -1;
+    position: fixed;
+    inset: 10px;
+
+
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    filter: blur(8px);
+}
+
+body.dark-wallpaper-mode a,body.dark-wallpaper-mode a:visited { color: #79d9ff !important; }
 body.dark-wallpaper-mode a:hover { color: #ff9de2 !important; }
 body.dark-wallpaper-mode hr,
 body.dark-wallpaper-mode td { border-color: #4d527d !important; }
 body.dark-wallpaper-mode #dark-mode-btn { color: #ffcb6b !important; }
-body.dark-wallpaper-mode p {
-    background: linear-gradient(to right, #ffffff, #000000);
-    -webkit-background-clip: text;
-    background-color: text;
-    color: transparent;
-}
-body.dark-wallpaper-mode h1 {
-    background: linear-gradient(to right, #ffffff, #000000);
-    -webkit-background-clip: text;
-    background-color: text;
-    color: transparent;
-}
+/* body.dark-wallpaper-mode p { */
+/*     background: linear-gradient(to right, #ffffff, #000000); */
+/*     -webkit-background-clip: text; */
+/*     background-color: text; */
+/*     color: transparent; */
+/* } */
+/* body.dark-wallpaper-mode h1 { */
+/*     background: linear-gradient(to right, #ffffff, #000000); */
+/*     -webkit-background-clip: text; */
+/*     background-color: text; */
+/*     color: transparent; */
+/* } */
 
-body.dark-wallpaper-mode h2 {
-    background: linear-gradient(to right, #ffffff, #000000);
-    -webkit-background-clip: text;
-    background-color: text;
-    color: transparent;
+/* body.dark-wallpaper-mode h2 { */
+/*     background: linear-gradient(to right, #ffffff, #000000); */
+/*     -webkit-background-clip: text; */
+/*     background-color: text; */
+/*     color: transparent; */
+/* } */
+/* body.dark-wallpaper-mode h3 { */
+/*     background: linear-gradient(to right, #ffffff, #000000); */
+/*     -webkit-background-clip: text; */
+/*     background-color: text; */
+/*     color: transparent; */
+/* } */
+/* body.dark-wallpaper-mode h4 { */
+/*     background: linear-gradient(to right, #ffffff, #000000); */
+/*     -webkit-background-clip: text; */
+/*     background-color: text; */
+/*     color: transparent; */
+/* } */
+
+/* body.dark-wallpaper-mode h5 { */
+/*     background: linear-gradient(to right, #ffffff, #000000); */
+/*     -webkit-background-clip: text; */
+/*     background-color: text; */
+/*     color: transparent; */
+/* } */
+
+/* body.dark-wallpaper-mode b { */
+/*     background: linear-gradient(to right, #ffffff, #000000); */
+/*     -webkit-background-clip: text; */
+/*     background-color: text; */
+/*     color: transparent; */
+/* } */
+
+body.dark-wallpaper-mode p,
+body.dark-wallpaper-mode li {
+    color: #e0d9e8 !important
 }
+body.dark-wallpaper-mode h1,
+body.dark-wallpaper-mode h2,
+body.dark-wallpaper-mode b,
 body.dark-wallpaper-mode h3 {
-    background: linear-gradient(to right, #ffffff, #000000);
-    -webkit-background-clip: text;
-    background-color: text;
-    color: transparent;
+  font-family: 'Cinzel', serif;
+  /* font-family: 'Pirata One', serif; */
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #d8bfdc !important;
 }
-body.dark-wallpaper-mode h4 {
-    background: linear-gradient(to right, #ffffff, #000000);
-    -webkit-background-clip: text;
-    background-color: text;
-    color: transparent;
+/* body.dark-wallpaper-mode a { */
+/*   color: #c9a6df !important; */
+/*   text-decoration-color: #8d729f; */
+/*   transition: color 0.2s ease; */
+/* } */
+body.dark-wallpaper-mode a:hover {
+  color: #f0d5e8 !important;
 }
-
-body.dark-wallpaper-mode h5 {
-    background: linear-gradient(to right, #ffffff, #000000);
-    -webkit-background-clip: text;
-    background-color: text;
-    color: transparent;
-}
-
-body.dark-wallpaper-mode b {
-    background: linear-gradient(to right, #ffffff, #000000);
-    -webkit-background-clip: text;
-    background-color: text;
-    color: transparent;
+body.dark-wallpaper-mode blockquote {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
 }
 
 body.light-wallpaper-mode {
