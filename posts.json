@@ -1,5 +1,25 @@
 [
   {
+    "slug": "zig_io",
+    "title": "\"Exploring Stdout Behavior in Zig 0.17.0: Why `>>` Overwrites Your File\"",
+    "date": "2026-10-31",
+    "tags": [
+      "programming",
+      "zig",
+      "c",
+      "linux"
+    ],
+    "series": "zig",
+    "readingTime": 6,
+    "excerpt": "Here is a minimal program that writes a line to stdout: zig const std = @import(\"std\"); pub fn main(init: std.process.Init) !void {",
+    "url": "posts/zig_io.html",
+    "prev": {
+      "slug": "scathach_0",
+      "title": "Scathach, Episode - 0"
+    },
+    "next": null
+  },
+  {
     "slug": "scathach_0",
     "title": "Scathach, Episode - 0",
     "date": "2026-10-13",
@@ -16,7 +36,10 @@
       "slug": "ai_stagnation",
       "title": "me-thinks, Episode - 0 : Is AI gonna kill the SWE ?"
     },
-    "next": null
+    "next": {
+      "slug": "zig_io",
+      "title": "\"Exploring Stdout Behavior in Zig 0.17.0: Why `>>` Overwrites Your File\""
+    }
   },
   {
     "slug": "ai_stagnation",

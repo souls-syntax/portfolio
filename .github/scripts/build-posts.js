@@ -1,6 +1,7 @@
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
-const { marked } = require('marked');
+const { execFileSync } = require('child_process');
 
 
 function parseFrontmatter(raw) {
@@ -45,10 +46,6 @@ function tagsToHtml(tags) {
   return tags.map(t => `[${t}]`).join(' ');
 }
 
-function slugify(text) {
-  return text.toLowerCase().replace(/[^\w]+/g, '-').replace(/^-|-$/g, '');
-}
-
 function slugFromFile(filename) {
   return path.basename(filename, '.md');
 }
@@ -71,30 +68,57 @@ function deriveExcerpt(body, maxLen) {
   return (lastSpace > maxLen * 0.5 ? cut.slice(0, lastSpace) : cut).trim() + '\u2026';
 }
 
-// ── heading IDs via custom renderer ──
-const renderer = new marked.Renderer();
-const usedIds = {};
-renderer.heading = function() {
-  var text, level;
-  if (typeof arguments[0] === 'object' && arguments[0] !== null) {
-    text = arguments[0].text || '';
-    level = arguments[0].depth || 1;
-  } else {
-    text = String(arguments[0] || '');
-    level = arguments[1] || 1;
+function renderMarkdownWithHugo(posts) {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'portfolio-hugo-'));
+  const contentDir = path.join(tempDir, 'content', 'blogs');
+  const layoutsDir = path.join(tempDir, 'layouts', '_default');
+  const outputDir = path.join(tempDir, 'public');
+  fs.mkdirSync(contentDir, { recursive: true });
+  fs.mkdirSync(layoutsDir, { recursive: true });
+
+  fs.writeFileSync(path.join(tempDir, 'hugo.toml'), `baseURL = "https://example.invalid/"\nuglyURLs = true\n\n[markup.goldmark.renderer]\nunsafe = true\n\n[markup.highlight]\nstyle = "monokai"\nnoClasses = true\n`, 'utf8');
+  fs.writeFileSync(path.join(layoutsDir, 'single.html'), '{{ .Content }}', 'utf8');
+  fs.writeFileSync(path.join(contentDir, '_index.md'), '---\ntitle: Blog posts\n---\n', 'utf8');
+
+  for (const post of posts) {
+    const raw = fs.readFileSync(path.join(postsDir, `${post.slug}.md`), 'utf8');
+    const { body } = parseFrontmatter(raw);
+    // Always add explicit front matter: a post may begin with a Markdown
+    // thematic break (---), which Hugo would otherwise mistake for front matter.
+    const title = JSON.stringify(post.title);
+    fs.writeFileSync(path.join(contentDir, `${post.slug}.md`), `---\ntitle: ${title}\n---\n${body}`, 'utf8');
   }
-  var raw = text.replace(/<[^>]*>/g, '');
-  var base = slugify(raw);
-  var id = base;
-  var n = 2;
-  while (usedIds[id]) {
-    id = base + '-' + n;
-    n++;
+
+  try {
+    execFileSync('hugo', ['--source', tempDir, '--destination', outputDir, '--quiet'], { stdio: 'pipe' });
+    const htmlFiles = [];
+    function collectHtmlFiles(dir) {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) collectHtmlFiles(fullPath);
+        else if (entry.name.endsWith('.html')) htmlFiles.push(fullPath);
+      }
+    }
+    collectHtmlFiles(outputDir);
+    return Object.fromEntries(posts.map(post => {
+      const outputPath = htmlFiles.find(candidate =>
+        path.basename(candidate).toLowerCase() === `${post.slug}.html`.toLowerCase() ||
+        (path.basename(candidate) === 'index.html' && path.basename(path.dirname(candidate)).toLowerCase() === post.slug.toLowerCase())
+      );
+      if (!outputPath) throw new Error(`Hugo did not produce an HTML page for ${post.slug}; found: ${htmlFiles.join(', ')}`);
+      return [post.slug, fs.readFileSync(outputPath, 'utf8').trim()];
+    }));
+  } catch (error) {
+    const details = [...(error.output || []), error.stderr, error.stdout]
+      .filter(Boolean)
+      .map(output => output.toString().trim())
+      .filter(Boolean)
+      .join('\n');
+    throw new Error(`Hugo Markdown rendering failed: ${details || error.message}`);
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
   }
-  usedIds[id] = true;
-  return '<h' + level + ' id="' + id + '">' + text + '</h' + level + '>';
-};
-marked.use({ renderer });
+}
 
 
 function buildPostHtml({ slug, title, date, tags, series, readingTime, prev, next, fragment }) {
@@ -154,7 +178,6 @@ img { max-width: 100%; height: auto; }
   }
 }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
@@ -294,8 +317,6 @@ ${fragment}
     })
     .catch(function(){});
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
 <script src="../darkmode.js"></script>
 </body>
 </html>`;
@@ -353,14 +374,12 @@ for (let i = 0; i < index.length; i++) {
     : null;
 }
 
+// Render Markdown and syntax-highlight fenced code with Hugo's built-in Chroma.
+const renderedFragments = renderMarkdownWithHugo(index);
+
 // build each post
 for (const post of index) {
-  const raw = fs.readFileSync(path.join(postsDir, `${post.slug}.md`), 'utf8');
-  const { body } = parseFrontmatter(raw);
-  // reset usedIds for each post
-  for (const k of Object.keys(usedIds)) delete usedIds[k];
-
-  const fragment = marked.parse(body).trim();
+  const fragment = renderedFragments[post.slug];
 
   const html = buildPostHtml({
     slug: post.slug,

@@ -6,7 +6,19 @@
     <description>made with vim and spite</description>
     <language>en</language>
     <atom:link href="https://masterrecord.chaldea.moe/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 12 Oct 2026 21:38:08 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 17:59:45 GMT</lastBuildDate>
+  <item>
+    <title>&quot;Exploring Stdout Behavior in Zig 0.17.0: Why `&gt;&gt;` Overwrites Your File&quot;</title>
+    <link>https://masterrecord.chaldea.moe/posts/zig_io.html</link>
+    <guid isPermaLink="true">https://masterrecord.chaldea.moe/posts/zig_io.html</guid>
+    <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+    <description>Here is a minimal program that writes a line to stdout: zig const std = @import(&quot;std&quot;); pub fn main(init: std.process.Init) !void {</description>
+    <category>programming</category>
+      <category>zig</category>
+      <category>c</category>
+      <category>linux</category>
+    <itunes:subtitle>series: zig</itunes:subtitle>
+  </item>
   <item>
     <title>Scathach, Episode - 0</title>
     <link>https://masterrecord.chaldea.moe/posts/scathach_0.html</link>

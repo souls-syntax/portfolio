@@ -41,7 +41,6 @@ img { max-width: 100%; height: auto; }
   }
 }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
@@ -96,19 +95,18 @@ img { max-width: 100%; height: auto; }
       <!-- FRAGMENT START -->
       <div class="post-content">
 <hr>
-<p>Hola/Hello/namaskar, So sorry ok, I really have no excuse why I wasn&#39;t posting blogs for so long, but this time for sure everything will be done with more planing.</p>
+<p>Hola/Hello/namaskar, So sorry ok, I really have no excuse why I wasn&rsquo;t posting blogs for so long, but this time for sure everything will be done with more planing.</p>
 <img src="post_assets/futaba.jpg" alt="Description" width="300" height="200">
-
-<p>Uwwwww, I know I know &quot;What about tohsaka series, you only ever posted one episode.&quot; To that I say &quot;Mou, it&#39;s too hard reader-kun. I don&#39;t want to cheat and make a perfect thing. So this series will be more of my tutorial level where I build something adjacent and related, so we will just need to assemble them to get the finished product without me getting overwhelmed. Humpf aren&#39;t I a genius. Praise me&quot;</p>
-<p>Anyways coming back to this series introduction, It&#39;s gonna be a simple hack and slash game with maybe few levels. Written in SDL2 (cause it&#39;s what I found most resource on, so better starting point for building foundation. Atleast such is my reasoning.)</p>
-<p>Game&#39;s Protagnist is gonna be scathach who just returned to Land of shadows and now gonna clean up her realm. Well all this is just flavor text  so don&#39;t worry about that other than that it should be a beginner friendly series.</p>
-<p>This is my first time writing <code>CODING TUTORIAL BLOG</code> so forgive me if it&#39;s not very polished;</p>
+<p>Uwwwww, I know I know &ldquo;What about tohsaka series, you only ever posted one episode.&rdquo; To that I say &ldquo;Mou, it&rsquo;s too hard reader-kun. I don&rsquo;t want to cheat and make a perfect thing. So this series will be more of my tutorial level where I build something adjacent and related, so we will just need to assemble them to get the finished product without me getting overwhelmed. Humpf aren&rsquo;t I a genius. Praise me&rdquo;</p>
+<p>Anyways coming back to this series introduction, It&rsquo;s gonna be a simple hack and slash game with maybe few levels. Written in SDL2 (cause it&rsquo;s what I found most resource on, so better starting point for building foundation. Atleast such is my reasoning.)</p>
+<p>Game&rsquo;s Protagnist is gonna be scathach who just returned to Land of shadows and now gonna clean up her realm. Well all this is just flavor text  so don&rsquo;t worry about that other than that it should be a beginner friendly series.</p>
+<p>This is my first time writing <code>CODING TUTORIAL BLOG</code> so forgive me if it&rsquo;s not very polished;</p>
 <hr>
-<p>Now what is SDL? SDL being shorthand for Simple DirectMedia Layer, It&#39;s a abstraction layer for graphics development and make code for annoying things such as input processing, window opening and stuff like that easier. You won&#39;t belive how annoying it is to manually make window on windows and linux and mac. Lifesaver abstraction layers i tell you. Tho if you are interested in even more low level check out <code>Homemade Hero</code> series, one of the GOATs.</p>
-<p>Anyways enough talk let&#39;s go back to code.</p>
+<p>Now what is SDL? SDL being shorthand for Simple DirectMedia Layer, It&rsquo;s a abstraction layer for graphics development and make code for annoying things such as input processing, window opening and stuff like that easier. You won&rsquo;t belive how annoying it is to manually make window on windows and linux and mac. Lifesaver abstraction layers i tell you. Tho if you are interested in even more low level check out <code>Homemade Hero</code> series, one of the GOATs.</p>
+<p>Anyways enough talk let&rsquo;s go back to code.</p>
 <p>We will try to follow OOP as much as possible,(will help me get grasp of them better and I like them. Makes me feel more professional and pro than I am.)</p>
 <p>First see how the file tree looks like.</p>
-<pre><code>├── CONCEPT.md
+<pre tabindex="0"><code>├── CONCEPT.md
 ├── LICENSE
 ├── Makefile
 ├── build
@@ -117,137 +115,129 @@ img { max-width: 100%; height: auto; }
 └── src
     ├── Graphics.cpp
     └── Main.cpp
-</code></pre>
-<p>You can get similar output by using <code>tree</code> command on GNU/Linux systems.</p>
+</code></pre><p>You can get similar output by using <code>tree</code> command on GNU/Linux systems.</p>
 <p>So starting of with Main.cpp:</p>
 <p><em>Main.cpp</em></p>
-<pre><code class="language-C++">/*
- * Main.cpp
- * Then entry point of the program
- */
-
-auto main(int argc, char *argv[]) -&gt; int {
-
-	while (true) {
-    }
-    return 0;
-}
-</code></pre>
-<p>SDL expects the main function to have these two (int, char*[]), parameter for compatibility so be sure to add that. Incase you don&#39;t know what that is, I will recommend you to revisit you C++ fundamentals.</p>
-<p>Here we are just making an infinite loop so our program doesn&#39;t end.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Main.cpp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Then entry point of the program
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[]) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (true) {
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>SDL expects the main function to have these two (int, char*[]), parameter for compatibility so be sure to add that. Incase you don&rsquo;t know what that is, I will recommend you to revisit you C++ fundamentals.</p>
+<p>Here we are just making an infinite loop so our program doesn&rsquo;t end.</p>
 <p>So for us to display something in our program we will need to have a window and a renderer to draw stuff.</p>
-<p>Let&#39;s get on with the graphics class.</p>
+<p>Let&rsquo;s get on with the graphics class.</p>
 <p><em>Graphics.h</em></p>
-<pre><code class="language-C++">#ifndef GRAPHICS_H_
-#define GRAPHICS_H_
-
-struct SDL_Window;
-struct SDL_Renderer;
-
-class Graphics {
-public:
-	Graphics();
-	~Graphics();
-private:
-    SDL_Window* _window;
-    SDL_Renderer* _renderer;
-};
-
-#endif // GRAPHICS_H_
-</code></pre>
-<p>Standard header gaurd, then we have <code>SDL_Window</code> and <code>SDL_Renderer</code> both being forward declared.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#ifndef GRAPHICS_H_
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define GRAPHICS_H_
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SDL_Window</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SDL_Renderer</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Graphics</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	Graphics();
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">~</span>Graphics();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    SDL_Window<span style="color:#f92672">*</span> _window;
+</span></span><span style="display:flex;"><span>    SDL_Renderer<span style="color:#f92672">*</span> _renderer;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">// GRAPHICS_H_
+</span></span></span></code></pre></div><p>Standard header gaurd, then we have <code>SDL_Window</code> and <code>SDL_Renderer</code> both being forward declared.</p>
 <p>We are doing so as we will try to minimize including other header in our header file as much as possible as that leads to complications which makes removing such dependency a headache.</p>
 <p>We then declare the graphics class, have a constructor and destructor, two private variables of type <code>SDL_Window</code> and <code>SDL_Renderer</code>. We will use this convention of putting <code>_</code> infornt of variables which are private as is the case with variables <code>_window</code> and <code>_renderer</code>.</p>
 <p>And that is it for Graphics.h for this episode.</p>
-<p>Now that stuff have been declared it&#39;s time for defination so open</p>
+<p>Now that stuff have been declared it&rsquo;s time for defination so open</p>
 <p><em>Graphics.cpp</em></p>
-<pre><code class="language-C++">#include &lt;SDL2/SDL.h&gt;
-
-#include &quot;../headers/Graphics.h&quot;
-
-/*
- * Graphics class
- * Holds all information dealing with graphics for the game
-*/
-
-Graphics::Graphics()
-{
-    SDL_CreateWindowAndRenderer(640,480,0,&amp;this-&gt;_window,&amp;this-&gt;_renderer);
-    SDL_SetWindowTitle(this-&gt;_window, &quot;Scathach&quot;);
-}
-
-Graphics::~Graphics()
-{
-	SDL_DestroyRenderer(this-&gt;_renderer);
-    SDL_DestroyWindow(this-&gt;_window);
-}
-</code></pre>
-<p>Now here we include the SDL2 header file. as well as our Graphics class declaration file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;SDL2/SDL.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;../headers/Graphics.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Graphics class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Holds all information dealing with graphics for the game
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Graphics<span style="color:#f92672">::</span>Graphics()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    SDL_CreateWindowAndRenderer(<span style="color:#ae81ff">640</span>,<span style="color:#ae81ff">480</span>,<span style="color:#ae81ff">0</span>,<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>_window,<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>_renderer);
+</span></span><span style="display:flex;"><span>    SDL_SetWindowTitle(<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>_window, <span style="color:#e6db74">&#34;Scathach&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Graphics<span style="color:#f92672">::~</span>Graphics()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	SDL_DestroyRenderer(<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>_renderer);
+</span></span><span style="display:flex;"><span>    SDL_DestroyWindow(<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>_window);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now here we include the SDL2 header file. as well as our Graphics class declaration file.</p>
 <p>Next implementation fo the constructor <code>Graphics::Graphics()</code>. We do two things in this method.</p>
 <p>Use the function <code>SDL_CreateWindowAndRenderer()</code> to register the window.
-It&#39;s parameter list is -&gt; width, height, window_flags(used to modify the behaviour of window.), pointer to window, pointer to renderer.</p>
-<p>After that we set the title of our window, it&#39;s generally the text on the top bar of window.</p>
+It&rsquo;s parameter list is -&gt; width, height, window_flags(used to modify the behaviour of window.), pointer to window, pointer to renderer.</p>
+<p>After that we set the title of our window, it&rsquo;s generally the text on the top bar of window.</p>
 <p>Here we name the window to be what the name of our game is Scathach.</p>
 <p>After that we write our destructor. Which takes the pointer of thing they destroy and well destroy them. Name is descriptive enough.</p>
-<p>Tbh you can just not do that destruction as windows generally live as long as the game will live for us and OS clean up will be faster anyways. But since we are trying to follow &quot;Good practice&quot; we will clean up our own mess.</p>
+<p>Tbh you can just not do that destruction as windows generally live as long as the game will live for us and OS clean up will be faster anyways. But since we are trying to follow &ldquo;Good practice&rdquo; we will clean up our own mess.</p>
 <p>Now that we have Graphics class implementation done, we will call it in Main.cpp to initialize it.</p>
 <p><em>Main.cpp</em></p>
-<pre><code class="language-C++">.
-.
-auto main(int argc, char *argv[]) -&gt; int {
-
-	Graphics graphics;
-	while (true) {
-.
-.
-</code></pre>
-<p>Initializing graphics of Type Graphics;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> main(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[]) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	Graphics graphics;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (true) {
+</span></span><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>.
+</span></span></code></pre></div><p>Initializing graphics of Type Graphics;</p>
 <hr>
-<p>Now one can&#39;t run their program without a compiling it so we will do that next.</p>
-<p>Let&#39;s write our Makefile.
+<p>Now one can&rsquo;t run their program without a compiling it so we will do that next.</p>
+<p>Let&rsquo;s write our Makefile.
 <em>Makefile</em></p>
-<pre><code class="language-bash">.DEFAULT_GOAL := run
-
-CC = clang++
-CFLAGS = -Wall -Wextra -std=c++20
-
-scathach:
-	$(CC) $(CFLAGS) src/Main.cpp src/Graphics.cpp $$(pkg-config --cflags --libs sdl2) -o build/scathach
-
-run: scathach
-	./build/scathach
-
-clean:
-	rm ./build/* *.o
-</code></pre>
-<p>Default goal will compile and run our program. The compiler we are using is clang. We are using pkg-config to find the library files. We are using C++20 as it has some convenient functions which I like, Some standard warning flags and that is about it for our makefile. Cool.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.DEFAULT_GOAL :<span style="color:#f92672">=</span> run
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CC <span style="color:#f92672">=</span> clang++
+</span></span><span style="display:flex;"><span>CFLAGS <span style="color:#f92672">=</span> -Wall -Wextra -std<span style="color:#f92672">=</span>c++20
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>scathach:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>CC<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>CFLAGS<span style="color:#66d9ef">)</span> src/Main.cpp src/Graphics.cpp $$<span style="color:#f92672">(</span>pkg-config --cflags --libs sdl2<span style="color:#f92672">)</span> -o build/scathach
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>run: scathach
+</span></span><span style="display:flex;"><span>	./build/scathach
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>clean:
+</span></span><span style="display:flex;"><span>	rm ./build/* *.o
+</span></span></code></pre></div><p>Default goal will compile and run our program. The compiler we are using is clang. We are using pkg-config to find the library files. We are using C++20 as it has some convenient functions which I like, Some standard warning flags and that is about it for our makefile. Cool.</p>
 <p>run it by typing <code>make</code> in the terminal. It should open a window of size 640X480 and should be just a black screen.</p>
 <p>You will be unable to close the window as we are not handeling the input so you have two ways to close it right now. Either close the terminal which launched the window or send <code>SIGKILL</code> signal to it.</p>
 <p>can do that like this</p>
-<pre><code class="language-bash">
-pgrep -af scathach
-
----&gt; this should give you PID as output the use it.
-
-kill -9 &lt;PID&gt;
-</code></pre>
-<p>Actually no, lemme show you how you can have a rough event handling.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pgrep -af scathach
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---&gt; this should give you PID as output the use it.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kill -9 &lt;PID&gt;
+</span></span></code></pre></div><p>Actually no, lemme show you how you can have a rough event handling.
 So you can actually close the program nicely.</p>
 <p>instead of current while loop in Main.cpp write this</p>
 <p><em>Main.cpp</em></p>
-<pre><code class="language-C++">    SDL_Event e{};
-    bool quit = false;
-
-    while (quit == false) {
-        while (SDL_PollEvent(&amp;e)) {
-            if (e.type == SDL_QUIT) {
-                quit = true;
-            }
-        }
-    }
-</code></pre>
-<p>SDL_Event is a union of all event structures used in SDL. It is used to read event or write events from/in event queue.</p>
-<p>It&#39;s a pretty important structure in SDL.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>    SDL_Event e{};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> quit <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (quit <span style="color:#f92672">==</span> false) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (SDL_PollEvent(<span style="color:#f92672">&amp;</span>e)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (e.type <span style="color:#f92672">==</span> SDL_QUIT) {
+</span></span><span style="display:flex;"><span>                quit <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>SDL_Event is a union of all event structures used in SDL. It is used to read event or write events from/in event queue.</p>
+<p>It&rsquo;s a pretty important structure in SDL.</p>
 <p>Here we have nested while loop. Where the outer loop is the main <code>Game Loop</code> and the inner loop is event proccessing loop. It reads event from the event loop and if there is something to read it returns 1 otherwise 0.</p>
 <p>We then check what type of event we just read, if it is SDL_QUIT event then we turn <code>quit = true</code> hence existing the outer loop and closing our program.</p>
 <hr>
@@ -272,7 +262,7 @@ So you can actually close the program nicely.</p>
         async>
 </script>
       <hr>
-      <hr><small><a href="ai_stagnation.html">&larr; me-thinks, Episode - 0 : Is AI gonna kill the SWE ?</a></small>
+      <hr><small><a href="ai_stagnation.html">&larr; me-thinks, Episode - 0 : Is AI gonna kill the SWE ?</a> &middot; <a href="zig_io.html">"Exploring Stdout Behavior in Zig 0.17.0: Why `&gt;&gt;` Overwrites Your File" &rarr;</a></small>
       <small><a href="../blog.html">&larr; back to blog</a></small>
     </td>
     <td width="140" valign="top"  class="side-panel" style="border-left: 1px solid black; padding: 4px;">
@@ -338,8 +328,6 @@ So you can actually close the program nicely.</p>
     })
     .catch(function(){});
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
 <script src="../darkmode.js"></script>
 </body>
 </html>

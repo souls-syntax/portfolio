@@ -87,11 +87,6 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://masterrecord.chaldea.moe/weird/garden.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.3</priority>
-  </url>
-  <url>
     <loc>https://masterrecord.chaldea.moe/weird/buttons.html</loc>
     <lastmod>2026-09-27</lastmod>
     <priority>0.3</priority>
@@ -122,50 +117,9 @@
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://masterrecord.chaldea.moe/weird/lore-notes.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.2</priority>
-  </url>
-  <url>
     <loc>https://masterrecord.chaldea.moe/weird/wisdom_of_ancient.html</loc>
     <lastmod>2026-10-12</lastmod>
     <priority>0.2</priority>
   </url>
 
-  <!-- SCP lore pages -->
-  <url>
-    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/scp-entry.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/guide-for-newcomers.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/witch-child.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/the-company-contractor.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/sorry.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/demo-wiki-float.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://masterrecord.chaldea.moe/weird/lore/scp/slutlife.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.2</priority>
-  </url>
 </urlset>

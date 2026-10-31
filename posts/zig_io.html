@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="robots" content="noindex, nofollow">
+  <title>"Exploring Stdout Behavior in Zig 0.17.0: Why `&gt;&gt;` Overwrites Your File" - Aakarsh Kashyap</title>
+  <link rel="alternate" type="application/rss+xml" title="Aakarsh Kashyap's Blog" href="/feed.xml">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../darkmode.css">
+<style>
+center img[src*="buttons/"] { width: 88px; height: 31px; max-width: none; }
+a:visited {
+  color: #0000EE;
+}
+img { max-width: 100%; height: auto; }
+.post-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+.post-content pre {
+  overflow-x: auto;
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;
+}
+.post-content code {
+  word-break: break-all;
+}
+@media (max-width: 600px) {
+  .side-panel { display: none; }
+  table[width="100%"] > tbody > tr > td:not(.side-panel),
+  table[width="100%"] > tr > td:not(.side-panel) {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
+<marquee>welcome to my site</marquee>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+  <tr>
+    <td width="150" valign="top" class="side-panel" style="border-right: 1px solid black;">
+       <!-- <img src="../gifs/banner.gif" alt="[banner gif]" width="140" height="50"><br> -->
+       <img src="../gifs/test/arceuid-tsukihime.gif" alt="Tsukihime moon princess" width="150" height="80"><br>
+      <br>
+      <b>Menu</b><br>
+      <a href="../index.html">About Me</a><br>
+      <a href="../resume.html">Resume</a><br>
+      <a href="../blog.html"><b>Blog</b></a><br>
+      <a href="../projects.html">Projects</a><br>
+      <a href="../fun-projects.html">Fun Projects</a><br>
+      <a href="../social.html">Social</a><br>
+       <a href="../guestbook.html">GuestBook</a><br>
+       <a href="../awareness.html">Awareness</a><br>
+      <hr>
+      <b>Friends</b><br>
+      <a href="https://utkarsh-1771.github.io/Portfolio/">[ utkarsh ]</a><br>
+      <a href="https://shashwatagrawal20.github.io/portfolio/">[ Shashwat ]</a><br>
+      <a href="https://www.seivarya.in/">[ seivarya ]</a><br>
+      <a href="https://sodakeyeatsmush.vercel.app/">[ Saad ]</a><br>
+      <a href="https://www.shobhitnagpal.com/">[ Saar ]</a><br>
+      <a href="https://margatroid.moe/"><img src="https://margatroid.moe/assets/button/margatroid8831.png"></a><br>
+      <a href="https://manthan3.me/"><img src="../buttons/manthanxmew.gif"></a><br>
+      <a href="https://insicli.github.io/">[ insi ]</a><br>
+      <hr>
+      <b>Status</b><br>
+      <small>&#x2713; site is up</small><br>
+      <small>since 2026-05-26</small><br>
+      <hr>
+      <b>Now Playing</b><br>
+      <small id="np-artist">...</small><br>
+      <small id="np-track">...</small><br>
+      <hr>
+      <img src="../gifs/000010.gif" alt="blinkie" width="150" height="20"><br>
+      <a href="https://chaldea.moe/" target="_blank"><img src="../buttons/chaldea.gif" alt="personalLogo"></a><br>
+      <br>
+      <img src="../gifs/main_header.gif" alt="[gif]" width="140" height="90"><br>
+      <br>
+    </td>
+    <td valign="top" style="padding: 8px;">
+      <a href="../blog.html">&larr; back to blog</a>
+      <hr>
+      <b>"Exploring Stdout Behavior in Zig 0.17.0: Why `&gt;&gt;` Overwrites Your File"</b><br>
+      <small>2026-10-31 &mdash; [programming] [zig] [c] [linux] &mdash; 6 min read</small><br><small>series: zig</small>
+      <hr>
+      <!-- FRAGMENT START -->
+      <div class="post-content">
+<h2 id="the-problem">The problem</h2>
+<img src="post_assets/Cheyanne_holding_Systems_Programming_with_Zig.png" alt="Description" width="300" height="200">
+<p>Here is a minimal program that writes a line to stdout:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-zig" data-lang="zig"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> std <span style="color:#f92672">=</span> @import(<span style="color:#e6db74">&#34;std&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>(init: std.process.Init) <span style="color:#f92672">!</span><span style="color:#66d9ef">void</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> io <span style="color:#f92672">=</span> init.io;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> stdout_writer <span style="color:#f92672">=</span> std.Io.File.<span style="color:#a6e22e">stdout</span>().<span style="color:#a6e22e">writer</span>(io, <span style="color:#f92672">&amp;</span>.{});
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> stdout <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>stdout_writer.interface;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> stdout.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;I will overwrite as I will reset the positional argument to 0</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, .{});
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>To reproduce:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>zig run &lt;filename&gt;.zig &gt; test
+</span></span><span style="display:flex;"><span>cat test
+</span></span><span style="display:flex;"><span>zig run &lt;filename&gt;.zig &gt;&gt; test
+</span></span><span style="display:flex;"><span>cat test
+</span></span></code></pre></div><p>Run it once with <code>&gt;</code> and once with <code>&gt;&gt;</code>. With append redirection you would expect two lines in <code>test</code>.</p>
+<h3 id="behavior-on-linux-nushell">Behavior on Linux (nushell)</h3>
+<pre tabindex="0"><code class="language-nushell" data-lang="nushell">□ zig/test
+➜ : zig run src/main.zig out&gt; test
+
+□ zig/test
+➜ : open test
+I will overwrite as I will reset the positional argument to 0
+
+□ zig/test
+➜ : zig run src/main.zig out&gt;&gt; test
+
+□ zig/test
+➜ : open test
+I will overwrite as I will reset the positional argument to 0
+I will overwrite as I will reset the positional argument to 0
+</code></pre><p>Append works as expected.</p>
+<h3 id="behavior-on-macos-bash">Behavior on macOS (bash)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  zig zig run CWO.zig
+</span></span><span style="display:flex;"><span>I will overwrite as I will reset the positional argument to <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>➜  zig zig run CWO.zig &gt; test
+</span></span><span style="display:flex;"><span>➜  zig cat test
+</span></span><span style="display:flex;"><span>I will overwrite as I will reset the positional argument to <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>➜  zig zig run CWO.zig &gt;&gt; test
+</span></span><span style="display:flex;"><span>➜  zig cat test
+</span></span><span style="display:flex;"><span>I will overwrite as I will reset the positional argument to <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>➜  zig
+</span></span></code></pre></div><p>The second run overwrote the file instead of appending to it.</p>
+<h2 id="the-cause">The cause</h2>
+<p>The file writer uses <code>pwrite</code> internally, and its positional offset starts at zero. The two platforms treat that offset differently when the file was opened with <code>O_APPEND</code> (which is what <code>&gt;&gt;</code> does):</p>
+<ul>
+<li><strong>Linux</strong> ignores the offset for <code>pwrite</code> on <code>O_APPEND</code> files and always appends. This deviates from POSIX, but here it happens to give the behavior we want.</li>
+<li><strong>macOS</strong> follows POSIX more faithfully and honors the offset. So even under <code>&gt;&gt;</code>, every write lands at offset 0.</li>
+</ul>
+<h2 id="two-ways-to-get-the-expected-behavior">Two ways to get the expected behavior</h2>
+<h3 id="1-use-writerstreaming">1. Use <code>writerStreaming</code></h3>
+<p><code>writerStreaming</code> uses plain <code>write</code> instead of <code>pwrite</code>, so it never tracks a positional offset and the shell&rsquo;s redirection semantics behave normally. This is the simplest fix.</p>
+<h3 id="2-seek-to-the-end-of-the-file-manually">2. Seek to the end of the file manually</h3>
+<p>Read the file&rsquo;s length and seed the writer&rsquo;s position with it, which preserves append behavior:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-zig" data-lang="zig"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> stdout_writer.<span style="color:#a6e22e">seekTo</span>(<span style="color:#66d9ef">try</span> std.Io.File.<span style="color:#a6e22e">stdout</span>().<span style="color:#a6e22e">length</span>(io));
+</span></span></code></pre></div><p>This has two caveats. It only works if you call it <strong>before the first write</strong>, and it is not useful when stdout is a terminal. The next section explains why.</p>
+<h2 id="why-the-seekto-approach-breaks-on-a-terminal">Why the <code>seekTo</code> approach breaks on a terminal</h2>
+<p><code>File.length</code> calls <code>io.vtable.fileLength</code>, which on Linux runs a <code>statx</code> syscall:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-zig" data-lang="zig"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fileLength</span>(userdata: ?<span style="color:#f92672">*</span><span style="color:#66d9ef">anyopaque</span>, file: File) File.LengthError<span style="color:#f92672">!</span><span style="color:#66d9ef">u64</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> t: <span style="color:#f92672">*</span>Threaded <span style="color:#f92672">=</span> @ptrCast(@alignCast(userdata));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (native_os <span style="color:#f92672">==</span> .linux) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> linux <span style="color:#f92672">=</span> std.os.linux;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> syscall: Syscall <span style="color:#f92672">=</span> <span style="color:#66d9ef">try</span> .<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> statx <span style="color:#f92672">=</span> std.mem.<span style="color:#a6e22e">zeroes</span>(linux.Statx);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">switch</span> (linux.<span style="color:#a6e22e">errno</span>(linux.<span style="color:#a6e22e">statx</span>(file.handle, <span style="color:#e6db74">&#34;&#34;</span>, linux.AT.EMPTY_PATH, .{ .SIZE <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> }, <span style="color:#f92672">&amp;</span>statx))) {
+</span></span></code></pre></div><p>For a terminal, <code>statx</code> reports a size of <code>0</code>. That alone is harmless, but it interacts badly with the writer&rsquo;s fallback behavior. The writer starts in positional mode, and on a terminal the first <code>pwrite</code> fails, so it silently switches to streaming mode. Once it has, <code>seekTo</code> goes through the real seek syscall, which a terminal rejects.</p>
+<h3 id="the-failing-case">The failing case</h3>
+<p>This fails because <code>seekTo(0)</code> runs after text is already on the terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-zig" data-lang="zig"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>(init: std.process.Init) <span style="color:#f92672">!</span><span style="color:#66d9ef">void</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> io <span style="color:#f92672">=</span> init.io;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> stdout_writer <span style="color:#f92672">=</span> std.Io.File.<span style="color:#a6e22e">stdout</span>().<span style="color:#a6e22e">writer</span>(io, <span style="color:#f92672">&amp;</span>.{});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> out <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>stdout_writer.interface;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> out.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Printing the text on terminal to automatically move positional value&#34;</span>, .{});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// length() returns 0 on a terminal, so this tries to rewind to the start</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// of text already printed, but the writer has fallen back to streaming</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> stdout_writer.<span style="color:#a6e22e">seekTo</span>(<span style="color:#66d9ef">try</span> std.Io.File.<span style="color:#a6e22e">stdout</span>().<span style="color:#a6e22e">length</span>(io));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> out.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;I am printing to see if manual positional value update works&#34;</span>, .{});
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The output:</p>
+<pre tabindex="0"><code>Printing the text on terminal to automatically move positional valueerror: Unseekable
+/opt/zig/lib/std/Io/Threaded.zig:10515:31: 0x1184d12 in posixSeekTo (std.zig)
+                    .SPIPE =&gt; return error.Unseekable,
+                              ^
+/opt/zig/lib/std/Io/Threaded.zig:10466:5: 0x1184a89 in fileSeekTo (std.zig)
+    return posixSeekTo(file.handle, offset);
+    ^
+/opt/zig/lib/std/Io/File/Writer.zig:220:17: 0x11ee724 in seekToUnbuffered (std.zig)
+                return err;
+                ^
+/opt/zig/lib/std/Io/File/Writer.zig:201:5: 0x11ee27f in seekTo (std.zig)
+    try seekToUnbuffered(w, offset);
+    ^
+writeCheck.zig:17:5: 0x11e3186 in main (writeCheck.zig)
+    try stdout_writer.seekTo(try std.Io.File.stdout().length(io));
+    ^
+</code></pre><p>The call chain is <code>seekTo</code> -&gt; <code>seekToUnbuffered</code> -&gt; <code>fileSeekTo</code> -&gt; <code>posixSeekTo</code>. The underlying seek syscall returns <code>ESPIPE</code> (&ldquo;illegal seek&rdquo;), which Zig maps to <code>error.Unseekable</code>. Terminals, pipes and sockets cannot be seeked, so the kernel rejects the call. That is a property of the file descriptor, not a Zig quirk.</p>
+<h3 id="the-working-case">The working case</h3>
+<p>This works because <code>seekTo</code> runs while the writer is still in positional mode, so it only updates the writer&rsquo;s own offset:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-zig" data-lang="zig"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>(init: std.process.Init) <span style="color:#f92672">!</span><span style="color:#66d9ef">void</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> io <span style="color:#f92672">=</span> init.io;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> stdout_writer <span style="color:#f92672">=</span> std.Io.File.<span style="color:#a6e22e">stdout</span>().<span style="color:#a6e22e">writer</span>(io, <span style="color:#f92672">&amp;</span>.{});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> out <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>stdout_writer.interface;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> stdout_writer.<span style="color:#a6e22e">seekTo</span>(<span style="color:#66d9ef">try</span> std.Io.File.<span style="color:#a6e22e">stdout</span>().<span style="color:#a6e22e">length</span>(io));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> out.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;I am printing to see if manual positional value update works&#34;</span>, .{});
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here <code>length</code> returns <code>0</code>, so the offset stays at 0. The first write then hits the usual fallback to streaming mode, and everything prints normally.</p>
+<h2 id="takeaways">Takeaways</h2>
+<ul>
+<li>The overwrite on macOS comes from the writer&rsquo;s positional <code>pwrite</code> with an offset of 0 being honored on an <code>O_APPEND</code> file.</li>
+<li><code>writerStreaming</code> is the simplest fix, since it uses plain <code>write</code> and lets the shell&rsquo;s redirection semantics work as usual.</li>
+<li>The <code>seekTo</code> workaround only works if it is called before the first write, and it does nothing useful on a terminal.</li>
+</ul>
+<h2 id="possible-fixes-in-the-standard-library">Possible fixes in the standard library</h2>
+<p>This section is about changing Zig&rsquo;s implementation, not about user-level workarounds. The macOS behavior is correct: <code>pwrite</code> on an <code>O_APPEND</code> file honoring its offset is POSIX-conforming, and Linux ignoring the offset is the documented deviation. The issue is how the writer interacts with those semantics.</p>
+<div align="center">
+<img src="post_assets/Persicaria_holding_Introduction_to_Zig.png" alt="Description" width="300" height="200">
+</div>
+<h3 id="1-default-to-streaming-writes-for-stdout">1. Default to streaming writes for stdout</h3>
+<p>A program does not open stdout itself. It inherits whatever the shell attached to it: a terminal, a pipe, a file from <code>&gt;</code>, or a file from <code>&gt;&gt;</code> opened with <code>O_APPEND</code>. Plain sequential <code>write</code> calls let the OS apply the right semantics for each of those cases, with no positional offset for the application to get wrong.</p>
+<p>Note that distinguishing seekable from non-seekable handles would not be enough. A file redirected with <code>&gt;&gt;</code> is seekable, yet positional writes at offset 0 still overwrite it on macOS. The writer would have to account for append semantics, not just seekability.</p>
+<h3 id="2-make-filelength-clearer-for-handles-without-a-meaningful-size">2. Make <code>File.length</code> clearer for handles without a meaningful size</h3>
+<p>On Linux, <code>statx</code> defines <code>stx_size</code> as the size of a regular file or symbolic link. For a terminal, a returned size of <code>0</code> is not a real length, only the absence of one. Returning <code>0</code> as if it were a usable length is what lets the <code>seekTo(length)</code> pattern look valid and then fail with <code>error.Unseekable</code> once the writer is in streaming mode. <code>length</code> could report that no meaningful length exists for such handles, so code does not mistake &ldquo;unknown&rdquo; for &ldquo;empty&rdquo;.</p>
+      </div>
+      <!-- FRAGMENT END -->
+      <hr>
+<script src="https://giscus.app/client.js"
+        data-repo="souls-syntax/portfolio"
+        data-repo-id="R_kgDOSnkCrw"
+        data-category="General"
+        data-category-id="DIC_kwDOSnkCr84DAfMP"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark_tritanopia"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+      <hr>
+      <hr><small><a href="scathach_0.html">&larr; Scathach, Episode - 0</a></small>
+      <small><a href="../blog.html">&larr; back to blog</a></small>
+    </td>
+    <td width="140" valign="top"  class="side-panel" style="border-left: 1px solid black; padding: 4px;">
+      <b>Stuff</b><br>
+      <hr>
+       <img src="../gifs/test/tsukihime-tsukihime-remake.gif" alt="[gif]" width="130" height="100"><br>
+       <br>
+       <img src="../gifs/test/saber-fate-saber.gif" alt="[gif]" width="130" height="100"><br>
+       <!-- <img src="../gifs/flandre-scarlet-cheering.gif" alt="[gif]" width="130" height="100"><br> -->
+       <br>
+       <img src="../gifs/test/fate-padoru-christmas.gif" alt="[gif]" width="130" height="100"><br>
+       <!-- <img src="../gifs/reimu-touhou.gif" alt="[gif]" width="130" height="100"><br> -->
+       <br>
+       <img src="../gifs/test/scáthach-fate.gif" alt="Saber from Fate Carnival Phantasm" width="140"><br>
+      <audio id="bgm" loop>
+        <source src="../bgm.mp3" type="audio/mpeg">
+      </audio>
+      <b>BGM</b><br>
+      <a href="#" id="bgm-btn" onclick="toggleBGM()">[play]</a>
+      <br>
+      <br>
+      <b>theme toggle</b><br>
+      <a href="#" id="dark-mode-btn" onclick="toggleDarkMode(); return false;">[dark mode]</a>
+    </td>
+  </tr>
+</table>
+<hr>
+<center>
+  <img src="../buttons/firefox.gif" alt="best viewed in firefox" width="88" height="31">
+  <img src="../buttons/vi-vim.gif" alt="vim my love" width="88" height="31">
+  <img src="../buttons/underconstruction.gif" alt="under construction" width="88" height="31">
+  <br><br>
+  <a href="/feed.xml">RSS FEED</a><br>
+  <small>
+    &laquo; <a href="https://www.seivarya.in/">seivarya</a> &mdash; <a href="../webring.html">webring</a> &mdash; <a href="https://shashwatagrawal20.github.io/portfolio/">Shashwat &raquo;</a>
+  </small>
+  <br><br>
+  <small id="visit-count">...</small>
+  <br><br>
+  <small>aakarsh kashyap ; made with vim and spite</small>
+</center>
+<script>
+  fetch('../nowplaying.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      document.getElementById('np-artist').textContent = d.artist || '---';
+      document.getElementById('np-track').textContent = d.track || '---';
+    })
+    .catch(function(){});
+
+  function toggleBGM() {
+    var a = document.getElementById('bgm');
+    var btn = document.getElementById('bgm-btn');
+    if (a.paused) { a.play(); btn.textContent = '[stop]'; }
+    else { a.pause(); a.currentTime = 0; btn.textContent = '[play]'; }
+    return false;
+  }
+
+  fetch('https://visit-counter-kohl.vercel.app/api/count')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      document.getElementById('visit-count').textContent = 'visitors: ' + d.count;
+    })
+    .catch(function(){});
+</script>
+<script src="../darkmode.js"></script>
+</body>
+</html>

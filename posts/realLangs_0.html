@@ -41,7 +41,6 @@ img { max-width: 100%; height: auto; }
   }
 }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
@@ -95,49 +94,49 @@ img { max-width: 100%; height: auto; }
       <hr>
       <!-- FRAGMENT START -->
       <div class="post-content">
-<h4 id="warning-this-retarded-take-series-may-contain-uncouth-words">Warning: This retarded take series may contain uncouth words.</h4><p>The way i see it most of the language floating around just don&#39;t have a purpose other than providing syntactic sugar, they exist purely to become someones eye-candy.
+<h4 id="warning-this-retarded-take-series-may-contain-uncouth-words">Warning: This retarded take series may contain uncouth words.</h4>
+<p>The way i see it most of the language floating around just don&rsquo;t have a purpose other than providing syntactic sugar, they exist purely to become someones eye-candy.
 I call that language grooming. Making a language without any specific purpose just for the sole purpose of having a beautiful on asthetic sense.</p>
 <p>I think right term is transpiling languages. one concrete example would be typescript. No perf increase, no change in behaviour just syntactic sugar.</p>
-<p>Now one might say souls but doesn&#39;t that apply to your favourite language C/C++ too. To that I say nay, they don&#39;t have such blemish cause they are divine languages and even flaws are perfection upon them.</p>
+<p>Now one might say souls but doesn&rsquo;t that apply to your favourite language C/C++ too. To that I say nay, they don&rsquo;t have such blemish cause they are divine languages and even flaws are perfection upon them.</p>
 <p>any such fake languages should just become a macro defined subset of C++. Brat correction of languages so to say.</p>
 <p>Take lua for example, what is it if not a fake language.
 you can literaly just write this</p>
-<pre><code class="language-C++">#ifndef MAIN_H
-#define MAIN_H
-
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-
-#define local auto
-#define nil nullptr
-#define print(...) std::cout &lt;&lt; __VA_ARGS__ &lt;&lt; &#39;\n&#39;
-#define input(x) std::cin &gt;&gt; x
-#define number double
-#define string std::string
-#define boolean bool
-#define table(T) std::vector&lt;T&gt;
-#define newtable(T, n) std::vector&lt;T&gt;(n)
-#define append(t, v) t.push_back(v)
-#define size(t) (int)t.size()
-
-#define if if (
-#define then ) {
-#define elseif } else if (
-#define else } else {
-#define end }
-
-#define while while (
-#define do ) {
-
-#define begin int main() {
-#define stop return 0; }
-
-#endif
-</code></pre>
-<p>And there you go your favourite language becoming a submissive slave of C++.</p>
-<h3 id="notice-as-name-suggests-this-is-a-retarded-take-i-don-t-really-view-these-things-in-such-way-you-can-think-of-this-as-me-just-ragebaiting-you">NOTICE: As name suggests this is a retarded take I don't really view these things in such way. You can think of this as me just ragebaiting you</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#ifndef MAIN_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define MAIN_H
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;algorithm&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define local auto
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define nil nullptr
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define print(...) std::cout &lt;&lt; __VA_ARGS__ &lt;&lt; &#39;\n&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define input(x) std::cin &gt;&gt; x
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define number double
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define string std::string
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define boolean bool
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define table(T) std::vector&lt;T&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define newtable(T, n) std::vector&lt;T&gt;(n)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define append(t, v) t.push_back(v)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define size(t) (int)t.size()
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define if if (
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define then ) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define elseif } else if (
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define else } else {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define end }
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define while while (
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define do ) {
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define begin int main() {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define stop return 0; }
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div><p>And there you go your favourite language becoming a submissive slave of C++.</p>
+<h3 id="notice-as-name-suggests-this-is-a-retarded-take-i-dont-really-view-these-things-in-such-way-you-can-think-of-this-as-me-just-ragebaiting-you">NOTICE: As name suggests this is a retarded take I don&rsquo;t really view these things in such way. You can think of this as me just ragebaiting you</h3>
       </div>
       <!-- FRAGMENT END -->
       <hr>
@@ -223,8 +222,6 @@ you can literaly just write this</p>
     })
     .catch(function(){});
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
 <script src="../darkmode.js"></script>
 </body>
 </html>
